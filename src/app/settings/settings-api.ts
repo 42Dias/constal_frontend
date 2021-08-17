@@ -41,7 +41,7 @@ export default class SettingsApi {
     if (oldLink) {
       oldLink.setAttribute(
         'href',
-        `/assets/theme/${color}.css`,
+        `./assets/theme/${color}.css`,
       );
       return;
     }
@@ -50,7 +50,7 @@ export default class SettingsApi {
     link.setAttribute('id', 'theme-link');
     link.setAttribute('rel', 'stylesheet');
     link.setAttribute('type', 'text/css');
-    link.setAttribute('href', `/assets/theme/${color}.css`);
+    link.setAttribute('href', `../../assets/theme/${color}.css`);
 
     const head = document
       .getElementsByTagName('head')

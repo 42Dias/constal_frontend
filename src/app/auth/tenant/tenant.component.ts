@@ -23,7 +23,7 @@ export class TenantComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/tenant.jpg'
+      './assets/images/tenant.jpg'
     );
   }
 

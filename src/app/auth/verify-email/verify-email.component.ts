@@ -20,7 +20,7 @@ export class VerifyEmailComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/emailUnverified.jpg'
+      './assets/images/emailUnverified.jpg'
     );
   }
 

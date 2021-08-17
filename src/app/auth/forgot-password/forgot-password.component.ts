@@ -25,7 +25,7 @@ export class ForgotPasswordComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/forgotPassword.jpg'
+      './assets/images/forgotPassword.jpg'
     );
   }
 

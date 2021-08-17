@@ -8,7 +8,7 @@ const languages = {
   en: {
     id: 'en',
     label: 'English',
-    flag: '/assets/images/flags/United-States.png',
+    flag: './assets/images/flags/United-States.png',
     dictionary: null,
     materialLocale: 'en',
     owlDateTimeLocale: 'en',
@@ -16,7 +16,7 @@ const languages = {
   es: {
     id: 'es',
     label: 'Español',
-    flag: '/assets/images/flags/Spain.png',
+    flag: './assets/images/flags/Spain.png',
     dictionary: null,
     materialLocale: 'es',
     owlDateTimeLocale: 'es',
@@ -24,7 +24,7 @@ const languages = {
   'pt-BR': {
     id: 'pt-BR',
     label: 'Português',
-    flag: '/assets/images/flags/Brazil.png',
+    flag: './assets/images/flags/Brazil.png',
     dictionary: null,
     materialLocale: 'pt-br',
     owlDateTimeLocale: 'pt-BR',

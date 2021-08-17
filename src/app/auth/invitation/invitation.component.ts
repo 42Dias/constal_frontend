@@ -21,7 +21,7 @@ export class InvitationComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/invitation.jpg'
+      './assets/images/invitation.jpg'
     );
   }
 

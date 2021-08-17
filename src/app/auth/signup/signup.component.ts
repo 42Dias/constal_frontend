@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/signup.jpg'
+      './assets/images/signup.jpg'
     );
   }
 

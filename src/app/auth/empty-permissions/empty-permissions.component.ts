@@ -11,7 +11,7 @@ export class EmptyPermissionsComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/emptyPermissions.jpg'
+      './assets/images/emptyPermissions.jpg'
     );
   }
 

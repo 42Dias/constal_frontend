@@ -49,7 +49,7 @@ export class SigninComponent implements OnInit {
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||
-      '/assets/images/signin.jpg'
+      './assets/images/signin.jpg'
     );
   }
 
