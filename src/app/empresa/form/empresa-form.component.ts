@@ -72,6 +72,7 @@ export class EmpresaFormComponent implements OnInit {
         this.fields.cidade,
         this.fields.estado,
         this.fields.bairro,
+        this.fields.pix,
         this.fields.foto,
         this.fields.user,
       ],

@@ -257,6 +257,22 @@
       </div>
 
       <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.pix.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.pix.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.pix.name)"
+              [label]="fields.pix.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
         <app-autocomplete-form-field
           [control]="form.get(fields.user.name)"
           [label]="fields.user.label"

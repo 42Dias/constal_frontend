@@ -67,6 +67,7 @@ export class EmpresaListTableComponent {
       this.fields.cidade.name,
       this.fields.estado.name,
       this.fields.bairro.name,
+      this.fields.pix.name,
       this.fields.foto.name,
       this.fields.user.name,
 

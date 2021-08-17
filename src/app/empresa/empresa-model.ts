@@ -39,6 +39,7 @@ const fields = {
   cidade: new StringField('cidade', label('cidade'), {}),
   estado: new StringField('estado', label('estado'), {}),
   bairro: new StringField('bairro', label('bairro'), {}),
+  pix: new StringField('pix', label('pix'), {}),
   foto: new ImagesField('foto', label('foto'),Storage.values.empresaFoto, {}),
   user: UserField.relationToOne('user', label('user'), {}),
   createdAt: new DateTimeField(

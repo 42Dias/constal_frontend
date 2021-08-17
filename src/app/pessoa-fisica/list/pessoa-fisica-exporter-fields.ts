@@ -17,7 +17,6 @@ export default [
   fields.cidade,
   fields.estado,
   fields.bairro,
-  fields.pix,
   fields.foto,
   fields.user,
   fields.createdAt,

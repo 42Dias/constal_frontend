@@ -281,27 +281,6 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field floatLabel="always" appearance="outline">
-    <mat-label>{{ fields.pix.label }}</mat-label>
-    <input
-      matInput
-      [formControlName]="fields.pix.name"
-      [placeholder]="fields.pix.placeholder"
-      [required]="fields.pix.required"
-    />
-
-    <mat-hint *ngIf="fields.pix.hint">
-      {{ fields.pix.hint }}
-    </mat-hint>
-
-    <mat-error>
-      <app-validations
-        [control]="form.get(fields.pix.name)"
-        [label]="fields.pix.label"
-      ></app-validations>
-    </mat-error>
-  </mat-form-field>
-
   <app-image-form-field
     [formControl]="form.get(fields.foto.name)"
     [label]="fields.foto.label"

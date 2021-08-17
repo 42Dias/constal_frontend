@@ -173,6 +173,16 @@
         {{ presenter(row, 'bairro') }}
       </td>
     </ng-container>
+    <ng-container
+      [matColumnDef]="fields.pix.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.pix.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'pix') }}
+      </td>
+    </ng-container>
     <ng-container [matColumnDef]="fields.foto.name">
       <th mat-header-cell *matHeaderCellDef>
         {{ fields.foto.label }}

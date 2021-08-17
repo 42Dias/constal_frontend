@@ -83,7 +83,6 @@ export class PessoaFisicaListFilterComponent implements OnInit {
         this.fields.cidade,
         this.fields.estado,
         this.fields.bairro,
-        this.fields.pix,
         this.fields.user,
       ],
       this.formBuilder,
