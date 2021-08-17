@@ -1,0 +1,376 @@
+<form
+  class="form"
+  (ngSubmit)="doSave()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.cpf.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.cpf.name"
+      [placeholder]="fields.cpf.placeholder"
+      [required]="fields.cpf.required"
+    appAutofocus
+    />
+
+    <mat-hint *ngIf="fields.cpf.hint">
+      {{ fields.cpf.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.cpf.name)"
+        [label]="fields.cpf.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.nome.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.nome.name"
+      [placeholder]="fields.nome.placeholder"
+      [required]="fields.nome.required"
+    />
+
+    <mat-hint *ngIf="fields.nome.hint">
+      {{ fields.nome.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.nome.name)"
+        [label]="fields.nome.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.email.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.email.name"
+      [placeholder]="fields.email.placeholder"
+      [required]="fields.email.required"
+    />
+
+    <mat-hint *ngIf="fields.email.hint">
+      {{ fields.email.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.email.name)"
+        [label]="fields.email.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.telefone.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.telefone.name"
+      [placeholder]="fields.telefone.placeholder"
+      [required]="fields.telefone.required"
+    />
+
+    <mat-hint *ngIf="fields.telefone.hint">
+      {{ fields.telefone.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.telefone.name)"
+        [label]="fields.telefone.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.celular.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.celular.name"
+      [placeholder]="fields.celular.placeholder"
+      [required]="fields.celular.required"
+    />
+
+    <mat-hint *ngIf="fields.celular.hint">
+      {{ fields.celular.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.celular.name)"
+        [label]="fields.celular.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.cep.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.cep.name"
+      [placeholder]="fields.cep.placeholder"
+      [required]="fields.cep.required"
+    />
+
+    <mat-hint *ngIf="fields.cep.hint">
+      {{ fields.cep.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.cep.name)"
+        [label]="fields.cep.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.logradouro.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.logradouro.name"
+      [placeholder]="fields.logradouro.placeholder"
+      [required]="fields.logradouro.required"
+    />
+
+    <mat-hint *ngIf="fields.logradouro.hint">
+      {{ fields.logradouro.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.logradouro.name)"
+        [label]="fields.logradouro.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.numero.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.numero.name"
+      [required]="fields.numero.required"
+      [placeholder]="fields.numero.placeholder"
+      type="number"
+      step="1"
+    />
+
+    <mat-hint *ngIf="fields.numero.hint">
+      {{ fields.numero.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.numero.name)"
+        [label]="fields.numero.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.complemento.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.complemento.name"
+      [placeholder]="fields.complemento.placeholder"
+      [required]="fields.complemento.required"
+    />
+
+    <mat-hint *ngIf="fields.complemento.hint">
+      {{ fields.complemento.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.complemento.name)"
+        [label]="fields.complemento.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.pontoReferencia.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.pontoReferencia.name"
+      [placeholder]="fields.pontoReferencia.placeholder"
+      [required]="fields.pontoReferencia.required"
+    />
+
+    <mat-hint *ngIf="fields.pontoReferencia.hint">
+      {{ fields.pontoReferencia.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.pontoReferencia.name)"
+        [label]="fields.pontoReferencia.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.cidade.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.cidade.name"
+      [placeholder]="fields.cidade.placeholder"
+      [required]="fields.cidade.required"
+    />
+
+    <mat-hint *ngIf="fields.cidade.hint">
+      {{ fields.cidade.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.cidade.name)"
+        [label]="fields.cidade.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.estado.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.estado.name"
+      [placeholder]="fields.estado.placeholder"
+      [required]="fields.estado.required"
+    />
+
+    <mat-hint *ngIf="fields.estado.hint">
+      {{ fields.estado.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.estado.name)"
+        [label]="fields.estado.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.bairro.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.bairro.name"
+      [placeholder]="fields.bairro.placeholder"
+      [required]="fields.bairro.required"
+    />
+
+    <mat-hint *ngIf="fields.bairro.hint">
+      {{ fields.bairro.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.bairro.name)"
+        [label]="fields.bairro.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.pix.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.pix.name"
+      [placeholder]="fields.pix.placeholder"
+      [required]="fields.pix.required"
+    />
+
+    <mat-hint *ngIf="fields.pix.hint">
+      {{ fields.pix.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.pix.name)"
+        [label]="fields.pix.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <app-image-form-field
+    [formControl]="form.get(fields.foto.name)"
+    [label]="fields.foto.label"
+    [hint]="fields.foto.hint"
+    [storage]="fields.foto.storage"
+    [required]="fields.foto.required"
+    [max]="fields.foto.max"
+    [submitted]="ngForm.submitted"
+  ></app-image-form-field>
+
+  <app-user-form-field
+    [control]="form.get(fields.user.name)"
+    [label]="fields.user.label"
+    [placeholder]="fields.user.placeholder"
+    [hint]="fields.user.hint"
+    [required]="fields.user.required"
+    [fetchFn]="fields.user.fetchFn"
+    [mapperFn]="fields.user.mapperFn"
+    [showCreate]="!modal"
+    [submitted]="ngForm.submitted"
+    mode="single"
+  ></app-user-form-field>
+
+  <div
+    class="form-buttons"
+    [class.form-buttons-modal]="modal"
+  >
+    <button
+      mat-raised-button
+      [disabled]="saveLoading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="far"
+        fontIcon="fa-save"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.save"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      type="button"
+      (click)="cancel.emit()"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-times"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.cancel"></app-i18n>
+    </button>
+  </div>
+</form>

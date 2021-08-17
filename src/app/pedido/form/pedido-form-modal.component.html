@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  <app-i18n key="entities.pedido.new.title"></app-i18n>
+</h1>
+<mat-dialog-content>
+  <app-pedido-form
+    [saveLoading]="saveLoading"
+    (save)="doCreate($event)"
+    (cancel)="doCancel()"
+    [modal]="true"
+  ></app-pedido-form>
+</mat-dialog-content>

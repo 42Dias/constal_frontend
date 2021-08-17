@@ -1,0 +1,57 @@
+<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+
+<div class="app-content-page">
+  <h1 class="app-content-title">
+    <app-i18n key="entities.cartao.view.title"></app-i18n>
+  </h1>
+
+  <app-cartao-view-toolbar></app-cartao-view-toolbar>
+
+  <div *ngIf="loading" class="app-page-spinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-view-item-text
+      [label]="fields.tipo.label"
+      [value]="presenter(record, 'tipo')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.nomeTitular.label"
+      [value]="presenter(record, 'nomeTitular')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.apelido.label"
+      [value]="presenter(record, 'apelido')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.numero.label"
+      [value]="presenter(record, 'numero')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.cvv.label"
+      [value]="presenter(record, 'cvv')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.validade.label"
+      [value]="presenter(record, 'validade')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.bandeira.label"
+      [value]="presenter(record, 'bandeira')"
+    ></app-view-item-text>
+
+    <app-view-item-relation-to-many
+      [label]="fields.user.label"
+      [url]="fields.user.viewUrl"
+      [permission]="fields.user.readPermission"
+      [value]="presenter(record, 'user')"
+    ></app-view-item-relation-to-many>
+  </div>
+</div>

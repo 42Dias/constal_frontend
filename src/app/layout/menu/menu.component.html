@@ -1,0 +1,251 @@
+<mat-nav-list>
+  <a
+    mat-list-item
+    routerLink=""
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <mat-icon>dashboard</mat-icon>
+    <span><app-i18n key="dashboard.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="planService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/plan"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>credit_card</mat-icon>
+    <span><app-i18n key="plan.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="userService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/user"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>person_add</mat-icon>
+    <span><app-i18n key="user.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="auditLogService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/audit-log"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>history</mat-icon>
+    <span><app-i18n key="auditLog.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="settingsService.hasPermissionToEdit"
+    mat-list-item
+    routerLink="/settings"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>settings</mat-icon>
+    <span><app-i18n key="settings.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="pessoaFisicaService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/pessoa-fisica"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.pessoaFisica.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="empresaService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/empresa"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.empresa.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="cartaoService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/cartao"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.cartao.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="produtoService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/produto"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.produto.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="pedidoService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/pedido"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.pedido.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="carrinhoService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/carrinho"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.carrinho.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="categoriaService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/categoria"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.categoria.menu"></app-i18n
+    ></span>
+  </a>
+
+  <button
+    disabled
+    *ngIf="planService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>credit_card</mat-icon>
+    <app-i18n key="plan.menu"></app-i18n>
+  </button>
+  <button
+    disabled
+    *ngIf="userService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>person_add</mat-icon>
+    <span><app-i18n key="user.menu"></app-i18n></span>
+  </button>
+  <button
+    disabled
+    *ngIf="auditLogService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>history</mat-icon>
+    <span><app-i18n key="auditLog.menu"></app-i18n></span>
+  </button>
+  <button
+    disabled
+    *ngIf="settingsService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>settings</mat-icon>
+    <span><app-i18n key="settings.menu"></app-i18n></span>
+  </button>
+  <button
+    disabled
+    *ngIf="pessoaFisicaService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.pessoaFisica.menu"></app-i18n
+    ></span>
+  </button>
+  <button
+    disabled
+    *ngIf="empresaService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.empresa.menu"></app-i18n
+    ></span>
+  </button>
+  <button
+    disabled
+    *ngIf="cartaoService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.cartao.menu"></app-i18n
+    ></span>
+  </button>
+  <button
+    disabled
+    *ngIf="produtoService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.produto.menu"></app-i18n
+    ></span>
+  </button>
+  <button
+    disabled
+    *ngIf="pedidoService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.pedido.menu"></app-i18n
+    ></span>
+  </button>
+  <button
+    disabled
+    *ngIf="carrinhoService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.carrinho.menu"></app-i18n
+    ></span>
+  </button>
+  <button
+    disabled
+    *ngIf="categoriaService.lockedForCurrentPlan"
+    mat-list-item
+    class="app-menu-item-locked"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.categoria.menu"></app-i18n
+    ></span>
+  </button>
+  
+</mat-nav-list>

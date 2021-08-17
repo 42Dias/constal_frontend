@@ -1,0 +1,232 @@
+<div class="filter">
+  <app-filter-preview
+    [values]="form.value"
+    [fields]="fields"
+    [expanded]="expanded"
+    (click)="doToggleExpanded()"
+    (remove)="doRemove($event)"
+  ></app-filter-preview>
+  <form
+    (ngSubmit)="doFilter()"
+    [formGroup]="form"
+    #ngForm="ngForm"
+    *ngIf="form && expanded"
+  >
+    <div class="row">
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.nome.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.nome.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.nome.name)"
+              [label]="fields.nome.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.descricao.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.descricao.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.descricao.name)"
+              [label]="fields.descricao.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.marca.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.marca.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.marca.name)"
+              [label]="fields.marca.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.modelo.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.modelo.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.modelo.name)"
+              [label]="fields.modelo.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.caracteristicas.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.caracteristicas.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.caracteristicas.name)"
+              [label]="fields.caracteristicas.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.codigo.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="fields.codigo.name"
+          />
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.codigo.name)"
+              [label]="fields.codigo.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.preco.label }}</mat-label>
+          <app-decimal-range-input
+            [formControl]="form.get(fields.precoRange.name)"
+          ></app-decimal-range-input>
+          <mat-error>
+            <app-validations
+              [control]="form.get(fields.precoRange.name)"
+              [label]="fields.precoRange.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.somatoriaAvaliacoes.label }}</mat-label>
+          <app-integer-range-input
+            [formControl]="
+              form.get(fields.somatoriaAvaliacoesRange.name)
+            "
+          ></app-integer-range-input>
+          <mat-error>
+            <app-validations
+              [control]="
+                form.get(fields.somatoriaAvaliacoesRange.name)
+              "
+              [label]="fields.somatoriaAvaliacoesRange.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.quantidadeAvaliacoes.label }}</mat-label>
+          <app-integer-range-input
+            [formControl]="
+              form.get(fields.quantidadeAvaliacoesRange.name)
+            "
+          ></app-integer-range-input>
+          <mat-error>
+            <app-validations
+              [control]="
+                form.get(fields.quantidadeAvaliacoesRange.name)
+              "
+              [label]="fields.quantidadeAvaliacoesRange.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>{{ fields.volumeVendas.label }}</mat-label>
+          <app-integer-range-input
+            [formControl]="
+              form.get(fields.volumeVendasRange.name)
+            "
+          ></app-integer-range-input>
+          <mat-error>
+            <app-validations
+              [control]="
+                form.get(fields.volumeVendasRange.name)
+              "
+              [label]="fields.volumeVendasRange.label"
+            ></app-validations>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <app-autocomplete-form-field
+          [control]="form.get(fields.empresa.name)"
+          [label]="fields.empresa.label"
+          [fetchFn]="fields.empresa.fetchFn"
+        ></app-autocomplete-form-field>
+      </div>
+
+      <div class="col-xs-12 col-lg-6">
+        <app-autocomplete-form-field
+          [control]="form.get(fields.categoria.name)"
+          [label]="fields.categoria.label"
+          [fetchFn]="fields.categoria.fetchFn"
+        ></app-autocomplete-form-field>
+      </div>
+    </div>
+
+    <div class="filter-buttons">
+      <button
+        mat-raised-button
+        [disabled]="loading"
+        color="primary"
+        type="submit"
+      >
+        <mat-icon
+          inline
+          fontSet="fas"
+          fontIcon="fa-search"
+        ></mat-icon
+        >&#160;
+        <app-i18n key="common.search"></app-i18n>
+      </button>
+      <button
+        mat-flat-button
+        [disabled]="loading"
+        (click)="doReset()"
+        type="button"
+      >
+        <mat-icon
+          inline
+          fontSet="fas"
+          fontIcon="fa-undo"
+        ></mat-icon
+        >&#160;
+        <app-i18n key="common.reset"></app-i18n>
+      </button>
+    </div>
+  </form>
+</div>

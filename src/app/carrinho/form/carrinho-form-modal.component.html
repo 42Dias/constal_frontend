@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  <app-i18n key="entities.carrinho.new.title"></app-i18n>
+</h1>
+<mat-dialog-content>
+  <app-carrinho-form
+    [saveLoading]="saveLoading"
+    (save)="doCreate($event)"
+    (cancel)="doCancel()"
+    [modal]="true"
+  ></app-carrinho-form>
+</mat-dialog-content>

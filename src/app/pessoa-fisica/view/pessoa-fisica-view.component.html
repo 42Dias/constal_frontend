@@ -1,0 +1,97 @@
+<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+
+<div class="app-content-page">
+  <h1 class="app-content-title">
+    <app-i18n key="entities.pessoaFisica.view.title"></app-i18n>
+  </h1>
+
+  <app-pessoa-fisica-view-toolbar></app-pessoa-fisica-view-toolbar>
+
+  <div *ngIf="loading" class="app-page-spinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-view-item-text
+      [label]="fields.cpf.label"
+      [value]="presenter(record, 'cpf')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.nome.label"
+      [value]="presenter(record, 'nome')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.email.label"
+      [value]="presenter(record, 'email')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.telefone.label"
+      [value]="presenter(record, 'telefone')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.celular.label"
+      [value]="presenter(record, 'celular')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.cep.label"
+      [value]="presenter(record, 'cep')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.logradouro.label"
+      [value]="presenter(record, 'logradouro')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.numero.label"
+      [value]="presenter(record, 'numero')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.complemento.label"
+      [value]="presenter(record, 'complemento')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.pontoReferencia.label"
+      [value]="presenter(record, 'pontoReferencia')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.cidade.label"
+      [value]="presenter(record, 'cidade')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.estado.label"
+      [value]="presenter(record, 'estado')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.bairro.label"
+      [value]="presenter(record, 'bairro')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.pix.label"
+      [value]="presenter(record, 'pix')"
+    ></app-view-item-text>
+
+    <app-view-item-images
+      [label]="fields.foto.label"
+      [value]="presenter(record, 'foto')"
+    ></app-view-item-images>
+
+    <app-view-item-relation-to-one
+      [label]="fields.user.label"
+      [url]="fields.user.viewUrl"
+      [permission]="fields.user.readPermission"
+      [value]="presenter(record, 'user')"
+    ></app-view-item-relation-to-one>
+  </div>
+</div>

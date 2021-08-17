@@ -1,0 +1,353 @@
+<form
+  class="form"
+  (ngSubmit)="doSave()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.codigo.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.codigo.name"
+      [placeholder]="fields.codigo.placeholder"
+      [required]="fields.codigo.required"
+    appAutofocus
+    />
+
+    <mat-hint *ngIf="fields.codigo.hint">
+      {{ fields.codigo.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.codigo.name)"
+        [label]="fields.codigo.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.quantidadeProdutos.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.quantidadeProdutos.name"
+      [required]="fields.quantidadeProdutos.required"
+      [placeholder]="fields.quantidadeProdutos.placeholder"
+      type="number"
+      step="1"
+    />
+
+    <mat-hint *ngIf="fields.quantidadeProdutos.hint">
+      {{ fields.quantidadeProdutos.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.quantidadeProdutos.name)"
+        [label]="fields.quantidadeProdutos.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.formaPagamento.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.formaPagamento.name"
+      [placeholder]="fields.formaPagamento.placeholder"
+      [required]="fields.formaPagamento.required"
+    />
+
+    <mat-hint *ngIf="fields.formaPagamento.hint">
+      {{ fields.formaPagamento.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.formaPagamento.name)"
+        [label]="fields.formaPagamento.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.valorTotal.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.valorTotal.name"
+      [placeholder]="fields.valorTotal.placeholder"
+      [required]="fields.valorTotal.required"
+    />
+
+    <mat-hint *ngIf="fields.valorTotal.hint">
+      {{ fields.valorTotal.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.valorTotal.name)"
+        [label]="fields.valorTotal.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.dataPedido.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.dataPedido.name"
+      [placeholder]="fields.dataPedido.placeholder"
+      [owlDateTime]="dt4"
+      [owlDateTimeTrigger]="dt4"
+      [required]="fields.dataPedido.required"
+    />
+
+    <owl-date-time #dt4></owl-date-time>
+
+    <mat-hint *ngIf="fields.dataPedido.hint">
+      {{ fields.dataPedido.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.dataPedido.name)"
+        [label]="fields.dataPedido.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.dataProcessamento.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.dataProcessamento.name"
+      [placeholder]="fields.dataProcessamento.placeholder"
+      [owlDateTime]="dt5"
+      [owlDateTimeTrigger]="dt5"
+      [required]="fields.dataProcessamento.required"
+    />
+
+    <owl-date-time #dt5></owl-date-time>
+
+    <mat-hint *ngIf="fields.dataProcessamento.hint">
+      {{ fields.dataProcessamento.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.dataProcessamento.name)"
+        [label]="fields.dataProcessamento.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.dataEnvio.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.dataEnvio.name"
+      [placeholder]="fields.dataEnvio.placeholder"
+      [owlDateTime]="dt6"
+      [owlDateTimeTrigger]="dt6"
+      [required]="fields.dataEnvio.required"
+    />
+
+    <owl-date-time #dt6></owl-date-time>
+
+    <mat-hint *ngIf="fields.dataEnvio.hint">
+      {{ fields.dataEnvio.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.dataEnvio.name)"
+        [label]="fields.dataEnvio.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.dataEntrega.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.dataEntrega.name"
+      [placeholder]="fields.dataEntrega.placeholder"
+      [owlDateTime]="dt7"
+      [owlDateTimeTrigger]="dt7"
+      [required]="fields.dataEntrega.required"
+    />
+
+    <owl-date-time #dt7></owl-date-time>
+
+    <mat-hint *ngIf="fields.dataEntrega.hint">
+      {{ fields.dataEntrega.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.dataEntrega.name)"
+        [label]="fields.dataEntrega.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.dataFaturamento.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.dataFaturamento.name"
+      [placeholder]="fields.dataFaturamento.placeholder"
+      [owlDateTime]="dt8"
+      [owlDateTimeTrigger]="dt8"
+      [required]="fields.dataFaturamento.required"
+    />
+
+    <owl-date-time #dt8></owl-date-time>
+
+    <mat-hint *ngIf="fields.dataFaturamento.hint">
+      {{ fields.dataFaturamento.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.dataFaturamento.name)"
+        [label]="fields.dataFaturamento.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.status.label }}</mat-label>
+    <mat-select
+      [formControlName]="fields.status.name"
+      [placeholder]="fields.status.placeholder"
+    >
+      <mat-option>--</mat-option>
+      <mat-option
+        *ngFor="let option of fields.status.options"
+        [value]="option.id"
+      >
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <mat-hint *ngIf="fields.status.hint">
+      {{ fields.status.hint }}
+    </mat-hint>
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.status.name)"
+        [label]="fields.status.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.valorFrete.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.valorFrete.name"
+      [placeholder]="fields.valorFrete.placeholder"
+      [required]="fields.valorFrete.required"
+    />
+
+    <mat-hint *ngIf="fields.valorFrete.hint">
+      {{ fields.valorFrete.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.valorFrete.name)"
+        [label]="fields.valorFrete.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <app-user-form-field
+    [control]="form.get(fields.compradorUser.name)"
+    [label]="fields.compradorUser.label"
+    [placeholder]="fields.compradorUser.placeholder"
+    [hint]="fields.compradorUser.hint"
+    [required]="fields.compradorUser.required"
+    [fetchFn]="fields.compradorUser.fetchFn"
+    [mapperFn]="fields.compradorUser.mapperFn"
+    [showCreate]="!modal"
+    [submitted]="ngForm.submitted"
+    mode="single"
+  ></app-user-form-field>
+
+  <app-empresa-form-field
+    [control]="form.get(fields.fornecedorEmpresa.name)"
+    [label]="fields.fornecedorEmpresa.label"
+    [placeholder]="fields.fornecedorEmpresa.placeholder"
+    [hint]="fields.fornecedorEmpresa.hint"
+    [required]="fields.fornecedorEmpresa.required"
+    [fetchFn]="fields.fornecedorEmpresa.fetchFn"
+    [mapperFn]="fields.fornecedorEmpresa.mapperFn"
+    [showCreate]="!modal"
+    [submitted]="ngForm.submitted"
+    mode="single"
+  ></app-empresa-form-field>
+
+  <app-produto-form-field
+    [control]="form.get(fields.produto.name)"
+    [label]="fields.produto.label"
+    [placeholder]="fields.produto.placeholder"
+    [hint]="fields.produto.hint"
+    [required]="fields.produto.required"
+    [fetchFn]="fields.produto.fetchFn"
+    [mapperFn]="fields.produto.mapperFn"
+    [showCreate]="!modal"
+    [submitted]="ngForm.submitted"
+    mode="multiple"
+  ></app-produto-form-field>
+
+  <div
+    class="form-buttons"
+    [class.form-buttons-modal]="modal"
+  >
+    <button
+      mat-raised-button
+      [disabled]="saveLoading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="far"
+        fontIcon="fa-save"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.save"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      type="button"
+      (click)="cancel.emit()"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-times"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.cancel"></app-i18n>
+    </button>
+  </div>
+</form>

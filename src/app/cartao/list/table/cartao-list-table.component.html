@@ -1,0 +1,177 @@
+<div class="table-responsive">
+  <table
+    style="width: 100%;"
+    mat-table
+    [dataSource]="service.rows"
+    matSort
+    (matSortChange)="service.doChangeSort($event)"
+    [matSortActive]="service.sorter.columnKey"
+    [matSortDirection]="service.sorter.order"
+  >
+    <ng-container matColumnDef="_select">
+      <th mat-header-cell *matHeaderCellDef>
+        <app-table-th-checkbox
+          [rows]="service.rows"
+          [selectedKeys]="service.selectedKeys"
+        ></app-table-th-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <app-table-td-checkbox
+          [row]="row"
+          [selectedKeys]="service.selectedKeys"
+        ></app-table-td-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container
+      [matColumnDef]="fields.tipo.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.tipo.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'tipo') }}
+      </td>
+    </ng-container>
+    <ng-container
+      [matColumnDef]="fields.nomeTitular.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.nomeTitular.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'nomeTitular') }}
+      </td>
+    </ng-container>
+    <ng-container
+      [matColumnDef]="fields.apelido.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.apelido.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'apelido') }}
+      </td>
+    </ng-container>
+    <ng-container
+      [matColumnDef]="fields.numero.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.numero.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'numero') }}
+      </td>
+    </ng-container>
+    <ng-container
+      [matColumnDef]="fields.cvv.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.cvv.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'cvv') }}
+      </td>
+    </ng-container>
+    <ng-container
+      [matColumnDef]="fields.validade.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.validade.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'validade') }}
+      </td>
+    </ng-container>
+    <ng-container
+      [matColumnDef]="fields.bandeira.name"
+    >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ fields.bandeira.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        {{ presenter(row, 'bandeira') }}
+      </td>
+    </ng-container>
+    <ng-container [matColumnDef]="fields.user.name">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ fields.user.label }}
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <app-table-item-relation-to-many
+          [url]="fields.user.viewUrl"
+          [permission]="fields.user.readPermission"
+          [value]="presenter(row, 'user')"
+        ></app-table-item-relation-to-many>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="_actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td
+        style="width: 180px; text-align: right;"
+        mat-cell
+        *matCellDef="let row"
+      >
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          [routerLink]="['/cartao', row.id]"
+          [matTooltip]="i18n('common.view')"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          *ngIf="hasPermissionToEdit"
+          [routerLink]="['/cartao', row.id, 'edit']"
+          [matTooltip]="i18n('common.edit')"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          type="button"
+          color="primary"
+          *ngIf="hasPermissionToDestroy"
+          (click)="doDestroy(row.id)"
+          [matTooltip]="i18n('common.destroy')"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: this.columns"
+    ></tr>
+  </table>
+
+  <div
+    *ngIf="!service.loading && !service.count"
+    class="mat-table-message"
+  >
+    <app-i18n key="table.noData"></app-i18n>
+  </div>
+
+  <div *ngIf="service.loading" class="mat-table-message">
+    <app-i18n key="table.loading"></app-i18n>
+  </div>
+</div>
+
+<mat-paginator
+  [disabled]="service.loading"
+  [pageIndex]="service.paginationPageIndex"
+  [pageSize]="service.paginationPageSize"
+  [pageSizeOptions]="[10, 20, 30, 40]"
+  [length]="service.count"
+  (page)="service.doChangePagination($event)"
+  showFirstLastButtons
+></mat-paginator>

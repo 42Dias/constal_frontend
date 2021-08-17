@@ -1,0 +1,310 @@
+<form
+  class="form"
+  (ngSubmit)="doSave()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.nome.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.nome.name"
+      [placeholder]="fields.nome.placeholder"
+      [required]="fields.nome.required"
+    appAutofocus
+    />
+
+    <mat-hint *ngIf="fields.nome.hint">
+      {{ fields.nome.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.nome.name)"
+        [label]="fields.nome.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.descricao.label }}</mat-label>
+    <textarea
+      matInput
+      [formControlName]="fields.descricao.name"
+      [rows]="4"
+      [placeholder]="fields.descricao.placeholder"
+      [required]="fields.descricao.required"
+    ></textarea>
+
+    <mat-hint *ngIf="fields.descricao.hint">
+      {{ fields.descricao.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.descricao.name)"
+        [label]="fields.descricao.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.marca.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.marca.name"
+      [placeholder]="fields.marca.placeholder"
+      [required]="fields.marca.required"
+    />
+
+    <mat-hint *ngIf="fields.marca.hint">
+      {{ fields.marca.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.marca.name)"
+        [label]="fields.marca.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.modelo.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.modelo.name"
+      [placeholder]="fields.modelo.placeholder"
+      [required]="fields.modelo.required"
+    />
+
+    <mat-hint *ngIf="fields.modelo.hint">
+      {{ fields.modelo.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.modelo.name)"
+        [label]="fields.modelo.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.caracteristicas.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.caracteristicas.name"
+      [placeholder]="fields.caracteristicas.placeholder"
+      [required]="fields.caracteristicas.required"
+    />
+
+    <mat-hint *ngIf="fields.caracteristicas.hint">
+      {{ fields.caracteristicas.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.caracteristicas.name)"
+        [label]="fields.caracteristicas.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.codigo.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.codigo.name"
+      [placeholder]="fields.codigo.placeholder"
+      [required]="fields.codigo.required"
+    />
+
+    <mat-hint *ngIf="fields.codigo.hint">
+      {{ fields.codigo.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.codigo.name)"
+        [label]="fields.codigo.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.preco.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.preco.name"
+      [placeholder]="fields.preco.placeholder"
+      [required]="fields.preco.required"
+    />
+
+    <mat-hint *ngIf="fields.preco.hint">
+      {{ fields.preco.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.preco.name)"
+        [label]="fields.preco.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.somatoriaAvaliacoes.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.somatoriaAvaliacoes.name"
+      [required]="fields.somatoriaAvaliacoes.required"
+      [placeholder]="fields.somatoriaAvaliacoes.placeholder"
+      type="number"
+      step="1"
+    />
+
+    <mat-hint *ngIf="fields.somatoriaAvaliacoes.hint">
+      {{ fields.somatoriaAvaliacoes.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.somatoriaAvaliacoes.name)"
+        [label]="fields.somatoriaAvaliacoes.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.quantidadeAvaliacoes.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.quantidadeAvaliacoes.name"
+      [required]="fields.quantidadeAvaliacoes.required"
+      [placeholder]="fields.quantidadeAvaliacoes.placeholder"
+      type="number"
+      step="1"
+    />
+
+    <mat-hint *ngIf="fields.quantidadeAvaliacoes.hint">
+      {{ fields.quantidadeAvaliacoes.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.quantidadeAvaliacoes.name)"
+        [label]="fields.quantidadeAvaliacoes.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.volumeVendas.label }}</mat-label>
+    <input
+      matInput
+      [formControlName]="fields.volumeVendas.name"
+      [required]="fields.volumeVendas.required"
+      [placeholder]="fields.volumeVendas.placeholder"
+      type="number"
+      step="1"
+    />
+
+    <mat-hint *ngIf="fields.volumeVendas.hint">
+      {{ fields.volumeVendas.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.volumeVendas.name)"
+        [label]="fields.volumeVendas.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <app-image-form-field
+    [formControl]="form.get(fields.fotos.name)"
+    [label]="fields.fotos.label"
+    [hint]="fields.fotos.hint"
+    [storage]="fields.fotos.storage"
+    [required]="fields.fotos.required"
+    [max]="fields.fotos.max"
+    [submitted]="ngForm.submitted"
+  ></app-image-form-field>
+
+  <app-empresa-form-field
+    [control]="form.get(fields.empresa.name)"
+    [label]="fields.empresa.label"
+    [placeholder]="fields.empresa.placeholder"
+    [hint]="fields.empresa.hint"
+    [required]="fields.empresa.required"
+    [fetchFn]="fields.empresa.fetchFn"
+    [mapperFn]="fields.empresa.mapperFn"
+    [showCreate]="!modal"
+    [submitted]="ngForm.submitted"
+    mode="single"
+  ></app-empresa-form-field>
+
+  <app-categoria-form-field
+    [control]="form.get(fields.categoria.name)"
+    [label]="fields.categoria.label"
+    [placeholder]="fields.categoria.placeholder"
+    [hint]="fields.categoria.hint"
+    [required]="fields.categoria.required"
+    [fetchFn]="fields.categoria.fetchFn"
+    [mapperFn]="fields.categoria.mapperFn"
+    [showCreate]="!modal"
+    [submitted]="ngForm.submitted"
+    mode="single"
+  ></app-categoria-form-field>
+
+  <div
+    class="form-buttons"
+    [class.form-buttons-modal]="modal"
+  >
+    <button
+      mat-raised-button
+      [disabled]="saveLoading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="far"
+        fontIcon="fa-save"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.save"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      type="button"
+      (click)="cancel.emit()"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-times"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.cancel"></app-i18n>
+    </button>
+  </div>
+</form>

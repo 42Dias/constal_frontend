@@ -1,0 +1,29 @@
+<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+
+<div class="app-content-page">
+  <h1 class="app-content-title">
+    <app-i18n key="entities.carrinho.view.title"></app-i18n>
+  </h1>
+
+  <app-carrinho-view-toolbar></app-carrinho-view-toolbar>
+
+  <div *ngIf="loading" class="app-page-spinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-view-item-relation-to-one
+      [label]="fields.userId.label"
+      [url]="fields.userId.viewUrl"
+      [permission]="fields.userId.readPermission"
+      [value]="presenter(record, 'userId')"
+    ></app-view-item-relation-to-one>
+
+    <app-view-item-relation-to-many
+      [label]="fields.produto.label"
+      [url]="fields.produto.viewUrl"
+      [permission]="fields.produto.readPermission"
+      [value]="presenter(record, 'produto')"
+    ></app-view-item-relation-to-many>
+  </div>
+</div>

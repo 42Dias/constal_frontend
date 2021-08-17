@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  <app-i18n key="entities.pessoaFisica.new.title"></app-i18n>
+</h1>
+<mat-dialog-content>
+  <app-pessoa-fisica-form
+    [saveLoading]="saveLoading"
+    (save)="doCreate($event)"
+    (cancel)="doCancel()"
+    [modal]="true"
+  ></app-pessoa-fisica-form>
+</mat-dialog-content>

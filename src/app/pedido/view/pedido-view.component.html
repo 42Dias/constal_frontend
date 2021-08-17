@@ -1,0 +1,91 @@
+<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+
+<div class="app-content-page">
+  <h1 class="app-content-title">
+    <app-i18n key="entities.pedido.view.title"></app-i18n>
+  </h1>
+
+  <app-pedido-view-toolbar></app-pedido-view-toolbar>
+
+  <div *ngIf="loading" class="app-page-spinner">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading">
+    <app-view-item-text
+      [label]="fields.codigo.label"
+      [value]="presenter(record, 'codigo')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.quantidadeProdutos.label"
+      [value]="presenter(record, 'quantidadeProdutos')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.formaPagamento.label"
+      [value]="presenter(record, 'formaPagamento')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.valorTotal.label"
+      [value]="presenter(record, 'valorTotal')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.dataPedido.label"
+      [value]="presenter(record, 'dataPedido')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.dataProcessamento.label"
+      [value]="presenter(record, 'dataProcessamento')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.dataEnvio.label"
+      [value]="presenter(record, 'dataEnvio')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.dataEntrega.label"
+      [value]="presenter(record, 'dataEntrega')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.dataFaturamento.label"
+      [value]="presenter(record, 'dataFaturamento')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.status.label"
+      [value]="presenter(record, 'status')"
+    ></app-view-item-text>
+
+    <app-view-item-text
+      [label]="fields.valorFrete.label"
+      [value]="presenter(record, 'valorFrete')"
+    ></app-view-item-text>
+
+    <app-view-item-relation-to-one
+      [label]="fields.compradorUser.label"
+      [url]="fields.compradorUser.viewUrl"
+      [permission]="fields.compradorUser.readPermission"
+      [value]="presenter(record, 'compradorUser')"
+    ></app-view-item-relation-to-one>
+
+    <app-view-item-relation-to-one
+      [label]="fields.fornecedorEmpresa.label"
+      [url]="fields.fornecedorEmpresa.viewUrl"
+      [permission]="fields.fornecedorEmpresa.readPermission"
+      [value]="presenter(record, 'fornecedorEmpresa')"
+    ></app-view-item-relation-to-one>
+
+    <app-view-item-relation-to-many
+      [label]="fields.produto.label"
+      [url]="fields.produto.viewUrl"
+      [permission]="fields.produto.readPermission"
+      [value]="presenter(record, 'produto')"
+    ></app-view-item-relation-to-many>
+  </div>
+</div>
