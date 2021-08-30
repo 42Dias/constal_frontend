@@ -26,7 +26,7 @@ const ptBR = {
   },
 
   app: {
-    title: 'Aplicação',
+    title: 'Constal',
   },
 
   api: {
@@ -35,28 +35,28 @@ const ptBR = {
 
   entities: {
     pessoaFisica: {
-        name: 'PessoaFisica',
-        label: 'PessoaFisicas',
-        menu: 'PessoaFisicas',
+        name: 'Pessoa Física',
+        label: 'Pessoa Física',
+        menu: 'Pessoa Física',
         exporterFileName: 'PessoaFisica_exportados',
         list: {
-          menu: 'PessoaFisicas',
-          title: 'PessoaFisicas',
+          menu: 'Pessoas Físicas',
+          title: 'Pessoa Físicas',
         },
         create: {
-          success: 'PessoaFisica salvo com sucesso',
+          success: 'Pessoa Física salva com sucesso',
         },
         update: {
-          success: 'PessoaFisica salvo com sucesso',
+          success: 'Pessoa Física salva com sucesso',
         },
         destroy: {
-          success: 'PessoaFisica deletado com sucesso',
+          success: 'Pessoa Física deletada com sucesso',
         },
         destroyAll: {
-          success: 'PessoaFisica(s) deletado com sucesso',
+          success: 'Pessoa Física(s) deletada(s) com sucesso',
         },
         edit: {
-          title: 'Editar PessoaFisica',
+          title: 'Editar Pessoa Fisíca',
         },
         fields: {
           id: 'Id',
@@ -92,13 +92,13 @@ const ptBR = {
 
         },
         new: {
-          title: 'Novo PessoaFisica',
+          title: 'Nova Pessoa Física',
         },
         view: {
-          title: 'Visualizar PessoaFisica',
+          title: 'Visualizar Pessoa Física',
         },
         importer: {
-          title: 'Importar PessoaFisicas',
+          title: 'Importar Pessoas Físicas',
           fileName: 'pessoaFisica_template_importacao',
           hint:
             'Arquivos/Imagens devem ser as URLs dos arquivos, separados por espaço. Relacionamentos devem ser os IDs separados por espaço.',
@@ -115,16 +115,16 @@ const ptBR = {
           title: 'Empresas',
         },
         create: {
-          success: 'Empresa salvo com sucesso',
+          success: 'Empresa salva com sucesso',
         },
         update: {
-          success: 'Empresa salvo com sucesso',
+          success: 'Empresa salva com sucesso',
         },
         destroy: {
-          success: 'Empresa deletado com sucesso',
+          success: 'Empresa deletada com sucesso',
         },
         destroyAll: {
-          success: 'Empresa(s) deletado com sucesso',
+          success: 'Empresa(s) deletada(s) com sucesso',
         },
         edit: {
           title: 'Editar Empresa',
@@ -132,7 +132,7 @@ const ptBR = {
         fields: {
           id: 'Id',
           'marca': 'Marca',
-          'razaoSocial': 'RazaoSocial',
+          'razaoSocial': 'Razão Social',
           'cnpj': 'Cnpj',
           'telefone': 'Telefone',
           'ramal': 'Ramal',
@@ -140,8 +140,8 @@ const ptBR = {
           'website': 'Website',
           'cep': 'Cep',
           'logradouro': 'Logradouro',
-          'numeroRange': 'Numero',
-          'numero': 'Numero',
+          'numeroRange': 'Número',
+          'numero': 'Número',
           'complemento': 'Complemento',
           'pontoReferencia': 'Ponto de Referência',
           'cidade': 'Cidade',
@@ -164,7 +164,7 @@ const ptBR = {
 
         },
         new: {
-          title: 'Novo Empresa',
+          title: 'Nova Empresa',
         },
         view: {
           title: 'Visualizar Empresa',
@@ -196,7 +196,7 @@ const ptBR = {
           success: 'Cartão deletado com sucesso',
         },
         destroyAll: {
-          success: 'Cartão(s) deletado com sucesso',
+          success: 'Cartõe(s) deletado(s) com sucesso',
         },
         edit: {
           title: 'Editar Cartão',
@@ -217,8 +217,8 @@ const ptBR = {
         },
         enumerators: {
           'tipo': {
-            'credito': 'Credito',
-            'debito': 'Debito',
+            'credito': 'Crédito',
+            'debito': 'Débito',
           },
         },
         placeholders: {
@@ -260,7 +260,7 @@ const ptBR = {
           success: 'Produto deletado com sucesso',
         },
         destroyAll: {
-          success: 'Produto(s) deletado com sucesso',
+          success: 'Produto(s) deletado(s) com sucesso',
         },
         edit: {
           title: 'Editar Produto',
@@ -275,12 +275,12 @@ const ptBR = {
           'codigo': 'Código',
           'precoRange': 'Preço',
           'preco': 'Preço',
-          'somatoriaAvaliacoesRange': 'SomatoriaAvaliacoes',
-          'somatoriaAvaliacoes': 'SomatoriaAvaliacoes',
-          'quantidadeAvaliacoesRange': 'QuantidadeAvaliacoes',
-          'quantidadeAvaliacoes': 'QuantidadeAvaliacoes',
-          'volumeVendasRange': 'VolumeVendas',
-          'volumeVendas': 'VolumeVendas',
+          'somatoriaAvaliacoesRange': 'Somatória das Avaliações',
+          'somatoriaAvaliacoes': 'Somatoria das Avaliações',
+          'quantidadeAvaliacoesRange': 'Quantidade de Avaliações',
+          'quantidadeAvaliacoes': 'Quantidade de Avaliações',
+          'volumeVendasRange': 'Volume de Vendas',
+          'volumeVendas': 'Volume de Vendas',
           'fotos': 'Fotos',
           'empresa': 'Empresa',
           'categoria': 'Categoria',
@@ -330,7 +330,7 @@ const ptBR = {
           success: 'Pedido deletado com sucesso',
         },
         destroyAll: {
-          success: 'Pedido(s) deletado com sucesso',
+          success: 'Pedido(s) deletado(s) com sucesso',
         },
         edit: {
           title: 'Editar Pedido',
@@ -354,8 +354,8 @@ const ptBR = {
           'dataFaturamentoRange': 'Data de Faturamento',
           'dataFaturamento': 'Data de Faturamento',
           'status': 'Status',
-          'valorFreteRange': 'ValorFrete',
-          'valorFrete': 'ValorFrete',
+          'valorFreteRange': 'Valor do Frete',
+          'valorFrete': 'Valor do Frete',
           'compradorUser': 'CompradorUser',
           'fornecedorEmpresa': 'FornecedorEmpresa',
           'produto': 'Produto',
@@ -413,7 +413,7 @@ const ptBR = {
           success: 'Carrinho deletado com sucesso',
         },
         destroyAll: {
-          success: 'Carrinho(s) deletado com sucesso',
+          success: 'Carrinho(s) deletado(s) com sucesso',
         },
         edit: {
           title: 'Editar Carrinho',
@@ -490,7 +490,7 @@ const ptBR = {
 
         },
         new: {
-          title: 'Novo Categoria',
+          title: 'Nova Categoria',
         },
         view: {
           title: 'Visualizar Categoria',
