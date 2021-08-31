@@ -38,14 +38,14 @@ const routes: Routes = [
           permission: Permissions.values.produtoImport,
         },
       },
-      {
+      /* {
         path: ':id',
         component: ProdutoViewComponent,
         canActivate: [AuthGuard, PermissionGuard],
         data: {
           permission: Permissions.values.produtoRead,
         },
-      },
+      }, */
       {
         path: '',
         component: ProdutoListComponent,
@@ -55,6 +55,14 @@ const routes: Routes = [
         },
       },
     ],
+  },
+  {
+    path: ':id',
+    component: ProdutoViewComponent,
+    canActivate: [AuthGuard, PermissionGuard],
+    data: {
+      permission: Permissions.values.produtoRead,
+    },
   },
 ];
 

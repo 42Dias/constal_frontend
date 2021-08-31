@@ -24,7 +24,7 @@ h6 {
 }
 
 .app-link {
-  color: var(--primary-color);
+  color: gray;
   text-decoration: none;
 }
 

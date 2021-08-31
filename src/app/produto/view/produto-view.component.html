@@ -1,4 +1,4 @@
-<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+<!-- <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
 
 <div class="app-content-page">
   <h1 class="app-content-title">
@@ -82,3 +82,225 @@
     ></app-view-item-relation-to-one>
   </div>
 </div>
+ -->
+
+<header>
+  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
+    <img src="../../../assets/images/constal-home1.png" style="margin: 0.5% 0 0 3%;">
+    <div style="display: flex;">
+      <select name="Categorias" id=""
+        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
+        <option value="Categorias" selected>Categorias</option>
+      </select>
+      <input type="text" placeholder="Pesquise por..."
+        style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
+      <div style="align-self: center; margin-right: 3vw">
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;"><img
+            src="../../../assets/images/lupabranca.svg"></button>
+      </div>
+      <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            person
+          </span>
+          <p style="margin-top: 0.5vh;">Login</p>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            favorite_border
+          </span>
+          <p style="margin-top: 0.5vh;">Favoritos</p>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            shopping_cart
+          </span>
+          <p style="margin-top: 0.5vh;">Carrinho</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<body style="background-color: #D8DBE2;">
+  <div style="display:flex; width: 100%; justify-content: space-between;">
+    <div style=" margin-top: 1%; margin-left: 1%;">
+      <div style="background-color: #FFFFFF; width: 48vw; height: 60vh">
+        <div style="display:flex; justify-content: center; width:100%; height: 65%; padding: 2%">
+          <img
+            src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+            style="object-fit: scale-down;">
+        </div>
+        <div style="display:flex; width: 100%;justify-content: center; height: 25%; margin-top: 5%">
+          <img class="mini-img"
+            src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+            style="object-fit: scale-down;">
+          <img class="mini-img"
+            src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+            style="object-fit: scale-down;">
+          <img class="mini-img"
+            src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+            style="object-fit: scale-down;">
+        </div>
+      </div>
+      <div style="background-color: #FFFFFF; width: 48vw; height: auto">
+        <div style="margin: 3%">
+          <h1 style="padding-top: 2vh">Descrição</h1>
+          <div style="padding: 1%;">
+            <app-view-item-text [value]="presenter(record, 'descricao')"></app-view-item-text>
+          </div>
+        </div>
+        <div style="padding-bottom: 2vh; margin: 3%;">
+          <h1>Descrição técnica</h1>
+          <div style="display: flex;">
+            <p class="desc-p" style="padding-top: 0;margin-bottom: 0; margin-right: 0.5vw;">
+              Marca:</p>
+            <p>{{marca}}</p>
+          </div>
+          <div style="display: flex;">
+            <p class="desc-p" style="margin-bottom: 0; margin-right: 0.5vw;">
+              Modelo:</p>
+            <p>{{modelo}}</p>
+          </div>
+          <div style="display: flex;">
+            <p class="desc-p" style="margin-bottom: 0; margin-right: 0.5vw;">
+              Características:</p>
+            <p>{{caract}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style=" margin-right: 1%; margin-top: 1%;">
+      <div style="background-color: #FFFFFF; width: 48vw; height: auto">
+        <div style="padding-left: 2vw; padding-top: 2vh">
+          <h6 style="color: black;">
+            <app-view-item-relation-to-one [value]="presenter(record, 'empresa')" style="pointer-events: none;">
+            </app-view-item-relation-to-one>
+          </h6>
+          <h2>
+            <app-view-item-text [value]="presenter(record, 'nome')"></app-view-item-text>
+          </h2>
+          <div style="display: flex; align-items: center;">
+            <p style="margin-right: 0.5vw;">Código do produto: </p>
+            <app-view-item-text [value]="presenter(record, 'codigo')"></app-view-item-text>
+          </div>
+          <div style="display: flex;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+              style="width:20px; height:20px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+              style="width:20px; height:20px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+              style="width:20px; height:20px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+              style="width:20px; height:20px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+              style="width:20px; height:20px; margin-right: 5px">
+            <p>(5)</p>
+          </div>
+          <br>
+          <div style="display: flex; align-items: center;">
+            <p style="font-weight: 600; font-size: 24px; margin-bottom: 0;">R$</p>
+            <p style="font-size: 22px; text-align: center; margin-left: 5px; margin-bottom: 0;">{{presente}}
+            </p>
+          </div>
+          <hr style="margin-right: 2vw">
+          <!-- <div style="border: solid 0.1px; margin-right: 2vw"></div> -->
+          <br>
+          <p>Variantes (ex: Cor)</p>
+          <div style="display: flex; margin: 15px 0;">
+            <div style="margin-left: 15px;width:30px; height: 30px; border: solid 1px"></div>
+            <div style="margin-left: 15px;width:30px; height: 30px; border: solid 1px; background-color: black;"></div>
+            <div style="margin-left: 15px; width:30px; height: 30px; border: solid 1px; background-color: #DE4545;">
+            </div>
+          </div>
+          <div
+            style="display: flex; width: 100%; justify-content: space-between; padding-bottom: 2vh; align-items: flex-end; padding: 2vh 2vw 2vh 0;">
+            <div>
+              <p>Quantidade</p>
+              <div style="display:flex; align-items: center; width: 150px; justify-content: space-evenly;">
+                <div style="width: 30px; height: 30px;">
+                  <button (click)='downQuantity()'
+                    style="background-color: transparent; border: solid 1px; width: 100%; height: 100%; font-size: 22px; align-items: center; color: #5195C7; border-color: black">-</button>
+                </div>
+                <div style="width: 30px; height: 30px; text-align:center">
+                  <span
+                    style="background-color: transparent; width: 100%; height: 100%; font-size: 18px; align-items: center; margin-left: 0.5vw;">
+                    {{quantity}}</span>
+                </div>
+                <div style="width: 30px; height: 30px;">
+                  <button (click)='upQuantity()'
+                    style="background-color: transparent; width: 100%; height: 100%; border: solid 1px; font-size: 22px; align-items: center; color: #5195C7; border-color: black;">+</button>
+                </div>
+              </div>
+            </div>
+            <div style="margin-left: 5vw;">
+              <a href="https://constal42dias.wpcomstaging.com/carrinho/"><button
+                  style="width: 233px; height: 42px; background: #58A4B0; border: none; color: #ffffff; font-size: 16px;">
+                  Adicionar ao carrinho</button></a>
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div style="width: 100%; background-color: #FFFFFF; margin-top: 3vh; height: auto; margin-bottom: 2vh;">
+        <h1 style="padding: 3%"> Outras opções de Produto</h1>
+        <div style="display: flex; justify-content: space-evenly;">
+          <div style="background-color: #FFFFFF; width: 35%; height: 300px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);">
+            <img
+              src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+              style="width: 100%; height: 60%; object-fit: cover;">
+            <div style="display: flex; margin: 5%">
+              <p style="font-weight: 600; font-size: 24px">R$</p>
+              <p style="font-size: 22px; text-align: center;">999,99</p>
+            </div>
+            <div style="display: flex; margin: 5%">
+              <p style="font-size: 18px; text-align: center;">Consultar o frete</p>
+            </div>
+          </div>
+          <div style="background-color: #FFFFFF; width: 35%; height: 300px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);">
+            <img
+              src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+              style="width: 100%; height: 60%; object-fit: cover;">
+            <div style="display: flex; margin: 5%">
+              <p style="font-weight: 600; font-size: 24px">R$</p>
+              <p style="font-size: 22px; text-align: center;">999,99</p>
+            </div>
+            <div style="display: flex; margin: 5%">
+              <p style="font-size: 18px; text-align: center;">Consultar o frete</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; padding: 2vh 0">
+          <div style="background-color: #FFFFFF; width: 35%; height: 300px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);">
+            <img
+              src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+              style="width: 100%; height: 60%; object-fit: cover;">
+            <div style="display: flex; margin: 5%">
+              <p style="font-weight: 600; font-size: 24px">R$</p>
+              <p style="font-size: 22px; text-align: center;">999,99</p>
+            </div>
+            <div style="display: flex; margin: 5%">
+              <p style="font-size: 18px; text-align: center;">Consultar o frete</p>
+            </div>
+          </div>
+          <div style="background-color: #FFFFFF; width: 35%; height: 300px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);">
+            <img
+              src="https://casacenter.vteximg.com.br/arquivos/ids/180291/7922466540-abajur-quarto-dourado-com-cupula-branca.jpg?v=637226405561800000"
+              style="width: 100%; height: 60%; object-fit: cover;">
+            <div style="display: flex; margin: 5%">
+              <p style="font-weight: 600; font-size: 24px">R$</p>
+              <p style="font-size: 22px; text-align: center;">999,99</p>
+            </div>
+            <div style="display: flex; margin: 5%">
+              <p style="font-size: 18px; text-align: center;">Consultar o frete</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

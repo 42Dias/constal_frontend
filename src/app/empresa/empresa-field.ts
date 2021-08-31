@@ -18,7 +18,7 @@ export class EmpresaField {
 
         return {
           id: record.id,
-          label: record.cnpj,
+          label: record.marca,
         };
       },
       options,
@@ -39,7 +39,7 @@ export class EmpresaField {
 
         return {
           id: record.id,
-          label: record.cnpj,
+          label: record.marca,
         };
       },
       options,

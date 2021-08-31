@@ -14,6 +14,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'home',
+    loadChildren: () =>
+      import('./dashboard-cliente/dashboard-cliente.module').then(
+        (m) => m.DashboardClienteModule,
+      ),
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then(

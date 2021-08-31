@@ -23,6 +23,10 @@ export class EmpresaViewComponent implements OnInit {
   }
 
   presenter(row, fieldName) {
+    console.log(row);
+    console.log(fieldName);
+    
+    
     return EmpresaModel.presenter(row, fieldName);
   }
 
