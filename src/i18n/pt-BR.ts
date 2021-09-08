@@ -591,6 +591,12 @@ const ptBR = {
       newPasswordConfirmation: 'Confirmação da Nova Senha',
       rememberMe: 'Lembrar-me',
     },
+    enumerators: {
+      'tipoCadastro': {
+        'Empresa': 'Empresa',
+        'PessoaFisica': 'Pessoa Física',
+      },
+    },
     status: {
       active: 'Ativo',
       invited: 'Convidado',
