@@ -8,6 +8,7 @@ import { FormSchema } from 'src/app/shared/form/form-schema';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
   form: FormGroup;
@@ -30,6 +31,11 @@ export class SignupComponent implements OnInit {
           }
         : undefined,
     });
+  }
+
+  teste() {
+    console.log(this.form);
+    
   }
 
   get backgroundImageUrl() {

@@ -514,7 +514,7 @@ const ptBR = {
     rememberMe: 'Lembrar-me',
     forgotPassword: 'Esqueci minha senha',
     signin: 'Entrar',
-    signup: 'Registrar',
+    signup: 'Cadastrar',
     signout: 'Sair',
     alreadyHaveAnAccount: 'Já possui uma conta? Entre.',
     social: {
