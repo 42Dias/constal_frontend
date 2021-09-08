@@ -1,47 +1,22 @@
-<div class="auth">
-  <div
-    class="wrapper"
-    [style.background-image]="
+<!-- <div class="auth">
+  <div class="wrapper" [style.background-image]="
       'url(' + backgroundImageUrl + ')'
-    "
-  >
+    ">
     <div class="content">
       <div class="logo">
-        <img
-          *ngIf="logoUrl"
-          [src]="logoUrl"
-          width="240px"
-          alt=""
-        />
+        <img *ngIf="logoUrl" [src]="logoUrl" width="240px" alt="" />
         <h1 *ngIf="!logoUrl">
           <app-i18n key="app.title"></app-i18n>
         </h1>
       </div>
 
-      <form
-        class="form"
-        (ngSubmit)="signup()"
-        [formGroup]="form"
-      >
-        <mat-form-field
-          floatLabel="always"
-          appearance="outline"
-          class="w-100"
-        >
+      <form class="form" (ngSubmit)="signup()" [formGroup]="form">
+        <mat-form-field floatLabel="always" appearance="outline" class="w-100">
           <mat-label>{{ fields.email.label }}</mat-label>
-          <input
-            matInput
-            type="text"
-            [formControlName]="fields.email.name"
-            [errorStateMatcher]="errorStateMatcher"
-            autocomplete="email"
-            appAutofocus
-          />
+          <input matInput type="text" [formControlName]="fields.email.name" [errorStateMatcher]="errorStateMatcher"
+            autocomplete="email" appAutofocus />
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.email.name)"
-              [label]="fields.email.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.email.name)" [label]="fields.email.label"></app-validations>
 
             <span *ngIf="errorMessage">
               {{ errorMessage }}
@@ -49,50 +24,83 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field
-          floatLabel="always"
-          appearance="outline"
-          class="w-100"
-        >
+        <mat-form-field floatLabel="always" appearance="outline" class="w-100">
           <mat-label>{{ fields.password.label }}</mat-label>
-          <input
-            matInput
-            type="password"
-            [formControlName]="fields.password.name"
-            autocomplete="current-password"
-          />
+          <input matInput type="password" [formControlName]="fields.password.name" autocomplete="current-password" />
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.password.name)"
-              [label]="fields.password.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.password.name)" [label]="fields.password.label">
+            </app-validations>
           </mat-error>
-        </mat-form-field>
+        </mat-form-field>        
 
         <div class="form-buttons">
-          <button
-            mat-raised-button
-            class="w-100"
-            type="submit"
-            color="primary"
-            [disabled]="loading"
-          >
+          <button mat-raised-button class="w-100" type="submit" color="primary" [disabled]="loading">
             <app-i18n key="auth.signup"></app-i18n>
           </button>
         </div>
 
         <div class="other-actions">
-          <a
-            mat-button
-            color="primary"
-            routerLink="/auth/signin"
-          >
-            <app-i18n
-              key="auth.alreadyHaveAnAccount"
-            ></app-i18n>
+          <a mat-button color="primary" routerLink="/auth/signin">
+            <app-i18n key="auth.alreadyHaveAnAccount"></app-i18n>
           </a>
         </div>
       </form>
     </div>
   </div>
-</div>
+</div> -->
+
+<header>
+  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
+    <img src="../../../assets/images/constal-home1.png" style="margin: 0.5% 0 0 3%;">
+    <div style=" margin-right: 8vw; display: flex; flex-direction: column; align-items: center; align-self: center;">
+      <img src="../../../assets/images/information.png" alt="info">
+      <a href="#" style="text-decoration:none; color: #373F51;">
+        <p style="margin-top: 0.5vh;">Contato</p>
+      </a>
+    </div>
+  </div>
+</header>
+
+<body>
+
+  <form class="form" (ngSubmit)="signup()" [formGroup]="form">
+    <div style="background-color: #fff; width: 70%; margin-top: 5vh; align-self: center;">
+      <h2 style="padding: 3%;">Preencha os campos com seus dados pessoais</h2>
+      <div style="margin-top: 5vh;">
+        <div style="text-align: center;">
+          <div>
+            <!-- <input type="text" style="width: 15vw; height: 40px;">  -->
+            <mat-form-field floatLabel="always" appearance="outline" class="w-70" style="margin-bottom: 5vh;">
+              <mat-label style=" margin-bottom: 0.5vh;">Email</mat-label>
+              <input matInput type="text" [formControlName]="fields.email.name" autocomplete="email" appAutofocus />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field floatLabel="always" appearance="outline" class="w-70">
+              <mat-label style="margin-bottom: 0.5vh;">Senha</mat-label>
+              <input matInput type="password" [formControlName]="fields.password.name" autocomplete="current-password">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 5vh;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 2vh;">
+          <input type="checkbox">
+          <p style="margin-bottom: 0; margin-left: 0.5vw;">Aceito os</p> <a href="#">
+            <p style="margin-bottom: 0;
+            margin-left: 0.2vw; color: #2D76B9;">Termos e condições.</p>
+          </a>
+        </div>
+        <!-- <div style="text-align-last: center; margin-bottom: 7vh;">
+          <button (click)="teste()" class="btn-cadas">Cadastrar</button>
+        </div> -->
+        <div class="form-buttons" style="text-align: center;">
+          <button mat-raised-button class="w-40" type="submit" [disabled]="loading" style="border: none;
+          background-color: #58a4b0; color: #fff; width: 200px; height: 42px; font-size: 18px; margin-bottom: 5vh;">
+            <app-i18n key="auth.signup"></app-i18n>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
