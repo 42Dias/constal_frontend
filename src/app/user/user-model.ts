@@ -70,18 +70,8 @@ function label(name) {
   return i18n(`user.fields.${name}`);
 }
 
-function enumeratorLabel(name, value) {
-  return i18n(`entities.user.enumerators.${name}.${value}`);
-}
-
 const fields = {
   id: new IdField('id', label('id')),
-  tipoCadastro: new EnumeratorField('tipoCadastro', label('tipoCadastro'), [
-    { id: 'Empresa', label: enumeratorLabel('tipoCadastro', 'Empresa') },
-    { id: 'PessoaFisica', label: enumeratorLabel('tipoCadastro', 'PessoaFisica') },
-  ],{
-    "required": false //!Mudar para true quando for implementar
-  }),
   firstName: new StringField(
     'firstName',
     label('firstName'),

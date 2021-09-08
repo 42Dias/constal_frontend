@@ -653,12 +653,6 @@ const es = {
       newPasswordConfirmation:
         'Nueva confirmación de contraseña',
     },
-    enumerators: {
-      'tipoCadastro': {
-        'Empresa': 'Empresa',
-        'PessoaFisica': 'Pessoa Física',
-      },
-    },
     enabled: 'Habilitado',
     disabled: 'Discapacitado',
     validations: {

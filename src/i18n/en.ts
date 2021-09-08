@@ -593,12 +593,6 @@ const en = {
       newPasswordConfirmation: 'New Password Confirmation',
       rememberMe: 'Remember me',
     },
-    enumerators: {
-      'tipoCadastro': {
-        'Empresa': 'Empresa',
-        'PessoaFisica': 'Pessoa Física',
-      },
-    },
     status: {
       active: 'Active',
       invited: 'Invited',
