@@ -1,38 +1,24 @@
-<div class="app-container">
-  <mat-toolbar
-    color="primary"
-    class="app-toolbar mat-elevation-z4"
-  >
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <div class="app-toolbar-logo">
-      <a routerLink="/">
-        <img
-          *ngIf="logoUrl"
-          [src]="logoUrl"
-          width="164px"
-          alt=""
-          style="vertical-align: middle;"
-        />
-        <app-i18n
-          *ngIf="!logoUrl"
-          key="app.title"
-        ></app-i18n>
-      </a>
-    </div>
-    <div class="app-toolbar-spacer"></div>
-    <!-- <app-i18n-select></app-i18n-select> -->
-    <app-menu-user></app-menu-user>
-  </mat-toolbar>
+<!-- <div *ngIf="role == 'admin'" class="app-container">
+  <div>
+    <mat-toolbar color="primary" class="app-toolbar mat-elevation-z4">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="app-toolbar-logo">
+        <a routerLink="/">
+          <img *ngIf="logoUrl" [src]="logoUrl" width="164px" alt="" style="vertical-align: middle;" />
+          <app-i18n *ngIf="!logoUrl" key="app.title"></app-i18n>
+        </a>
+      </div>
+      <div class="app-toolbar-spacer"></div> -->
+<!-- <app-i18n-select></app-i18n-select> -->
+<!-- <app-menu-user></app-menu-user>
+    </mat-toolbar>
+  </div>
 
   <mat-sidenav-container class="app-sidenav-container">
-    <mat-sidenav
-      class="app-sidenav"
-      #snav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches"
-    >
+    <mat-sidenav class="app-sidenav" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches">
       <div class="app-sidenav-toolbar-spacer"></div>
       <app-menu></app-menu>
     </mat-sidenav>
@@ -43,4 +29,48 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div> -->
+
+<div>
+
+  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
+    <img src="../../../assets/images/constal-home1.png" style="margin: 0.5% 0 0 3%;" [routerLink]="['/']">
+    <div style="display: flex;">
+      <select name="Categorias" id=""
+        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
+        <option value="Categorias" selected>Categorias</option>
+      </select>
+      <input type="text" placeholder="Pesquise por..."
+        style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
+      <div style="align-self: center; margin-right: 3vw">
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;"><img
+            src="../../../assets/images/lupabranca.svg"></button>
+      </div>
+      <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            person
+          </span>
+          <app-menu-user></app-menu-user>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            favorite_border
+          </span>
+          <p style="margin-top: 0.5vh;">Favoritos</p>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            shopping_cart
+          </span>
+          <p style="margin-top: 0.5vh;">Carrinho</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
 </div>

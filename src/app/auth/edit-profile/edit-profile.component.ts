@@ -8,10 +8,12 @@ import { UserModel } from 'src/app/user/user-model';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css'],
 })
 export class EditProfileComponent implements OnInit {
   form: FormGroup;
   schema: FormSchema;
+  campos: any;
 
   constructor(
     private authService: AuthService,
@@ -21,6 +23,7 @@ export class EditProfileComponent implements OnInit {
   async ngOnInit() {
     this.buildSchema();
     this.buildForm();
+    this.campos = false;
   }
 
   get fields() {
@@ -42,6 +45,14 @@ export class EditProfileComponent implements OnInit {
 
   doReset() {
     this.buildForm();
+  }
+
+  habilitaCampos(){
+    if(this.campos == false){
+      this.campos = true;
+    }
+    console.log(this.campos);
+    
   }
 
   buildForm() {

@@ -17,6 +17,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   snav;
 
   mobileQuery: MediaQueryList;
+  role = this.authService.currentUser.tenants[0].roles[0];  
 
   private _mobileQueryListener: () => void;
 
@@ -25,15 +26,17 @@ export class LayoutComponent implements OnInit, OnDestroy {
     media: MediaMatcher,
     private authService: AuthService,
   ) {
+    
+    
     this.mobileQuery = media.matchMedia(
       '(max-width: 600px)',
-    );
-    this._mobileQueryListener = () =>
+      );
+      this._mobileQueryListener = () =>
       changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-  }
-
-  get opened() {
+      this.mobileQuery.addListener(this._mobileQueryListener);
+    }
+    
+    get opened() {
     if (!this.snav) {
       return false;
     }
@@ -45,10 +48,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
     return this.authService.logoUrl;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+    
     if (!this.mobileQuery.matches) {
       this.snav.toggle();
     }
+    
   }
 
   ngOnDestroy(): void {

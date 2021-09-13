@@ -51,6 +51,8 @@ export class AuthService {
       return false;
     }
 
+    /* console.log(this.currentUser); */
+    
     return new PermissionChecker(
       this.currentTenant,
       this.currentUser,
