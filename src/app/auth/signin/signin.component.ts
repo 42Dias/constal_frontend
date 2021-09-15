@@ -16,6 +16,7 @@ import { i18n } from 'src/i18n';
 export class SigninComponent implements OnInit {
   form: FormGroup;
   schema: FormSchema;
+  person: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,6 +45,20 @@ export class SigninComponent implements OnInit {
         );
       }
     }
+
+    this.person = 'Cliente'
+  }
+
+  tradeToCliente() {
+    if (this.person == 'Empresa') {
+      this.person = 'Cliente'
+    } 
+  }
+
+  tradeToEmpresa() {
+    if (this.person == 'Cliente') {
+      this.person = 'Empresa'
+    } 
   }
 
   get backgroundImageUrl() {

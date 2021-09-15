@@ -1,0 +1,16 @@
+.btn-cadas {
+  border: none;
+  background-color: #58a4b0;
+  color: #fff;
+  width: 200px;
+  height: 42px;
+  font-size: 18px;
+}
+
+.input-txt {
+  width: 400px;
+}
+
+.input-default {
+  width: 100%;
+}

@@ -516,6 +516,7 @@ const ptBR = {
     signin: 'Entrar',
     signup: 'Cadastrar',
     signout: 'Sair',
+    send: 'Enviar',
     alreadyHaveAnAccount: 'Já possui uma conta? Entre.',
     social: {
       errors: {
