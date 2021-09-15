@@ -127,26 +127,26 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Ofertas -->
     <div style="background-color: #fff; height: 400px; margin-bottom: 42px;">
       <h4 style="padding: 16px;">Ofertas e Promoções</h4>
 
-      <div id="container" style="width: 100%; margin: 2em auto; padding: 0;">
+      <div style="width: 100%; margin: 2em auto; padding: 0;">
         <div ng2-carouselamos class="slides-wrapper" [items]="images" [width]="1600" [$prev]="prev" [$next]="next"
           [$item]="item" style="width: 94%; margin: auto;">
         </div>
 
 
         <ng-template #prev>
-          <img src="assets/images/prev.png" id="left" />
+          <img src="assets/images/prev.png" />
         </ng-template>
         <ng-template #next>
-          <img src="assets/images/next.png" id="right" />
+          <img src="assets/images/next.png" />
         </ng-template>
         <ng-template #item let-item let-i="index">
 
-          <div class="slide-items" style="margin-right: 90px;">
+          <div class="slide-items" style="margin-right: 90px; margin-left: 1px;">
             <div style="background-color: #fff; width: 210; height: 285px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
               <img src="{{ item.name }}" style="width: 210px; height: 158px; object-fit: cover;">
               <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
@@ -164,9 +164,40 @@
     </div>
 
     <!-- Destaques -->
-    <div style="background-color: #fff; height: 400px; display: flex; margin-bottom: 42px;">
-      <h4 style="margin: 16px;">Produtos em destaque</h4>
+    <div style="background-color: #fff; height: 400px; margin-bottom: 42px;">
+      <h4 style="padding: 16px;">Produtos em destaque</h4>
+
+      <div style="width: 100%; margin: 2em auto; padding: 0;">
+        <div ng2-carouselamos class="slides-wrapper" [items]="images2" [width]="1600" [$prev]="prev2" [$next]="next2"
+          [$item]="item2" style="width: 94%; margin: auto;">
+        </div>
+
+
+        <ng-template #prev2>
+          <img src="assets/images/prev.png" />
+        </ng-template>
+        <ng-template #next2>
+          <img src="assets/images/next.png" />
+        </ng-template>
+        <ng-template #item2 let-item let-i="index">
+
+          <div class="slide-items" style="margin-right: 90px; margin-left: 1px;">
+            <div style="background-color: #fff; width: 210; height: 285px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
+              <img src="{{ item.name }}" style="width: 210px; height: 158px; object-fit: cover;">
+              <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
+              <div style="padding-left: 4px;">
+                <span>Nome do produto</span>
+                <br>
+                <span>R$ 999,99</span>
+                <br>
+                <span>Consulte o frete</span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
     </div>
+
     <!-- Categorias -->
     <h4>Categorias populares</h4>
     <div style="background-color: #fff; height: 200px; display: flex; border: 1px solid #CFCFCF; margin-bottom: 42px;">
