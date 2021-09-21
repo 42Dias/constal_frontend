@@ -5,6 +5,16 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { FormSchema } from 'src/app/shared/form/form-schema';
 import { UserModel } from 'src/app/user/user-model';
 
+interface Mes {
+  value: string;
+  viewValue: string;
+}
+
+interface Ano {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -14,6 +24,39 @@ export class EditProfileComponent implements OnInit {
   form: FormGroup;
   schema: FormSchema;
   campos: any;
+  role: any;
+
+  mes: Mes[] = [
+    {value: 'janeiro-0', viewValue: '01'},
+    {value: 'fevereiro-1', viewValue: '02'},
+    {value: 'março-2', viewValue: '03'},
+    {value: 'abril-3', viewValue: '04'},
+    {value: 'maio-4', viewValue: '05'},
+    {value: 'junho-5', viewValue: '06'},
+    {value: 'julho-6', viewValue: '07'},
+    {value: 'agosto-7', viewValue: '08'},
+    {value: 'setembro-8', viewValue: '09'},
+    {value: 'outubro-9', viewValue: '10'},
+    {value: 'novembro-10', viewValue: '11'},
+    {value: 'dezembro-11', viewValue: '12'}
+  ];
+
+  ano: Ano[] = [
+    {value: 'ano-0', viewValue: '21'},
+    {value: 'ano-1', viewValue: '22'},
+    {value: 'ano-2', viewValue: '23'},
+    {value: 'ano-3', viewValue: '24'},
+    {value: 'ano-4', viewValue: '25'},
+    {value: 'ano-5', viewValue: '26'},
+    {value: 'ano-6', viewValue: '27'},
+    {value: 'ano-7', viewValue: '28'},
+    {value: 'ano-8', viewValue: '29'},
+    {value: 'ano-9', viewValue: '30'},
+    {value: 'ano-10', viewValue: '31'},
+    {value: 'ano-11', viewValue: '32'}
+  ];
+
+  
 
   constructor(
     private authService: AuthService,
@@ -24,6 +67,8 @@ export class EditProfileComponent implements OnInit {
     this.buildSchema();
     this.buildForm();
     this.campos = false;
+    this.role = this.authService.currentUser.tenants[0].roles[0];    
+    
   }
 
   get fields() {
@@ -50,9 +95,9 @@ export class EditProfileComponent implements OnInit {
   habilitaCampos(){
     if(this.campos == false){
       this.campos = true;
-    }
-    console.log(this.campos);
-    
+    } else {
+      this.campos = false
+    }    
   }
 
   buildForm() {
@@ -83,3 +128,4 @@ export class EditProfileComponent implements OnInit {
     );
   }
 }
+

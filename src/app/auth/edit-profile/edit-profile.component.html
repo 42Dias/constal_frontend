@@ -86,11 +86,136 @@
     </mat-form-field>
   </div>
   <div>
-    <div style="margin-top: 5vh; display: flex;">
+    <div style="margin-top: 5vh; display: flex; margin-bottom: 2vh;">
       <h6 style="margin-left: 25vw; padding-top: 0.5vh;">Cartões</h6>
-      <button style="background-color: transparent; border: none; color: #4578C5; margin-left: 1vw;"
+      <button *ngIf="campos == false"
+        style="background-color: transparent; border: none; color: #4578C5; margin-left: 1vw;"
         (click)="habilitaCampos()">Adicionar</button>
     </div>
-    <div *ngif></div>
+    <div style="display:flex; justify-content: center">
+      <div
+        style="align-items: center; display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px;">
+        <img src="https://www.mastercard.com.br/content/dam/mccom/global/logos/logo-mastercard-mobile.svg"
+          style="width: 70px; height: 70px; border: solid 0.5px; border-radius: 50%;">
+        <div style="display:flex; flex-direction: column; padding-left: 50px">
+          <h6> Final do cartão XXXX</h6>
+          <p>Banco XXXXX</p>
+          <p>Vencimento: XX/XX</p>
+        </div>
+        <div style="width: 60%; display: flex; justify-content: flex-end; ">
+          <button
+            style="border: none; background-color: transparent; color: #4578C5; align-self: right;">Excluir</button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div *ngIf="campos === true" class="row" style="margin-bottom: 2vh;">
+      <div>
+        <div class="col-12" style="display: flex;">
+          <div class="col-6" style="display: flex;
+          justify-content: flex-end;">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Número do cartão</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+          <div style="margin-left: 0.5vw;">
+            <mat-form-field appearance="fill">
+              <mat-label>Mês de vencimento</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let meses of mes" [value]="meses.value">
+                  {{meses.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div style="margin-left: 0.5vw;">
+            <mat-form-field appearance="fill">
+              <mat-label>Ano de vencimento</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let anos of ano" [value]="anos.value">
+                  {{anos.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col-12" style="display: flex;">
+          <div class="col-6" style="display: flex;
+          justify-content: flex-end;">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nome do titular</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+          <div style="margin-left: 0.5vw;">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
+              <mat-label>CPF</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+          <div style="margin-left: 0.5vw;" class="col-3">
+            <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
+              <mat-label>Código de segurança</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <button *ngIf="campos == true"
+          style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
+          (click)="habilitaCampos()">Salvar</button>
+      </div>
+    </div>
+    <div>
+      <div style="margin-top: 5vh; display: flex; margin-bottom: 2vh;">
+        <h6 style="margin-left: 25vw; padding-top: 0.5vh;">Endereços de entrega</h6>
+      </div>
+      <div style="display:flex; justify-content: center">
+        <div
+          style="display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px; margin-bottom: 2vh;">
+          <div>
+            <div style="display:flex">
+              <p>Logradouro: </p>
+              <p style="margin-left:10px"> Av. XXXXXX</p>
+            </div>
+            <div style="display:flex">
+              <p>Referência: </p>
+              <p style="margin-left:10px">XXXXXXXXXXXX</p>
+            </div>
+            <div style="display:flex">
+              <p>CEP:</p>
+              <p style="margin-left:10px">XXXXXXXXX</p>
+            </div>
+            <div style="display:flex">
+              <p>Cidade: </p>
+              <p style="margin-left:10px">XXXXXXXX - XX</p>
+            </div>
+
+          </div>
+          <div style="display:flex;justify-content:flex-end; width:69%">
+            <img src="https://static.thenounproject.com/png/856781-200.png"
+              style="margin-top: 10px; width:20px;height:20px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex; justify-content: center">
+        <div
+          style="display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px; margin-bottom: 2vh;">
+          <div>
+            <p style="color: #4578C5; margin: 1vh 0;">Adicionar novo endereço</p>
+          </div>
+          <div style="display:flex;justify-content:flex-end; width:69%; align-items: center;">
+            <img src="assets/images/arrow-right-blue.png" alt="" style="width: 10px; height: 15px;">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
