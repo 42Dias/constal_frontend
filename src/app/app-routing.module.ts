@@ -21,6 +21,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'listaprodutos',
+    loadChildren: () =>
+      import('./listaProdutos/listaProdutos.module').then(
+        (m) => m.ListaProdutosModule,
+      ),
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then(

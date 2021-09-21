@@ -1,4 +1,4 @@
-<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+<!-- <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
 
 <div class="app-content-page">
   <h1 class="app-content-title">
@@ -26,4 +26,84 @@
       [value]="presenter(record, 'produto')"
     ></app-view-item-relation-to-many>
   </div>
-</div>
+</div> -->
+
+<body style="height: 100%;">
+  <div style="    min-height: 65.5vh;">
+    <div style="margin: 42px 2vw; background-color: #fff; height: auto;">
+  
+      <div style="padding: 28px 0 0 50px;">
+        <span style="font-size: 30px;">Carrinho ({{produtos.length}})</span>
+      </div>
+  
+      <div style="padding-bottom: 10px; display: flex; justify-content: center;">
+        <div style="height: 1px; width: 98%; background-color: #D2D2D2;"></div>
+      </div>
+  
+      <div style="padding-bottom: 3vh;">
+        <div *ngFor="let produto of produtos, let i = index" style="display: flex; margin: 1vh 2vw;">
+          <img src="{{produto.imagem}}" alt="" style="width: 222px; height: 144px; object-fit: cover; align-self: center;">
+          <div style="display: flex;" id="i">
+            <div style="margin-left: 2vw; display: flex; justify-content: space-between; flex-direction: column; width: 30vw;">
+              <div>
+                <span style="font-size: 24px;">{{produto.name}}</span>
+                <br>
+                <span style="font-size: 18px;">{{produto.desc}}</span>
+              </div>
+              <div>
+                <span style="font-size: 12px; color: #3987bf">Mais produtos do vendedor</span>
+                <span style="font-size: 12px; color: #3987bf; margin: 0 14px;">Encaminhar mensagem ao vendedor</span>
+                <span style="font-size: 12px; color: #3987bf">Excluir</span>
+              </div>
+            </div>
+            <div
+              style="align-self: center;">
+              <div>
+                <!-- <p>Quantidade</p> -->
+                <div style="display:flex; align-items: center; width: 150px; justify-content: space-evenly;">
+                  <div style="width: 30px; height: 30px;">
+                    <button (click)='downQuantity(produto.preco)'
+                      style="background-color: transparent; border: solid 1px; width: 100%; height: 100%; font-size: 22px; align-items: center; color: #5195C7; border-color: black">-</button>
+                  </div>
+                  <div style="width: 30px; height: 30px; text-align:center">
+                    <span
+                      style="background-color: transparent; width: 100%; height: 100%; font-size: 18px; align-items: center; margin-left: 0.5vw;">
+                      {{produto.quant}}</span>
+                  </div>
+                  <div style="width: 30px; height: 30px;">
+                    <button (click)='upQuantity(produto.preco)'
+                      style="background-color: transparent; width: 100%; height: 100%; border: solid 1px; font-size: 22px; align-items: center; color: #5195C7; border-color: black;">+</button>
+                  </div>
+                </div>
+                <p style="font-size: 22px; text-align: center; margin-left: 5px; margin-bottom: 0;">{{getPrice(produto.preco, produto.quant)}}
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div style="align-items: flex-end; display: flex; flex-direction: column; padding-right: 2vw;">
+          <span style="margin-bottom: 20px; font-size: 28px;">Total: R$ 999,99</span>
+  
+          <button style="background: #58A4B0; border: none; font-size: 16px; color: #fff; width: 186px; height: 48px;">
+            Finalizar compra
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer
+    style="background-color: #1B1B1E; height: 194px; bottom: 0; width: 100%; display: flex;flex-direction: column; justify-content: space-around;">
+    <div style="display: flex; justify-content: center; padding: 30px;">
+      <div style="align-self: center; width: 28vw; display: flex; justify-content: space-between;">
+        <span style="color: #fff; font-size: 18px;">Segurança e Privacidade</span>
+        <span style="color: #fff; font-size: 18px;">Sobre a empresa</span>
+        <span style="color: #fff; font-size: 18px;">Contato</span>
+      </div>
+    </div>
+
+    <div style="justify-content: center; display: flex;">
+      <span style="color: #fff; font-size: 22px;">© Copyright 2021 Constal Marketplace</span>
+    </div>
+  </footer>
+</body>
