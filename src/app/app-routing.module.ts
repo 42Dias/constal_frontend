@@ -14,20 +14,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'home',
-    loadChildren: () =>
-      import('./dashboard-cliente/dashboard-cliente.module').then(
-        (m) => m.DashboardClienteModule,
-      ),
-  },
-  {
-    path: 'listaprodutos',
-    loadChildren: () =>
-      import('./listaProdutos/listaProdutos.module').then(
-        (m) => m.ListaProdutosModule,
-      ),
-  },
-  {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then(
@@ -80,10 +66,6 @@ const routes: Routes = [
   {
     path: 'cartao',
     loadChildren: () => import('./cartao/cartao.module').then(m => m.CartaoModule),
-  },
-  {
-    path: 'listaProdutos',
-    loadChildren: () => import('./listaProdutos/listaProdutos.module').then(m => m.ListaProdutosModule),
   },
   {
     path: 'produto',
