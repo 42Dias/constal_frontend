@@ -86,9 +86,35 @@
 </div> -->
 
 <body>
+  <!-- Carrossel  -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="background-color: #58A4B0;"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" style="background-color: #58A4B0;"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="background-color: #58A4B0;"></button>
+    </div>
+    <div class="carousel-inner" style="height: 500px;">
+      <div class="carousel-item active">
+        <img src="http://lorempixel.com/640/480/cats/" class="d-block w-100" alt="..." style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+      </div>
+      <div class="carousel-item">
+        <img src="http://lorempixel.com/640/480/food/" class="d-block w-100" alt="..." style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+      </div>
+      <div class="carousel-item">
+        <img src="http://lorempixel.com/640/480/animals/" class="d-block w-100" alt="..." style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #58A4B0;"></span>
+      <span class="visually-hidden" >Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #58A4B0;"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
   <div style="margin: 0 2vw;">
-    <!-- Carrossel  -->
-    <div></div>
     <!-- exposicao -->
     <div style="display: flex; justify-content: center; margin: 42px 0;">
       <div
@@ -151,11 +177,11 @@
               <img src="{{ item.name }}" style="width: 210px; height: 158px; object-fit: cover;">
               <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
               <div style="padding-left: 4px;">
-                <span>Nome do produto</span>
+                <span style="font-size: 20px;">Nome do produto</span>
                 <br>
-                <span>R$ 999,99</span>
+                <span style="font-size: 24px;">R$ 999,99</span>
                 <br>
-                <span>Consulte o frete</span>
+                <span style="font-size: 16px;">Consulte o frete</span>
               </div>
             </div>
           </div>
