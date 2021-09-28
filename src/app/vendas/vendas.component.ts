@@ -8,11 +8,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class VendasComponent implements OnInit {
 
-  
+  role = this.authService.currentUser.tenants[0].roles[0];
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    console.log(this.role);
+    
   }
 
 }
