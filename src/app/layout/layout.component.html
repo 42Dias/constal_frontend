@@ -31,8 +31,7 @@
   </mat-sidenav-container>
 </div> -->
 
-<div>
-
+<div *ngIf="role == 'admin'">
   <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
     <img src="../../../assets/images/constal-home1.png" style="margin: 0.5% 0 0 3%;" [routerLink]="['/']">
     <div style="display: flex;">

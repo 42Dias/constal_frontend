@@ -28,6 +28,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'vendas',
+    loadChildren: () =>
+      import('./vendas/vendas.module').then(
+        (m) => m.VendasModule,
+      ),
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then(
