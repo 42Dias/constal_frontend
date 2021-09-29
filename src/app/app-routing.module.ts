@@ -28,6 +28,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'detalhes',
+    loadChildren: () =>
+      import('./detalhes/detalhes.module').then(
+        (m) => m.DetalhesModule,
+      ),
+  },
+  {
+    path: 'novoProduto',
+    loadChildren: () =>
+      import('./novoProduto/novoProduto.module').then(
+        (m) => m.NovoProdutoModule,
+      ),
+  },
+  {
     path: 'vendas',
     loadChildren: () =>
       import('./vendas/vendas.module').then(
@@ -87,10 +101,6 @@ const routes: Routes = [
   {
     path: 'cartao',
     loadChildren: () => import('./cartao/cartao.module').then(m => m.CartaoModule),
-  },
-  {
-    path: 'listaProdutos',
-    loadChildren: () => import('./listaProdutos/listaProdutos.module').then(m => m.ListaProdutosModule),
   },
   {
     path: 'produto',
