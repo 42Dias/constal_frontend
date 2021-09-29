@@ -12,6 +12,7 @@ import { CarrinhoViewToolbarComponent } from 'src/app/carrinho/view/carrinho-vie
 import { ImporterService } from 'src/app/shared/importer/importer.service';
 import { CarrinhoImporterService } from 'src/app/carrinho/importer/carrinho-importer.service';
 import { AppFormAutocompleteModule } from 'src/app/app-form-autocomplete.module';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AppFormAutocompleteModule } from 'src/app/app-form-autocomplete.module'
     CarrinhoRoutingModule,
     LayoutModule,
     AppFormAutocompleteModule,
+    Ng2CarouselamosModule,
   ],
   exports: [],
   providers: [

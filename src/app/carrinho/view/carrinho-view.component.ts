@@ -19,6 +19,21 @@ export class CarrinhoViewComponent implements OnInit {
       { name: 'Material', imagem: 'assets/images/material.jpg', preco: '132,00', desc: 'Muitos materiais de contrução.', quant: 3 },
       { name: 'Ferramentas', imagem: 'assets/images/tools.png', preco: '75,30', desc: 'Ferramentas para todos os gostos e para todas as necessidades!', quant: 1 },
     ]
+
+    this.images = [
+      { name: 'http://lorempixel.com/640/480/animals/' },
+      { name: 'https://www.jasminealimentos.com/wp-content/uploads/2017/09/tipos-de-frutas-1-860x485.jpg' },
+      { name: 'http://lorempixel.com/640/480/business/' },
+      { name: 'http://lorempixel.com/640/480/cats/' },
+      { name: 'http://lorempixel.com/640/480/city/' },
+      { name: 'http://lorempixel.com/640/480/food/' },
+      { name: 'http://lorempixel.com/640/480/nightlife/' },
+      { name: 'http://lorempixel.com/640/480/fashion/' },
+      { name: 'http://lorempixel.com/640/480/people/' },
+      { name: 'http://lorempixel.com/640/480/nature/' },
+      { name: 'http://lorempixel.com/640/480/sports/' },
+      { name: 'http://lorempixel.com/640/480/transport/' },
+    ]
   }
 
   quantity: any;
@@ -26,6 +41,7 @@ export class CarrinhoViewComponent implements OnInit {
   presente: any;
 
   produtos: Array<any> = []
+  images: Array<any> = []
 
   async ngOnInit() {
     this.quantity = 1;  
