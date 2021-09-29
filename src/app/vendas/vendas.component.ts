@@ -13,7 +13,7 @@ export class VendasComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.role);
+    
     
   }
 
