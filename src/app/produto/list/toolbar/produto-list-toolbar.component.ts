@@ -5,18 +5,23 @@ import { ProdutoService } from 'src/app/produto/produto.service';
 import { AuditLogService } from 'src/app/audit-log/audit-log.service';
 import { ConfirmService } from 'src/app/shared/confirm/confirm.service';
 import { ProdutoDestroyService } from 'src/app/produto/destroy/produto-destroy.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-produto-list-toolbar',
   templateUrl: './produto-list-toolbar.component.html',
+  styleUrls: ['.//produto-list-toolbar.component.css']
 })
 export class ProdutoListToolbarComponent {
+  role: any;
+
   constructor(
     public service: ProdutoListService,
     private produtoService: ProdutoService,
     private destroyService: ProdutoDestroyService,
     private auditLogService: AuditLogService,
     private confirmService: ConfirmService,
+    private authService: AuthService
   ) {}
 
   get destroyButtonDisabled() {
@@ -25,6 +30,10 @@ export class ProdutoListToolbarComponent {
       this.service.loading ||
       this.destroyService.loading
     );
+  }
+
+  ngOnInit() {
+    this.role = this.authService.currentUser.tenants[0].roles[0];
   }
 
   get destroyButtonTooltip() {

@@ -50,6 +50,23 @@ export class PessoaFisicaApi {
     return response.data;
   }
 
+  static async createOrUpdate(data) {
+    const body = {
+      data,
+    };
+
+    const tenantId = AuthCurrentTenant.get();
+    console.log('aaaaa');
+    
+
+    const response = await authAxios.post(
+      `/tenant/${tenantId}/pessoa-fisica-perfil`,
+      body,
+    );
+
+    return response.data;
+  }
+
   static async import(values, importHash) {
     const body = {
       data: values,

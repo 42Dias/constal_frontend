@@ -1,19 +1,15 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  Input,
-  EventEmitter,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
+import { i18n } from 'src/i18n';
+import { FormSchema } from '../shared/form/form-schema';
+import { ProdutoEmpresaModel } from './produtoEmpresa-model'
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProdutoModel } from 'src/app/produto/produto-model';
-import { FormSchema } from 'src/app/shared/form/form-schema';
 
 @Component({
-  selector: 'app-produto-form',
-  templateUrl: './produto-form.component.html',
+  selector: 'app-produtoempresa',
+  templateUrl: './produtoempresa.component.html',
 })
-export class ProdutoFormComponent implements OnInit {
+export class ProdutoEmpresaComponent implements OnInit {
   form: FormGroup;
   schema: FormSchema;
 
@@ -23,26 +19,32 @@ export class ProdutoFormComponent implements OnInit {
   @Input() record;
   @Input() saveLoading;
   @Input() modal = false;
+  
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) { }
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  async ngOnInit() {
+  ngOnInit() {
     this.buildSchema();
     this.buildForm();
+
+    console.log(this.record);
   }
 
   get fields() {
-    return ProdutoModel.fields;
+    return ProdutoEmpresaModel.fields;
   }
 
   doSave() {
-    if (!this.form.valid) {
+    /* if (!this.form.valid) {
       return;
-    }
-
+    } */
+    
     const id = this.record && this.record.id;
     const values = this.schema.cast(this.form.value);
     console.log(id + " " + values);
+
     this.save.emit({ id, values });
   }
 

@@ -77,9 +77,28 @@ export class AuthApi {
     return response.data;
   }
 
+  static async findProfile() {    
+    const tenant = AuthCurrentTenant.get()
+    const response = await authAxios.get(`/tenant/${tenant}/pessoa-fisica-perfil`);
+    return response.data;
+  }
+
   static signout() {
     AuthToken.set(null, true);
   }
+
+  /* static async updateProfile(data) {
+    const body = {
+      data,
+    };
+
+    const response = await authAxios.put(
+      '/auth/profile',
+      body,
+    );
+
+    return response.data;
+  } */
 
   static async updateProfile(data) {
     const body = {

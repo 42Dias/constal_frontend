@@ -1,0 +1,23 @@
+.to-admin {
+  margin: 40px 90px
+}
+
+.to-company {
+  background: none;
+  box-shadow: none;
+}
+
+@media (min-width: 1440px) {
+  .to-company {
+    max-width: 1398px;
+    margin: 40px auto;
+    
+  }
+}
+
+@media (min-width: 1780px) {
+  .to-company {
+    max-width: 1740px;
+    margin: 40px auto;
+  }
+}
