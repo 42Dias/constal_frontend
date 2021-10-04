@@ -158,16 +158,20 @@
 
 <body>
   <div style="margin-top: 5vh; margin-bottom: 0vh; align-self: center; display: flex; justify-content: center;">
-    <div style="background-color: #fff; width: 25%; text-align: center; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 20%);" (click)="tradeToCliente()">
+    <div
+      style="background-color: #fff; width: 25%; text-align: center; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 20%);"
+      (click)="storage('pessoa')">
       <p style="margin-top: 2vh;">Clientes</p>
       <div style="display: flex; justify-content: center; margin-bottom: 1vh;">
-        <div style="width: 50%; height: 1px; background-color: #000;" *ngIf="person == 'Cliente'"></div>
+        <div style="width: 50%; height: 1px; background-color: #000;" *ngIf="person == 'pessoa'"></div>
       </div>
     </div>
-    <div style="background-color: #fff; width: 25%; text-align: center; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 20%);" (click)="tradeToEmpresa()">
+    <div
+      style="background-color: #fff; width: 25%; text-align: center; cursor: pointer; box-shadow: 1px 1px 1px rgba(0, 0, 0, 20%);"
+      (click)="storage('empresa')">
       <p style="margin-top: 2vh;">Empresas</p>
       <div style="display: flex; justify-content: center; margin-bottom: 1vh;">
-        <div style="width: 50%; height: 1px; background-color: #000;" *ngIf="person == 'Empresa'"></div>
+        <div style="width: 50%; height: 1px; background-color: #000;" *ngIf="person == 'empresa'"></div>
       </div>
     </div>
   </div>

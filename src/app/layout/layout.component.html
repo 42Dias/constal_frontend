@@ -31,8 +31,7 @@
   </mat-sidenav-container>
 </div> -->
 
-<div>
-
+<div *ngIf="role == 'pessoa'">
   <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
     <img src="../../../assets/images/constal-home1.png" style="margin: 0.5% 0 0 3%;" [routerLink]="['/']">
     <div style="display: flex;">
@@ -71,6 +70,70 @@
       </div>
     </div>
   </div>
-  <router-outlet></router-outlet>
-
 </div>
+<div *ngIf="role == 'empresa'" style="background-color: #58A4B0; width:100%; height: 80px">
+  <div style="width: 100%; display:flex; justify-content: center;">
+    <div style="width:90%; display:flex; justify-content: space-between; margin-top: 10px;">
+      <div>
+        <a><img src="https://i.imgur.com/kakxirE.png" style="width:200px;"></a>
+      </div>
+      <div style="display:flex; align-items: baseline; margin-top:1vh">
+        <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+          <div
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+            <span class="material-icons">
+              person
+            </span>
+            <app-menu-user></app-menu-user>
+          </div>
+          <div style="display:flex; flex-direction: column; align-items: center;">
+            <a><img src="https://i.imgur.com/RwV9RlQ.png" style="width: 25px; height: 25px;"></a>
+            <a>
+              <p style="border: none; background-color: transparent; font-size: 15px; color: #373F51; font-weight: 600; cursor: pointer;"
+                routerLink="/vendas">
+                Vendas
+              </p>
+            </a>
+          </div>
+          <div style="display:flex; flex-direction: column; align-items: center; margin-left: 2vw">
+            <a><img src="https://i.imgur.com/ZkTU66i.png" style="width: 25px; height: 25px;"></a>
+            <a>
+              <p
+                style="border: none; background-color: transparent; font-size: 15px; color: #373F51; font-weight: 600;">
+                Meus produtos
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="role == 'admin'">
+  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
+    <img src="../../../assets/images/constal-home1.png" style="margin: 0.5% 0 0 3%;" [routerLink]="['/']">
+    <div style="display: flex;">
+      <select name="Categorias" id=""
+        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
+        <option value="Categorias" selected>Categorias</option>
+      </select>
+      <input type="text" placeholder="Pesquise por..."
+        style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
+      <div style="align-self: center; margin-right: 3vw">
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;"><img
+            src="../../../assets/images/lupabranca.svg"></button>
+      </div>
+      <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+        <div
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          <span class="material-icons">
+            person
+          </span>
+          <app-menu-user></app-menu-user>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

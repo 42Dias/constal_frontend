@@ -14,6 +14,41 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'home',
+    loadChildren: () =>
+      import('./dashboard-cliente/dashboard-cliente.module').then(
+        (m) => m.DashboardClienteModule,
+      ),
+  },
+  {
+    path: 'listaprodutos',
+    loadChildren: () =>
+      import('./listaProdutos/listaProdutos.module').then(
+        (m) => m.ListaProdutosModule,
+      ),
+  },
+  {
+    path: 'detalhes',
+    loadChildren: () =>
+      import('./detalhes/detalhes.module').then(
+        (m) => m.DetalhesModule,
+      ),
+  },
+  {
+    path: 'novoProduto',
+    loadChildren: () =>
+      import('./novoProduto/novoProduto.module').then(
+        (m) => m.NovoProdutoModule,
+      ),
+  },
+  {
+    path: 'vendas',
+    loadChildren: () =>
+      import('./vendas/vendas.module').then(
+        (m) => m.VendasModule,
+      ),
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then(

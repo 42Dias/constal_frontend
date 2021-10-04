@@ -52,7 +52,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
     
     if (!this.mobileQuery.matches) {
       this.snav.toggle();
-    }
+    }   
+
+    console.log(this.role);
+    
     
   }
 

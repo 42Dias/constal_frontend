@@ -26,6 +26,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.storage('pessoa');
     this.authService.doClearErrorMessage();
     this.buildSchema();
     this.form = this.schema.buildForm({ rememberMe: true });
@@ -45,8 +46,6 @@ export class SigninComponent implements OnInit {
         );
       }
     }
-
-    this.person = 'Cliente'
   }
 
   tradeToCliente() {
@@ -59,6 +58,11 @@ export class SigninComponent implements OnInit {
     if (this.person == 'Cliente') {
       this.person = 'Empresa'
     } 
+  }
+
+  storage(perfil) {
+    this.person = perfil;
+    sessionStorage.setItem('perfil', perfil);
   }
 
   get backgroundImageUrl() {
