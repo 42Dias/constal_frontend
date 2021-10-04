@@ -6,8 +6,8 @@ import { ProdutoEmpresaModel } from './produtoEmpresa-model'
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-produtoempresa',
-  templateUrl: './produtoempresa.component.html',
+  selector: 'app-produtoEmpresa',
+  templateUrl: './produtoEmpresa.component.html',
 })
 export class ProdutoEmpresaComponent implements OnInit {
   form: FormGroup;

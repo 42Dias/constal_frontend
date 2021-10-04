@@ -3,8 +3,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { i18n } from 'src/i18n';
 
 @Component({
-  selector: 'app-listaprodutos',
-  templateUrl: './listaprodutos.component.html',
+  selector: 'app-listaProdutos',
+  templateUrl: './listaProdutos.component.html',
 })
 export class ListaProdutosComponent implements OnInit {
   constructor(private authService: AuthService,
