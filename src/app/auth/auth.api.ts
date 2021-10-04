@@ -77,10 +77,18 @@ export class AuthApi {
     return response.data;
   }
 
-  static async findProfile() {    
-    const tenant = AuthCurrentTenant.get()
-    const response = await authAxios.get(`/tenant/${tenant}/pessoa-fisica-perfil`);
-    return response.data;
+  static async findProfile(role) {    
+    if (role) {
+      let response 
+      const tenant = AuthCurrentTenant.get()
+      if (role == 'empresa') {
+        response = await authAxios.get(`/tenant/${tenant}/empresa-perfil`);
+      } else {
+        response = await authAxios.get(`/tenant/${tenant}/pessoa-fisica-perfil`);
+      }
+  
+      return response.data;
+    }
   }
 
   static signout() {

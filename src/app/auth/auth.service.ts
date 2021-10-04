@@ -209,7 +209,7 @@ export class AuthService {
       }
       
       if (token) {
-        currentProfile = await AuthApi.findProfile();        
+        currentProfile = await AuthApi.findProfile(currentUser.tenants[0].roles[0]);        
       }
       
       this.currentUser = currentUser || null;
