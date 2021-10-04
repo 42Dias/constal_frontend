@@ -38,8 +38,6 @@ export class AuthApi {
   ) {
     const invitationToken = AuthInvitationToken.get();
 
-    const role = sessionStorage.getItem('perfil');
-
     const response = await authAxios.post('/auth/sign-up', {
       email,
       password,
@@ -47,7 +45,6 @@ export class AuthApi {
       tenantId: tenantSubdomain.isSubdomain
         ? AuthCurrentTenant.get()
         : undefined,
-      role,
     });
 
     AuthInvitationToken.clear();

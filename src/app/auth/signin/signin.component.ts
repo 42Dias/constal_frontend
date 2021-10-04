@@ -26,7 +26,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.storage('pessoa');
+    this.person = 'pessoa';
     this.authService.doClearErrorMessage();
     this.buildSchema();
     this.form = this.schema.buildForm({ rememberMe: true });
