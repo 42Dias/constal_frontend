@@ -5,11 +5,17 @@ import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector: 'app-produto-list',
   templateUrl: './produto-list.component.html',
+  styleUrls: ['./produto-list.component.css'],
 })
 export class ProdutoListComponent implements OnInit {
+
+  role: any;
+
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.role = this.authService.currentUser.tenants[0].roles[0];
+  }
 
   breadcrumb = [
     [i18n('dashboard.menu'), '/'],

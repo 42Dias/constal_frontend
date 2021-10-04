@@ -1,9 +1,9 @@
-<div class="app-page-toolbar">
+<div class="app-page-toolbar" [ngClass]="{'space': role == 'empresa'}">
   <button
     *ngIf="hasPermissionToCreate"
     [routerLink]="'/produto/new'"
     mat-raised-button
-    color="primary"
+    style="background-color: #58A4B0; width: 140px; height: 40px; border: none; color: #fff; font-size: 16px; margin: 8px;"
   >
     <mat-icon
       fontSet="fas"
@@ -14,7 +14,7 @@
     <app-i18n key="common.new"></app-i18n>
   </button>
 
-  <button
+  <!-- <button
     *ngIf="hasPermissionToImport"
     [routerLink]="'/produto/import'"
     mat-raised-button
@@ -27,10 +27,10 @@
     ></mat-icon
     >&#160;
     <app-i18n key="common.import"></app-i18n>
-  </button>
+  </button> -->
 
   <span
-    *ngIf="hasPermissionToDestroy"
+    *ngIf="hasPermissionToDestroy && role == 'admin'"
     [matTooltip]="destroyButtonTooltip"
   >
     <button
@@ -38,6 +38,7 @@
       mat-raised-button
       color="primary"
       (click)="doDestroyAllSelected()"
+      style="background-color: #D8DBE2; width: 140px; height: 40px; border: none; margin-right: 16px; font-size: 16px;"
     >
       <mat-icon
         inline
@@ -64,7 +65,7 @@
     <app-i18n key="auditLog.menu"></app-i18n>
   </button>
 
-  <button
+  <!-- <button
     [disabled]="exportButtonDisabled"
     [matTooltip]="exportButtonTooltip"
     (click)="doExport()"
@@ -77,5 +78,5 @@
     ></mat-icon
     >&#160;
     <app-i18n key="common.export"></app-i18n>
-  </button>
+  </button> -->
 </div>

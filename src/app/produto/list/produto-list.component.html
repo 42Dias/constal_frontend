@@ -1,11 +1,15 @@
-<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+<!-- <app-breadcrumb [items]="breadcrumb"></app-breadcrumb> -->
 
-<div class="app-content-page">
-  <h1 class="app-content-title">
+<div class="app-content-page" [ngClass]="{'to-admin': role == 'admin', 'to-company': role == 'empresa'}">
+  <h1 class="app-content-title" *ngIf="role == 'admin'">
     <app-i18n key="entities.produto.list.title"></app-i18n>
   </h1>
 
-  <app-produto-list-toolbar></app-produto-list-toolbar>
-  <app-produto-list-filter></app-produto-list-filter>
+  <h1 class="app-content-title" *ngIf="role == 'empresa'">
+    Meus produtos
+  </h1>
+
+  <app-produto-list-toolbar *ngIf="role == 'admin'"></app-produto-list-toolbar>
+  <app-produto-list-filter *ngIf="role == 'admin'"></app-produto-list-filter>
   <app-produto-list-table></app-produto-list-table>
 </div>

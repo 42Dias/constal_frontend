@@ -35,10 +35,10 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'novoProduto',
+    path: 'produtoEmpresa',
     loadChildren: () =>
-      import('./novoProduto/novoProduto.module').then(
-        (m) => m.NovoProdutoModule,
+      import('./produtoEmpresa/produtoEmpresa.module').then(
+        (m) => m.ProdutoEmpresaModule,
       ),
   },
   {
