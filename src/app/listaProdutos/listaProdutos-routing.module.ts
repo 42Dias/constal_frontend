@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaProdutosComponent } from 'src/app/listaprodutos/listaprodutos.component';
+import { ListaProdutosComponent } from 'src/app/listaProdutos/listaProdutos.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { LayoutComponent } from 'src/app/layout/layout.component';
 

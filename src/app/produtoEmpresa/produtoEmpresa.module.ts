@@ -3,7 +3,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import {
   ProdutoEmpresaRoutingModule,
   routedComponents,
-} from 'src/app/produtoempresa/produtoempresa-routing.module';
+} from 'src/app/produtoEmpresa/produtoEmpresa-routing.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
