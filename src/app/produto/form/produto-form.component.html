@@ -28,28 +28,6 @@
   </mat-form-field>
 
   <mat-form-field floatLabel="always" appearance="outline">
-    <mat-label>{{ fields.descricao.label }}</mat-label>
-    <textarea
-      matInput
-      [formControlName]="fields.descricao.name"
-      [rows]="4"
-      [placeholder]="fields.descricao.placeholder"
-      [required]="fields.descricao.required"
-    ></textarea>
-
-    <mat-hint *ngIf="fields.descricao.hint">
-      {{ fields.descricao.hint }}
-    </mat-hint>
-
-    <mat-error>
-      <app-validations
-        [control]="form.get(fields.descricao.name)"
-        [label]="fields.descricao.label"
-      ></app-validations>
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>{{ fields.marca.label }}</mat-label>
     <input
       matInput
@@ -92,13 +70,38 @@
   </mat-form-field>
 
   <mat-form-field floatLabel="always" appearance="outline">
-    <mat-label>{{ fields.caracteristicas.label }}</mat-label>
-    <input
+    <mat-label>{{ fields.descricao.label }}</mat-label>
+    <textarea
       matInput
+      [formControlName]="fields.descricao.name"
+      [rows]="4"
+      [placeholder]="fields.descricao.placeholder"
+      [required]="fields.descricao.required"
+      style="resize: none;"
+    ></textarea>
+
+    <mat-hint *ngIf="fields.descricao.hint">
+      {{ fields.descricao.hint }}
+    </mat-hint>
+
+    <mat-error>
+      <app-validations
+        [control]="form.get(fields.descricao.name)"
+        [label]="fields.descricao.label"
+      ></app-validations>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>{{ fields.caracteristicas.label }}</mat-label>
+    <textarea
+      matInput
+      style="resize: none;"
+      [rows]="4"
       [formControlName]="fields.caracteristicas.name"
       [placeholder]="fields.caracteristicas.placeholder"
       [required]="fields.caracteristicas.required"
-    />
+    ></textarea>
 
     <mat-hint *ngIf="fields.caracteristicas.hint">
       {{ fields.caracteristicas.hint }}
@@ -112,7 +115,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field floatLabel="always" appearance="outline">
+  <!-- <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>{{ fields.codigo.label }}</mat-label>
     <input
       matInput
@@ -131,7 +134,7 @@
         [label]="fields.codigo.label"
       ></app-validations>
     </mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>{{ fields.preco.label }}</mat-label>
@@ -154,7 +157,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field floatLabel="always" appearance="outline">
+  <!-- <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>{{ fields.somatoriaAvaliacoes.label }}</mat-label>
     <input
       matInput
@@ -175,9 +178,9 @@
         [label]="fields.somatoriaAvaliacoes.label"
       ></app-validations>
     </mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
 
-  <mat-form-field floatLabel="always" appearance="outline">
+  <!-- <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>{{ fields.quantidadeAvaliacoes.label }}</mat-label>
     <input
       matInput
@@ -198,9 +201,9 @@
         [label]="fields.quantidadeAvaliacoes.label"
       ></app-validations>
     </mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
 
-  <mat-form-field floatLabel="always" appearance="outline">
+  <!-- <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>{{ fields.volumeVendas.label }}</mat-label>
     <input
       matInput
@@ -221,7 +224,7 @@
         [label]="fields.volumeVendas.label"
       ></app-validations>
     </mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <app-image-form-field
     [formControl]="form.get(fields.fotos.name)"
@@ -233,7 +236,7 @@
     [submitted]="ngForm.submitted"
   ></app-image-form-field>
 
-  <app-empresa-form-field
+  <!-- <app-empresa-form-field
     [control]="form.get(fields.empresa.name)"
     [label]="fields.empresa.label"
     [placeholder]="fields.empresa.placeholder"
@@ -244,9 +247,9 @@
     [showCreate]="!modal"
     [submitted]="ngForm.submitted"
     mode="single"
-  ></app-empresa-form-field>
+  ></app-empresa-form-field> -->
 
-  <app-categoria-form-field
+  <!-- <app-categoria-form-field
     [control]="form.get(fields.categoria.name)"
     [label]="fields.categoria.label"
     [placeholder]="fields.categoria.placeholder"
@@ -257,7 +260,7 @@
     [showCreate]="!modal"
     [submitted]="ngForm.submitted"
     mode="single"
-  ></app-categoria-form-field>
+  ></app-categoria-form-field> -->
 
   <div
     class="form-buttons"
@@ -266,8 +269,8 @@
     <button
       mat-raised-button
       [disabled]="saveLoading"
-      color="primary"
       type="submit"
+      style="background-color: #58A4B0; width: 140px; height: 40px; border: none; color: #fff; font-size: 16px;"
     >
       <mat-icon
         inline
@@ -297,6 +300,7 @@
       [disabled]="saveLoading"
       type="button"
       (click)="cancel.emit()"
+      style="background-color: #D8DBE2; width: 140px; height: 40px; border: none; margin-right: 16px; font-size: 16px;"
     >
       <mat-icon
         inline

@@ -5,18 +5,26 @@ import { ProdutoModel } from 'src/app/produto/produto-model';
 import { ConfirmService } from 'src/app/shared/confirm/confirm.service';
 import { ProdutoDestroyService } from 'src/app/produto/destroy/produto-destroy.service';
 import { i18n } from 'src/i18n';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-produto-list-table',
   templateUrl: './produto-list-table.component.html',
 })
 export class ProdutoListTableComponent {
+  role: any;
+
   constructor(
     public service: ProdutoListService,
     public destroyService: ProdutoDestroyService,
     public produtoService: ProdutoService,
     private confirmService: ConfirmService,
+    private authService: AuthService
   ) {}
+
+  ngOnInit() {
+    this.role = this.authService.currentUser.tenants[0].roles[0];
+  }
 
   presenter(row, fieldName) {
     return ProdutoModel.presenter(row, fieldName);

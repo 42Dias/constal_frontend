@@ -1,31 +1,17 @@
-<div class="table-responsive">
-  <table
-    style="width: 100%;"
-    mat-table
-    [dataSource]="service.rows"
-    matSort
-    (matSortChange)="service.doChangeSort($event)"
-    [matSortActive]="service.sorter.columnKey"
-    [matSortDirection]="service.sorter.order"
-  >
+<div class="table-responsive" *ngIf="role == 'admin'">
+  <table style="width: 100%;" mat-table [dataSource]="service.rows" matSort
+    (matSortChange)="service.doChangeSort($event)" [matSortActive]="service.sorter.columnKey"
+    [matSortDirection]="service.sorter.order">
     <ng-container matColumnDef="_select">
       <th mat-header-cell *matHeaderCellDef>
-        <app-table-th-checkbox
-          [rows]="service.rows"
-          [selectedKeys]="service.selectedKeys"
-        ></app-table-th-checkbox>
+        <app-table-th-checkbox [rows]="service.rows" [selectedKeys]="service.selectedKeys"></app-table-th-checkbox>
       </th>
       <td mat-cell *matCellDef="let row">
-        <app-table-td-checkbox
-          [row]="row"
-          [selectedKeys]="service.selectedKeys"
-        ></app-table-td-checkbox>
+        <app-table-td-checkbox [row]="row" [selectedKeys]="service.selectedKeys"></app-table-td-checkbox>
       </td>
     </ng-container>
 
-    <ng-container
-      [matColumnDef]="fields.nome.name"
-    >
+    <ng-container [matColumnDef]="fields.nome.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.nome.label }}
       </th>
@@ -33,9 +19,7 @@
         {{ presenter(row, 'nome') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.descricao.name"
-    >
+    <ng-container [matColumnDef]="fields.descricao.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.descricao.label }}
       </th>
@@ -43,9 +27,7 @@
         {{ presenter(row, 'descricao') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.marca.name"
-    >
+    <ng-container [matColumnDef]="fields.marca.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.marca.label }}
       </th>
@@ -53,9 +35,7 @@
         {{ presenter(row, 'marca') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.modelo.name"
-    >
+    <ng-container [matColumnDef]="fields.modelo.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.modelo.label }}
       </th>
@@ -63,9 +43,7 @@
         {{ presenter(row, 'modelo') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.caracteristicas.name"
-    >
+    <ng-container [matColumnDef]="fields.caracteristicas.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.caracteristicas.label }}
       </th>
@@ -73,9 +51,7 @@
         {{ presenter(row, 'caracteristicas') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.codigo.name"
-    >
+    <ng-container [matColumnDef]="fields.codigo.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.codigo.label }}
       </th>
@@ -83,9 +59,7 @@
         {{ presenter(row, 'codigo') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.preco.name"
-    >
+    <ng-container [matColumnDef]="fields.preco.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.preco.label }}
       </th>
@@ -93,9 +67,7 @@
         {{ presenter(row, 'preco') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.somatoriaAvaliacoes.name"
-    >
+    <ng-container [matColumnDef]="fields.somatoriaAvaliacoes.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.somatoriaAvaliacoes.label }}
       </th>
@@ -103,9 +75,7 @@
         {{ presenter(row, 'somatoriaAvaliacoes') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.quantidadeAvaliacoes.name"
-    >
+    <ng-container [matColumnDef]="fields.quantidadeAvaliacoes.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.quantidadeAvaliacoes.label }}
       </th>
@@ -113,9 +83,7 @@
         {{ presenter(row, 'quantidadeAvaliacoes') }}
       </td>
     </ng-container>
-    <ng-container
-      [matColumnDef]="fields.volumeVendas.name"
-    >
+    <ng-container [matColumnDef]="fields.volumeVendas.name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
         {{ fields.volumeVendas.label }}
       </th>
@@ -128,9 +96,7 @@
         {{ fields.fotos.label }}
       </th>
       <td mat-cell *matCellDef="let row">
-        <app-table-item-images
-          [value]="presenter(row, 'fotos')"
-        ></app-table-item-images>
+        <app-table-item-images [value]="presenter(row, 'fotos')"></app-table-item-images>
       </td>
     </ng-container>
     <ng-container [matColumnDef]="fields.empresa.name">
@@ -138,11 +104,8 @@
         {{ fields.empresa.label }}
       </th>
       <td mat-cell *matCellDef="let row">
-        <app-table-item-relation-to-one
-          [url]="fields.empresa.viewUrl"
-          [permission]="fields.empresa.readPermission"
-          [value]="presenter(row, 'empresa')"
-        ></app-table-item-relation-to-one>
+        <app-table-item-relation-to-one [url]="fields.empresa.viewUrl" [permission]="fields.empresa.readPermission"
+          [value]="presenter(row, 'empresa')"></app-table-item-relation-to-one>
       </td>
     </ng-container>
     <ng-container [matColumnDef]="fields.categoria.name">
@@ -150,66 +113,36 @@
         {{ fields.categoria.label }}
       </th>
       <td mat-cell *matCellDef="let row">
-        <app-table-item-relation-to-one
-          [url]="fields.categoria.viewUrl"
-          [permission]="fields.categoria.readPermission"
-          [value]="presenter(row, 'categoria')"
-        ></app-table-item-relation-to-one>
+        <app-table-item-relation-to-one [url]="fields.categoria.viewUrl" [permission]="fields.categoria.readPermission"
+          [value]="presenter(row, 'categoria')"></app-table-item-relation-to-one>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="_actions">
       <th mat-header-cell *matHeaderCellDef></th>
-      <td
-        style="width: 180px; text-align: right;"
-        mat-cell
-        *matCellDef="let row"
-      >
-        <button
-          mat-icon-button
-          type="button"
-          color="primary"
-          [routerLink]="['/produto', row.id]"
-          [matTooltip]="i18n('common.view')"
-        >
+      <td style="width: 180px; text-align: right;" mat-cell *matCellDef="let row">
+        <button mat-icon-button type="button" color="primary" [routerLink]="['/produto', row.id]"
+          [matTooltip]="i18n('common.view')">
           <mat-icon>search</mat-icon>
         </button>
 
-        <button
-          mat-icon-button
-          type="button"
-          color="primary"
-          *ngIf="hasPermissionToEdit"
-          [routerLink]="['/produto', row.id, 'edit']"
-          [matTooltip]="i18n('common.edit')"
-        >
+        <button mat-icon-button type="button" color="primary" *ngIf="hasPermissionToEdit"
+          [routerLink]="['/produto', row.id, 'edit']" [matTooltip]="i18n('common.edit')">
           <mat-icon>edit</mat-icon>
         </button>
 
-        <button
-          mat-icon-button
-          type="button"
-          color="primary"
-          *ngIf="hasPermissionToDestroy"
-          (click)="doDestroy(row.id)"
-          [matTooltip]="i18n('common.destroy')"
-        >
+        <button mat-icon-button type="button" color="primary" *ngIf="hasPermissionToDestroy" (click)="doDestroy(row.id)"
+          [matTooltip]="i18n('common.destroy')">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: this.columns"
-    ></tr>
+    <tr mat-row *matRowDef="let row; columns: this.columns"></tr>
   </table>
 
-  <div
-    *ngIf="!service.loading && !service.count"
-    class="mat-table-message"
-  >
+  <div *ngIf="!service.loading && !service.count" class="mat-table-message">
     <app-i18n key="table.noData"></app-i18n>
   </div>
 
@@ -218,12 +151,76 @@
   </div>
 </div>
 
-<mat-paginator
-  [disabled]="service.loading"
-  [pageIndex]="service.paginationPageIndex"
-  [pageSize]="service.paginationPageSize"
-  [pageSizeOptions]="[10, 20, 30, 40]"
-  [length]="service.count"
-  (page)="service.doChangePagination($event)"
-  showFirstLastButtons
-></mat-paginator>
+<div *ngIf="role == 'empresa'">
+  <!-- <div
+    style="display: flex; width: 100%; height: 5vh; background-color: #FFFFFF; align-items: center; justify-content: space-between;">
+    <div style="margin-left: 1vw;">
+      <a href="https://constal42dias.wpcomstaging.com/novo-produto/"><button
+          style="width: 180px; height: 40px; background: #58A4B0; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); color: #FFFFFF; font-size: 14px; border: none;">Novo
+          produto</button></a>
+    </div>
+    <div style="display: flex;">
+      <div style="display:flex">
+        <div>
+          <input type="text" placeholder="Pesquisar por" style="height:40px;">
+        </div>
+        <div style="align-self: center; margin-left:1vw; margin-right: 2vw">
+          <img src="https://i.imgur.com/wd36bKQ.png">
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div style="display: flex; justify-content: space-between; background-color: #fff; margin-bottom: 26px;" *ngIf="role == 'empresa'">
+    <app-produto-list-toolbar></app-produto-list-toolbar>
+    <mat-paginator [disabled]="service.loading" [pageIndex]="service.paginationPageIndex"
+    [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
+    (page)="service.doChangePagination($event)" showFirstLastButtons></mat-paginator>
+  </div>
+
+  <app-produto-list-filter *ngIf="role == 'empresa'"></app-produto-list-filter>
+
+  <div style="display:flex; gap: 25.5px; flex-wrap: wrap;">
+    <div *ngFor="let product of service.rows"
+      style="background-color: #FFFFFF; width: 318px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%); justify-content: space-between;">
+      <div style="height: 250px;">
+        <img
+          src="{{ presenter(product, 'fotos') }}"
+          style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div style="display: flex; margin-left: 0.5vw; flex-direction: column">
+        <h4 style="margin-bottom: 2px">{{ presenter(product, 'nome') }}</h4>
+        <p style="">{{ presenter(product, 'descricao') }}</p>
+        <div style="display: flex; margin-top: 0.8vh; align-items: center;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+            style="width:15px; height:15px">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+            style="width:15px; height:15px">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+            style="width:15px; height:15px">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+            style="width:15px; height:15px">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
+            style="width:15px; height:15px">
+          <p style="font-size: 14px; margin-left: 5px">({{ presenter(product, 'quantidadeAvaliacoes') }})</p>
+        </div>
+        <div
+          style="display: flex; align-items: center; margin-top: 3vh; margin-bottom: 1vh; justify-content: space-between; margin-right: 1vw;">
+          <div style="display: flex;">
+            <p style="font-weight: 600; font-size: 24px">R$</p>
+            <p style="font-size: 22px; text-align: center;">{{ presenter(product, 'preco') }}</p>
+          </div>
+          <div style="text-align: center; display: flex; flex-direction: column;">
+            <button
+              style="color: #4F75CC; border: none; background-color: transparent; font-size: 15px;" [routerLink]="['/produto', product.id, 'edit']">Alterar</button>
+            <button
+              style="color: #4F75CC; border: none; background-color: transparent; font-size: 15px;" (click)="doDestroy(product.id)">Remover</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-paginator [disabled]="service.loading" *ngIf="role == 'admin'" [pageIndex]="service.paginationPageIndex"
+  [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
+  (page)="service.doChangePagination($event)" showFirstLastButtons></mat-paginator>

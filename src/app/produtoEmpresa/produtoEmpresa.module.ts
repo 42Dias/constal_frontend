@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {
-  NovoProdutoRoutingModule,
+  ProdutoEmpresaRoutingModule,
   routedComponents,
-} from 'src/app/novoproduto/novoproduto-routing.module';
+} from 'src/app/produtoempresa/produtoempresa-routing.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
@@ -11,7 +11,7 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
   imports: [
     SharedModule,
     LayoutModule,
-    NovoProdutoRoutingModule,
+    ProdutoEmpresaRoutingModule,
     Ng2CarouselamosModule,
   ],
   declarations: [
@@ -19,4 +19,4 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
   ],
   providers: [],
 })
-export class NovoProdutoModule {}
+export class ProdutoEmpresaModule {}
