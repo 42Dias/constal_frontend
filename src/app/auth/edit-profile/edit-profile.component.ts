@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/auth/auth.service';
 import { FormSchema } from 'src/app/shared/form/form-schema';
 import { UserModel } from 'src/app/user/user-model';
+import { PessoaFisicaModel } from 'src/app/pessoa-fisica/pessoa-fisica-model';
 
 interface Mes {
   value: string;
@@ -25,6 +26,19 @@ export class EditProfileComponent implements OnInit {
   schema: FormSchema;
   campos: any;
   role: any;
+  camposEnd: any;
+  email: any;
+  logradouro: any;
+  numero: any;
+  bairro: any;
+  cidade: any;
+  complemento: any;
+  estado: any;
+  cpf: any;
+  nome: any;
+  telefone: any;
+  cep: any;
+  currentProfile: any;
 
   mes: Mes[] = [
     {value: 'janeiro-0', viewValue: '01'},
@@ -67,25 +81,30 @@ export class EditProfileComponent implements OnInit {
     this.buildSchema();
     this.buildForm();
     this.campos = false;
-    this.role = this.authService.currentUser.tenants[0].roles[0];    
+    this.camposEnd = false;
+    this.role = this.authService.currentUser.tenants[0].roles[0];
+    this.currentProfile = this.authService.currentProfile;
+    console.log(this.currentProfile);
     
+    this.setData();
+
   }
 
   get fields() {
-    return UserModel.fields;
+    return PessoaFisicaModel.fields;
   }
 
   get saveLoading() {
     return this.authService.loadingUpdateProfile;
   }
 
-  doSave() {
+  async doSave() {
     if (!this.form.valid) {
       return;
     }
-
+    
     const values = this.schema.cast(this.form.value);
-    return this.authService.doUpdateProfile(values);
+    return await this.authService.doUpdateProfile(values);
   }
 
   doReset() {
@@ -100,6 +119,30 @@ export class EditProfileComponent implements OnInit {
     }    
   }
 
+  habilitarEnd() {
+    if(this.camposEnd == false){
+      this.camposEnd = true;
+    } else {
+      this.camposEnd = false
+    } 
+    console.log(this.camposEnd);
+    
+  }
+
+  setData() {
+    this.email = this.fields.email.name;
+    this.logradouro = this.fields.logradouro.name;
+    this.numero = this.fields.numero.name;
+    this.bairro = this.fields.bairro.name;
+    this.cidade = this.fields.cidade.name;
+    this.complemento = this.fields.complemento.name;
+    this.estado = this.fields.estado.name;
+    this.cpf = this.fields.cpf.name;
+    this.nome = this.fields.nome.name;
+    this.telefone = this.fields.telefone.name;
+    this.cep = this.fields.cep.name;
+  }
+
   buildForm() {
     this.form = this.schema.buildForm(
       this.authService.currentUser,
@@ -110,6 +153,7 @@ export class EditProfileComponent implements OnInit {
     return this.authService.currentUser;
   }
 
+
   breadcrumb = [
     [i18n('dashboard.menu'), '/'],
     [i18n('auth.profile.title')],
@@ -119,10 +163,16 @@ export class EditProfileComponent implements OnInit {
     this.schema = new FormSchema(
       [
         this.fields.email,
-        this.fields.firstName,
-        this.fields.lastName,
-        this.fields.phoneNumber,
-        this.fields.avatars,
+        this.fields.logradouro,
+        this.fields.numero,
+        this.fields.bairro,
+        this.fields.cidade,
+        this.fields.complemento,
+        this.fields.estado,
+        this.fields.cpf,
+        this.fields.nome,
+        this.fields.telefone,
+        this.fields.cep,
       ],
       this.formBuilder,
     );

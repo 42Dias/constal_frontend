@@ -12,6 +12,7 @@ import AuthCurrentTenant from 'src/app/auth/auth-current-tenant';
 import { tenantSubdomain } from 'src/app/tenant/tenant-subdomain';
 import { get } from 'lodash';
 import SettingsApi from 'src/app/settings/settings-api';
+import { PessoaFisicaApi } from 'src/app/pessoa-fisica/pessoa-fisica.api';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +29,7 @@ export class AuthService {
   loadingPasswordReset = false;
   loading = false;
   errorMessage = null;
+  currentProfile = null;
 
   constructor(
     private router: Router,
@@ -196,19 +198,25 @@ export class AuthService {
     );
   }
 
-  async doInit() {
+  async doInit() {    
     try {
       const token = AuthToken.get();
       let currentUser = null;
+      let currentProfile = null;
 
       if (token) {
         currentUser = await AuthApi.fetchMe();
       }
-
+      
+      if (token) {
+        currentProfile = await AuthApi.findProfile();        
+      }
+      
       this.currentUser = currentUser || null;
       this.currentTenant = AuthCurrentTenant.selectAndSaveOnStorageFor(
         this.currentUser,
       );
+      this.currentProfile = currentProfile || null;
       this.initializedSubject.next(true);
     } catch (error) {
       AuthApi.signout();
@@ -400,13 +408,15 @@ export class AuthService {
       AuthApi.signout();
       this.errorService.handle(error);
     }
+    
   }
 
   async doUpdateProfile(data) {
-    try {
+    try {      
       this.loadingUpdateProfile = true;
 
-      await AuthApi.updateProfile(data);
+      /* await AuthApi.updateProfile(data); */
+      await PessoaFisicaApi.createOrUpdate(data);
 
       this.loadingUpdateProfile = false;
       await this.doRefreshCurrentUser();
