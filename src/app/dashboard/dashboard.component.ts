@@ -72,8 +72,6 @@ export class DashboardComponent implements OnInit {
   }
 
   transformValue(value) {
-    console.log(value);
-    
     if (value != undefined) {
       value = (value * 100) / 100
 
