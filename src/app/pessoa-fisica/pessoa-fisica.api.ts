@@ -56,7 +56,6 @@ export class PessoaFisicaApi {
     };
 
     const tenantId = AuthCurrentTenant.get();
-    console.log('aaaaa');
     
 
     const response = await authAxios.post(

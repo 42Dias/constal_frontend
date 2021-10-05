@@ -4,12 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { FilterSchema } from 'src/app/shared/form/filter-schema';
 import { ProdutoListService } from 'src/app/produto/list/produto-list.service';
 import { ProdutoModel } from 'src/app/produto/produto-model';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-produto-list-filter',
   templateUrl: './produto-list-filter.component.html',
 })
 export class ProdutoListFilterComponent implements OnInit {
+  role: any;
   form: FormGroup;
   schema: FilterSchema;
   expanded: boolean = false;
@@ -18,9 +20,11 @@ export class ProdutoListFilterComponent implements OnInit {
     private service: ProdutoListService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   async ngOnInit() {
+    this.role = this.authService.currentUser.tenants[0].roles[0];
     this.buildSchema();
     this.buildForm();
     this.doFilter();

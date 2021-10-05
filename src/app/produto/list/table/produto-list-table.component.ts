@@ -30,6 +30,14 @@ export class ProdutoListTableComponent {
     return ProdutoModel.presenter(row, fieldName);
   }
 
+  verifyImage(image) {
+    if (image.length > 0) {
+      return image[0].downloadUrl
+    } else {
+      return 'assets/images/noImage.png'
+    }
+  }
+
   i18n(key) {
     return i18n(key);
   }
