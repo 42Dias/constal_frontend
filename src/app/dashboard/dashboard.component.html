@@ -89,26 +89,34 @@
   <!-- Carrossel  -->
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="background-color: #58A4B0;"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2" style="background-color: #58A4B0;"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3" style="background-color: #58A4B0;"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1" style="background-color: #58A4B0;"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"
+        style="background-color: #58A4B0;"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"
+        style="background-color: #58A4B0;"></button>
     </div>
     <div class="carousel-inner" style="height: 500px;">
       <div class="carousel-item active">
-        <img src="http://lorempixel.com/640/480/cats/" class="d-block w-100" alt="..." style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+        <img src="http://lorempixel.com/640/480/cats/" class="d-block w-100" alt="..."
+          style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
       </div>
       <div class="carousel-item">
-        <img src="http://lorempixel.com/640/480/food/" class="d-block w-100" alt="..." style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+        <img src="http://lorempixel.com/640/480/food/" class="d-block w-100" alt="..."
+          style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
       </div>
       <div class="carousel-item">
-        <img src="http://lorempixel.com/640/480/animals/" class="d-block w-100" alt="..." style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+        <img src="http://lorempixel.com/640/480/animals/" class="d-block w-100" alt="..."
+          style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #58A4B0;"></span>
-      <span class="visually-hidden" >Previous</span>
+      <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #58A4B0;"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -158,8 +166,8 @@
     <div style="background-color: #fff; height: 400px; margin-bottom: 42px;">
       <h4 style="padding: 16px;">Ofertas e Promoções</h4>
 
-      <div style="width: 100%; margin: 2em auto; padding: 0;">
-        <div ng2-carouselamos class="slides-wrapper" [items]="images" [width]="1600" [$prev]="prev" [$next]="next"
+      <div style="width: 100%; margin: 1em auto; padding: 0;">
+        <div ng2-carouselamos class="slides-wrapper" [items]="produto" [width]="1600" [$prev]="prev" [$next]="next"
           [$item]="item" style="width: 94%; margin: auto;">
         </div>
 
@@ -173,13 +181,15 @@
         <ng-template #item let-item let-i="index">
 
           <div class="slide-items" style="margin-right: 90px; margin-left: 1px;">
-            <div style="background-color: #fff; width: 210; height: 285px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
-              <img src="{{ item.name }}" style="width: 210px; height: 158px; object-fit: cover;">
+            <div
+              style="background-color: #fff; width: 210; height: 300px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
+              <img src="{{ verifyImage(item.fotos) }}" style="width: 210px; height: 158px; object-fit: cover;">
               <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
-              <div style="padding-left: 4px;">
-                <span style="font-size: 20px;">Nome do produto</span>
+              <div style="padding: 0 4px;">
+                <span style="font-size: 20px; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; -webkit-line-clamp: 2; line-height: 2.2rem;
+                  max-height: 4.4rem;">{{ item.nome }}</span>
                 <br>
-                <span style="font-size: 24px;">R$ 999,99</span>
+                <span style="font-size: 24px;">{{ transformValue(item.preco) }}</span>
                 <br>
                 <span style="font-size: 16px;">Consulte o frete</span>
               </div>
@@ -193,8 +203,8 @@
     <div style="background-color: #fff; height: 400px; margin-bottom: 42px;">
       <h4 style="padding: 16px;">Produtos em destaque</h4>
 
-      <div style="width: 100%; margin: 2em auto; padding: 0;">
-        <div ng2-carouselamos class="slides-wrapper" [items]="images2" [width]="1600" [$prev]="prev2" [$next]="next2"
+      <div style="width: 100%; margin: 1em auto; padding: 0;">
+        <div ng2-carouselamos class="slides-wrapper" [items]="produto" [width]="1600" [$prev]="prev2" [$next]="next2"
           [$item]="item2" style="width: 94%; margin: auto;">
         </div>
 
@@ -208,15 +218,16 @@
         <ng-template #item2 let-item let-i="index">
 
           <div class="slide-items" style="margin-right: 90px; margin-left: 1px;">
-            <div style="background-color: #fff; width: 210; height: 285px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
-              <img src="{{ item.name }}" style="width: 210px; height: 158px; object-fit: cover;">
+            <div
+              style="background-color: #fff; width: 210; height: 300px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
+              <img src="{{ verifyImage(item.fotos) }}" style="width: 210px; height: 158px; object-fit: cover;">
               <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
-              <div style="padding-left: 4px;">
-                <span>Nome do produto</span>
+              <div style="padding: 0 4px;">
+                <span style="font-size: 20px;">{{ item.nome }}</span>
                 <br>
-                <span>R$ 999,99</span>
+                <span style="font-size: 24px;">{{ transformValue(item.preco) }}</span>
                 <br>
-                <span>Consulte o frete</span>
+                <span style="font-size: 16px;">Consulte o frete</span>
               </div>
             </div>
           </div>
