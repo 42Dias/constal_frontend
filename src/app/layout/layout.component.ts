@@ -20,6 +20,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   role = this.authService.currentUser.tenants[0].roles[0];  
 
   private _mobileQueryListener: () => void;
+  url: string ='';
 
   constructor(
     changeDetectorRef: ChangeDetectorRef,
@@ -53,9 +54,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (!this.mobileQuery.matches) {
       this.snav.toggle();
     }   
-
-    console.log(this.role);
-    
     
   }
 

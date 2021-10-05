@@ -18,6 +18,22 @@ export class EmpresaApi {
     return response.data;
   }
 
+  static async createOrUpdate(data) {
+    const body = {
+      data,
+    };
+
+    const tenantId = AuthCurrentTenant.get();
+    
+
+    const response = await authAxios.post(
+      `/tenant/${tenantId}/empresa-perfil`,
+      body,
+    );
+
+    return response.data;
+  }
+
   static async destroyAll(ids) {
     const params = {
       ids,
