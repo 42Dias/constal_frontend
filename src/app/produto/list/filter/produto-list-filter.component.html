@@ -1,30 +1,32 @@
-<div class="filter" style="background-color: #fff;">
-  <app-filter-preview
-    [values]="form.value"
-    [fields]="fields"
-    [expanded]="expanded"
-    (click)="doToggleExpanded()"
-    (remove)="doRemove($event)"
-  ></app-filter-preview>
-  <form
-    (ngSubmit)="doFilter()"
-    [formGroup]="form"
-    #ngForm="ngForm"
-    *ngIf="form && expanded"
-  >
+<form (ngSubmit)="doFilter()" [formGroup]="form" #ngForm="ngForm" *ngIf="role == 'empresa'" style="display: flex;">
+  <div class="row">
+    <div class="col-xs-12 col-lg-6" style="height: 45px; margin-top: 0px;">
+      <mat-form-field floatLabel="always" style="height: 45px;">
+        <mat-label>Pesquisar por nome</mat-label>
+        <input matInput [formControlName]="fields.nome.name" />
+        <mat-error>
+          <app-validations [control]="form.get(fields.nome.name)" [label]="fields.nome.label"></app-validations>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <button mat-raised-button [disabled]="loading" color="primary" type="submit"
+    style="background-color: #58A4B0; width: 65px; border: none; color: #fff; font-size: 16px; margin: 8px;">
+    <mat-icon inline fontSet="fas" fontIcon="fa-search"></mat-icon>&#160;
+  </button>
+</form>
+
+<div class="filter" *ngIf="role == 'admin'" style="background-color: #fff;">
+  <app-filter-preview [values]="form.value" [fields]="fields" [expanded]="expanded" (click)="doToggleExpanded()"
+    (remove)="doRemove($event)"></app-filter-preview>
+  <form (ngSubmit)="doFilter()" [formGroup]="form" #ngForm="ngForm" *ngIf="form && expanded">
     <div class="row">
       <div class="col-xs-12 col-lg-6">
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>{{ fields.nome.label }}</mat-label>
-          <input
-            matInput
-            [formControlName]="fields.nome.name"
-          />
+          <input matInput [formControlName]="fields.nome.name" />
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.nome.name)"
-              [label]="fields.nome.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.nome.name)" [label]="fields.nome.label"></app-validations>
           </mat-error>
         </mat-form-field>
       </div>
@@ -48,15 +50,9 @@
       <div class="col-xs-12 col-lg-6">
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>{{ fields.marca.label }}</mat-label>
-          <input
-            matInput
-            [formControlName]="fields.marca.name"
-          />
+          <input matInput [formControlName]="fields.marca.name" />
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.marca.name)"
-              [label]="fields.marca.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.marca.name)" [label]="fields.marca.label"></app-validations>
           </mat-error>
         </mat-form-field>
       </div>
@@ -64,15 +60,9 @@
       <div class="col-xs-12 col-lg-6">
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>{{ fields.modelo.label }}</mat-label>
-          <input
-            matInput
-            [formControlName]="fields.modelo.name"
-          />
+          <input matInput [formControlName]="fields.modelo.name" />
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.modelo.name)"
-              [label]="fields.modelo.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.modelo.name)" [label]="fields.modelo.label"></app-validations>
           </mat-error>
         </mat-form-field>
       </div>
@@ -96,15 +86,9 @@
       <div class="col-xs-12 col-lg-6">
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>{{ fields.codigo.label }}</mat-label>
-          <input
-            matInput
-            [formControlName]="fields.codigo.name"
-          />
+          <input matInput [formControlName]="fields.codigo.name" />
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.codigo.name)"
-              [label]="fields.codigo.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.codigo.name)" [label]="fields.codigo.label"></app-validations>
           </mat-error>
         </mat-form-field>
       </div>
@@ -112,14 +96,10 @@
       <div class="col-xs-12 col-lg-6">
         <mat-form-field floatLabel="always" appearance="outline">
           <mat-label>{{ fields.preco.label }}</mat-label>
-          <app-decimal-range-input
-            [formControl]="form.get(fields.precoRange.name)"
-          ></app-decimal-range-input>
+          <app-decimal-range-input [formControl]="form.get(fields.precoRange.name)"></app-decimal-range-input>
           <mat-error>
-            <app-validations
-              [control]="form.get(fields.precoRange.name)"
-              [label]="fields.precoRange.label"
-            ></app-validations>
+            <app-validations [control]="form.get(fields.precoRange.name)" [label]="fields.precoRange.label">
+            </app-validations>
           </mat-error>
         </mat-form-field>
       </div>
@@ -199,32 +179,12 @@
     </div>
 
     <div class="filter-buttons">
-      <button
-        mat-raised-button
-        [disabled]="loading"
-        color="primary"
-        type="submit"
-      >
-        <mat-icon
-          inline
-          fontSet="fas"
-          fontIcon="fa-search"
-        ></mat-icon
-        >&#160;
+      <button mat-raised-button [disabled]="loading" color="primary" type="submit">
+        <mat-icon inline fontSet="fas" fontIcon="fa-search"></mat-icon>&#160;
         <app-i18n key="common.search"></app-i18n>
       </button>
-      <button
-        mat-flat-button
-        [disabled]="loading"
-        (click)="doReset()"
-        type="button"
-      >
-        <mat-icon
-          inline
-          fontSet="fas"
-          fontIcon="fa-undo"
-        ></mat-icon
-        >&#160;
+      <button mat-flat-button [disabled]="loading" (click)="doReset()" type="button">
+        <mat-icon inline fontSet="fas" fontIcon="fa-undo"></mat-icon>&#160;
         <app-i18n key="common.reset"></app-i18n>
       </button>
     </div>

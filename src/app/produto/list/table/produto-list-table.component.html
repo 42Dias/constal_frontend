@@ -170,26 +170,27 @@
       </div>
     </div>
   </div> -->
-  <div style="display: flex; justify-content: space-between; background-color: #fff; margin-bottom: 26px;" *ngIf="role == 'empresa'">
+  <div style="display: flex; justify-content: space-between; background-color: #fff; margin-bottom: 26px;">
     <app-produto-list-toolbar></app-produto-list-toolbar>
-    <mat-paginator [disabled]="service.loading" [pageIndex]="service.paginationPageIndex"
-    [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
-    (page)="service.doChangePagination($event)" showFirstLastButtons></mat-paginator>
+    <div style="display: flex;">
+      <app-produto-list-filter></app-produto-list-filter>
+      <mat-paginator [disabled]="service.loading" [pageIndex]="service.paginationPageIndex"
+      [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
+      (page)="service.doChangePagination($event)" showFirstLastButtons></mat-paginator>
+    </div>
   </div>
-
-  <app-produto-list-filter *ngIf="role == 'empresa'"></app-produto-list-filter>
 
   <div style="display:flex; gap: 25.5px; flex-wrap: wrap;">
     <div *ngFor="let product of service.rows"
       style="background-color: #FFFFFF; width: 318px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%); justify-content: space-between;">
       <div style="height: 250px;">
         <img
-          src="{{ presenter(product, 'fotos') }}"
+          src="{{ verifyImage(product.fotos) }}"
           style="width: 100%; height: 100%; object-fit: cover;">
       </div>
       <div style="display: flex; margin-left: 0.5vw; flex-direction: column">
-        <h4 style="margin-bottom: 2px">{{ presenter(product, 'nome') }}</h4>
-        <p style="">{{ presenter(product, 'descricao') }}</p>
+        <h4 style="margin-bottom: 2px">{{ product.nome }}</h4>
+        <p>{{ product.descricao }}</p>
         <div style="display: flex; margin-top: 0.8vh; align-items: center;">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
             style="width:15px; height:15px">
@@ -201,13 +202,13 @@
             style="width:15px; height:15px">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/FA_star.svg/1024px-FA_star.svg.png"
             style="width:15px; height:15px">
-          <p style="font-size: 14px; margin-left: 5px">({{ presenter(product, 'quantidadeAvaliacoes') }})</p>
+          <p style="font-size: 14px; margin-left: 5px">({{ product.quantidadeAvaliacoes }})</p>
         </div>
         <div
           style="display: flex; align-items: center; margin-top: 3vh; margin-bottom: 1vh; justify-content: space-between; margin-right: 1vw;">
           <div style="display: flex;">
             <p style="font-weight: 600; font-size: 24px">R$</p>
-            <p style="font-size: 22px; text-align: center;">{{ presenter(product, 'preco') }}</p>
+            <p style="font-size: 22px; text-align: center;">{{ product.preco }}</p>
           </div>
           <div style="text-align: center; display: flex; flex-direction: column;">
             <button
