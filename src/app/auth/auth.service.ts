@@ -13,6 +13,7 @@ import { tenantSubdomain } from 'src/app/tenant/tenant-subdomain';
 import { get } from 'lodash';
 import SettingsApi from 'src/app/settings/settings-api';
 import { PessoaFisicaApi } from 'src/app/pessoa-fisica/pessoa-fisica.api';
+import { EmpresaApi } from 'src/app/empresa/empresa.api';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,7 @@ export class AuthService {
     private router: Router,
     private snackbar: Snackbar,
     private errorService: ErrorService,
-  ) {}
+  ) { }
 
   lockedForCurrentPlan(permission) {
     if (!this.isSignedIn) {
@@ -54,7 +55,7 @@ export class AuthService {
     }
 
     /* console.log(this.currentUser); */
-    
+
     return new PermissionChecker(
       this.currentTenant,
       this.currentUser,
@@ -198,7 +199,7 @@ export class AuthService {
     );
   }
 
-  async doInit() {    
+  async doInit() {
     try {
       const token = AuthToken.get();
       let currentUser = null;
@@ -207,11 +208,11 @@ export class AuthService {
       if (token) {
         currentUser = await AuthApi.fetchMe();
       }
-      
+
       if (token) {
-        currentProfile = await AuthApi.findProfile(currentUser.tenants[0].roles[0]);        
+        currentProfile = await AuthApi.findProfile(currentUser.tenants[0].roles[0]);
       }
-      
+
       this.currentUser = currentUser || null;
       this.currentTenant = AuthCurrentTenant.selectAndSaveOnStorageFor(
         this.currentUser,
@@ -408,15 +409,20 @@ export class AuthService {
       AuthApi.signout();
       this.errorService.handle(error);
     }
-    
+
   }
 
-  async doUpdateProfile(data) {
-    try {      
+  async doUpdateProfile(role, data) {
+    try {
       this.loadingUpdateProfile = true;
 
-      /* await AuthApi.updateProfile(data); */
-      await PessoaFisicaApi.createOrUpdate(data);
+      if (role != 'empresa') {
+        await PessoaFisicaApi.createOrUpdate(data);
+      }
+
+      else {
+        await EmpresaApi.createOrUpdate(data);
+      }
 
       this.loadingUpdateProfile = false;
       await this.doRefreshCurrentUser();

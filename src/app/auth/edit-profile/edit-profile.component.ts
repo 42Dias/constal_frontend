@@ -109,7 +109,7 @@ export class EditProfileComponent implements OnInit {
     }
 
     const values = this.schema.cast(this.form.value);
-    return await this.authService.doUpdateProfile(values);
+    return await this.authService.doUpdateProfile(this.role, values);
   }
 
   doReset() {
