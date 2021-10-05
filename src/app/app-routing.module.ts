@@ -49,6 +49,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'gateway',
+    loadChildren: () =>
+      import('./gateway/gateway.module').then(
+        (m) => m.GatewayModule,
+      ),
+  },
+  {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then(

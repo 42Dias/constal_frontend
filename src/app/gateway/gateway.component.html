@@ -1,0 +1,41 @@
+<main>
+    <div style="margin: 4%">
+        <h4>Como você prefere pagar?</h4>
+    </div>
+    <div>
+        <div style="background-color: #fff; width: 60%; margin-left: 20vw;">
+            <mat-radio-group [formControl]="floatLabelControl">
+                <div style="padding: 2vh 2vw; display: flex; align-items: center;">
+                    <mat-radio-button value="pix" name='gateway'></mat-radio-button>
+                    <img src="../../assets/images/pix.png" alt="" style="margin-left: 2vw;">
+                    <div style="margin-left: 2vw;">
+                        <h4>Pix</h4>
+                        <p>Aprovação imediata</p>
+                    </div>
+                </div>
+                <hr>
+                <div style="padding: 1.5vh 2vw; display: flex; align-items: center;">
+                    <mat-radio-button value="credito" name='gateway'></mat-radio-button>
+                    <img src="../../assets/images/debit-card.png" alt="" style="width: 50px; margin-left: 2vw;">
+                    <div style="margin-left: 2vw;">
+                        <h4>Cartão de crédito</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <hr>
+                <div style="padding: 2vh 2vw; display: flex; align-items: center;">
+                    <mat-radio-button value="boleto" name='gateway'></mat-radio-button>
+                    <img src="../../assets/images/ticket.png" alt="" style="width: 50px; margin-left: 2vw;">
+                    <div style="margin-left: 2vw;">
+                        <h4>Boleto</h4>
+                        <p>Aprovado em 1 ou 2 dias úteis após pagamento</p>
+                    </div>
+                </div>
+            </mat-radio-group>
+        </div>
+        <div style="width: 60%; margin-left: 20vw; display: flex; justify-content: flex-end; margin-top: 2vh;">
+            <button
+                style="background-color: #58A4B0; width: 140px; height: 40px; border: none; color: #fff; font-size: 16px; margin: 8px;">Continuar</button>
+        </div>
+    </div>
+</main>

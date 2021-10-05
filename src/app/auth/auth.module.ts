@@ -10,7 +10,7 @@ import { TenantNewFormComponent } from 'src/app/auth/tenant/tenant-new-form.comp
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  imports: [SharedModule, AuthRoutingModule, LayoutModule, MatInputModule],
+  imports: [SharedModule,],
   declarations: [
     ...routedComponents,
     TenantSelectFormComponent,
