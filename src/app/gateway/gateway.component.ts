@@ -11,7 +11,7 @@ export class GatewayComponent implements OnInit {
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder,) {
     this.options = fb.group({
       hideRequired: this.hideRequiredControl,
       floatLabel: this.floatLabelControl,
