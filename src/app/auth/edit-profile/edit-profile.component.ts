@@ -41,6 +41,23 @@ export class EditProfileComponent implements OnInit {
   cep: any;
   currentProfile: any;
 
+  //ngModels
+  loginModel: any;
+  senhaModel:any;
+  nomeModel:any;
+  cpfModel:any;
+  telefoneModel:any;
+  emailModel:any;
+  logradouroModel:any;
+  cepModel:any;
+  numeroModel:any;
+  bairroModel:any;
+  cidadeModel:any;
+  estadoModel:any;
+  complementoModel:any;
+  razaoSocialModel: any;
+  cnpjModel:any;
+
   mes: Mes[] = [
     { value: 'janeiro-0', viewValue: '01' },
     { value: 'fevereiro-1', viewValue: '02' },
@@ -79,8 +96,11 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    console.log(this.form)
     this.role = this.authService.currentUser.tenants[0].roles[0];
     this.currentProfile = this.authService.currentProfile;
+    console.log(this.currentProfile)
+    
 
     this.buildSchema();
     this.buildForm();
@@ -88,6 +108,7 @@ export class EditProfileComponent implements OnInit {
     this.camposEnd = false;
 
     this.setData();
+    // console.log(this.form)
 
   }
 
@@ -106,6 +127,62 @@ export class EditProfileComponent implements OnInit {
   async doSave() {
     if (!this.form.valid) {
       return;
+    }
+
+    if (this.role != 'empresa') {
+      this.form.value.senha = this.senhaModel
+      this.form.value.nome = this.nomeModel
+      this.form.value.cpf = this.cpfModel
+      this.form.value.telefone = this.telefoneModel
+      this.form.value.email = this.emailModel
+      this.form.value.logradouro = this.logradouroModel
+      this.form.value.cep = this.cepModel
+      this.form.value.numero = this.numeroModel
+      this.form.value.bairro = this.bairroModel
+      this.form.value.cidade = this.cidadeModel
+      this.form.value.estado = this.estadoModel
+      this.form.value.complemento = this.complementoModel
+
+
+      this.currentProfile.nome = this.nomeModel;
+      this.currentProfile.cpf = this.cpfModel;
+      this.currentProfile.telefone = this.telefoneModel;
+      this.currentProfile.email = this.emailModel;
+      this.currentProfile.logradouro = this.logradouroModel;
+      this.currentProfile.cep = this.cepModel;
+      this.currentProfile.numero = this.numeroModel;
+      this.currentProfile.bairro = this.bairroModel;
+      this.currentProfile.cidade = this.cidadeModel;
+      this.currentProfile.estado = this.estadoModel;
+      this.currentProfile.complemento = this.complementoModel;
+    }
+
+    if (this.role == 'empresa') {
+      this.form.value.senha = this.senhaModel
+      this.form.value.razaoSocial = this.razaoSocialModel
+      this.form.value.cnpj = this.cnpjModel
+      this.form.value.telefone = this.telefoneModel
+      this.form.value.email = this.emailModel
+      this.form.value.logradouro = this.logradouroModel
+      this.form.value.cep = this.cepModel
+      this.form.value.numero = this.numeroModel
+      this.form.value.bairro = this.bairroModel
+      this.form.value.cidade = this.cidadeModel
+      this.form.value.estado = this.estadoModel
+      this.form.value.complemento = this.complementoModel
+
+
+      this.currentProfile.razaoSocial = this.razaoSocialModel;
+      this.currentProfile.cnpj = this.cnpjModel;
+      this.currentProfile.telefone = this.telefoneModel;
+      this.currentProfile.email = this.emailModel;
+      this.currentProfile.logradouro = this.logradouroModel;
+      this.currentProfile.cep = this.cepModel;
+      this.currentProfile.numero = this.numeroModel;
+      this.currentProfile.bairro = this.bairroModel;
+      this.currentProfile.cidade = this.cidadeModel;
+      this.currentProfile.estado = this.estadoModel;
+      this.currentProfile.complemento = this.complementoModel;
     }
 
     const values = this.schema.cast(this.form.value);
@@ -152,6 +229,35 @@ export class EditProfileComponent implements OnInit {
     this.form = this.schema.buildForm(
       this.authService.currentUser,
     );
+
+    if (this.role != 'empresa') {
+      this.senhaModel = this.form.value.senha 
+      this.nomeModel = this.currentProfile.nome
+      this.cpfModel = this.currentProfile.cpf
+      this.telefoneModel = this.currentProfile.telefone
+      this.emailModel = this.currentProfile.email
+      this.logradouroModel = this.currentProfile.logradouro
+      this.cepModel = this.currentProfile.cep
+      this.numeroModel = this.currentProfile.numero
+      this.bairroModel = this.currentProfile.bairro
+      this.cidadeModel = this.currentProfile.cidade 
+      this.estadoModel = this.currentProfile.estado 
+      this.complementoModel = this.currentProfile.complemento
+
+    } else {
+      this.senhaModel = this.form.value.senha 
+      this.razaoSocialModel = this.form.value.razaoSocial 
+      this.cnpjModel = this.form.value.cnpj 
+      this.telefoneModel = this.form.value.telefone 
+      this.emailModel = this.form.value.email 
+      this.logradouroModel = this.form.value.logradouro 
+      this.cepModel = this.form.value.cep 
+      this.numeroModel = this.form.value.numero 
+      this.bairroModel = this.form.value.bairro 
+      this.cidadeModel = this.form.value.cidade 
+      this.estadoModel = this.form.value.estado 
+      this.complementoModel = this.form.value.complemento 
+    }
   }
 
   get currentUser() {

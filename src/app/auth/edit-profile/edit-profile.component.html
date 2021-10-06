@@ -57,13 +57,13 @@
     <h2 style="margin-left: 5vw; margin-top: 5vh;">Meus dados</h2>
     <h6 style="margin-left: 25vw; margin-top: 5vh; margin-bottom: 3vh;">Dados da conta</h6>
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <mat-form-field class="example-full-width" appearance="fill">
+      <!-- <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Login</mat-label>
-        <input matInput>
-      </mat-form-field>
+        <input matInput [(ngModel)]="loginModel" [ngModelOptions]="{standalone: true}">
+      </mat-form-field> -->
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Senha</mat-label>
-        <input matInput type="password">
+        <input matInput type="password" [(ngModel)]="senhaModel" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
     </div>
 
@@ -72,19 +72,23 @@
       <div style="display: flex; flex-direction: column; align-items: center;">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nome</mat-label>
-          <input matInput [formControlName]="fields.nome.name">
+          <input matInput [formControlName]="fields.nome.name"
+          [(ngModel)]="nomeModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>CPF</mat-label>
-          <input matInput type="number" [formControlName]="fields.cpf.name">
+          <input matInput type="number" [formControlName]="fields.cpf.name"
+          [(ngModel)]="cpfModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Telefone</mat-label>
-          <input matInput type="number" [formControlName]="fields.telefone.name">
+          <input matInput type="number" [formControlName]="fields.telefone.name"
+          [(ngModel)]="telefoneModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email para contato</mat-label>
-          <input matInput type="email">
+          <input matInput type="email"
+          [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">          
         </mat-form-field>
       </div>
       <div>
@@ -139,31 +143,38 @@
                 <div style="display: flex; flex-direction: column;">
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Logradouro</mat-label>
-                    <input matInput [formControlName]="fields.logradouro.name">
+                    <input matInput [formControlName]="fields.logradouro.name"
+                    [(ngModel)]="logradouroModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>CEP</mat-label>
-                    <input matInput type="number" [formControlName]="fields.cep.name">
+                    <input matInput type="number" [formControlName]="fields.cep.name"
+                    [(ngModel)]="cepModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Número</mat-label>
-                    <input matInput type="number" [formControlName]="fields.numero.name">
+                    <input matInput type="number" [formControlName]="fields.numero.name"
+                    [(ngModel)]="numeroModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field appearance="fill" style="width: auto;">
                     <mat-label>Bairro</mat-label>
-                    <input matInput [formControlName]="fields.bairro.name">
+                    <input matInput [formControlName]="fields.bairro.name"
+                    [(ngModel)]="bairroModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Cidade</mat-label>
-                    <input matInput [formControlName]="fields.cidade.name">
+                    <input matInput [formControlName]="fields.cidade.name"
+                    [(ngModel)]="cidadeModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Estado</mat-label>
-                    <input matInput [formControlName]="fields.estado.name">
+                    <input matInput [formControlName]="fields.estado.name"
+                    [(ngModel)]="estadoModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Complemento</mat-label>
-                    <input matInput [formControlName]="fields.cpf.name">
+                    <input matInput [formControlName]="fields.complemento.name"
+                    [(ngModel)]="complementoModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
                 <!-- <div class="col-12" style="display: flex;">
@@ -231,19 +242,23 @@
       <div style="display: flex; flex-direction: column; align-items: center;">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Razão Social</mat-label>
-          <input matInput [formControlName]="empresaFields.razaoSocial.name">
+          <input matInput [formControlName]="empresaFields.razaoSocial.name"
+          [(ngModel)]="razaoSocialModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>CPF</mat-label>
-          <input matInput type="number" [formControlName]="empresaFields.cpf.name">
+          <mat-label>CNPJ</mat-label>
+          <input matInput type="number" [formControlName]="empresaFields.cnpj.name"
+          [(ngModel)]="cnpjModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Telefone</mat-label>
-          <input matInput type="number" [formControlName]="empresaFields.telefone.name">
+          <input matInput type="number" [formControlName]="empresaFields.telefone.name"
+          [(ngModel)]="telefoneModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email para contato</mat-label>
-          <input matInput type="email">
+          <input matInput type="email" 
+          [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
       <div>
@@ -376,18 +391,14 @@
                 </div>
               </div>
             </div> -->
-              <div style="width: 100%; display: flex; justify-content: center;">
-                <button *ngIf="camposEnd == true"
-                  style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
-                  (click)="doSave()">Salvar</button>
-              </div>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
   </form>
-  <div style="margin-top: 5vh; display: flex; margin-bottom: 2vh;">
+  <!-- <div style="margin-top: 5vh; display: flex; margin-bottom: 2vh;">
     <h6 style="margin-left: 25vw; padding-top: 0.5vh;">Cartões</h6>
     <button *ngIf="campos == false"
       style="background-color: transparent; border: none; color: #4578C5; margin-left: 1vw;"
@@ -471,5 +482,11 @@
         style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
         (click)="habilitaCampos()">Salvar</button>
     </div>
+  </div> -->
+
+  <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 20px;">
+    <button
+      style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
+      (click)="doSave()">Salvar</button>
   </div>
 </div>
