@@ -219,6 +219,9 @@ export class AuthService {
       );
       this.currentProfile = currentProfile || null;
       this.initializedSubject.next(true);
+
+      await this.checkProfile();
+
     } catch (error) {
       AuthApi.signout();
       this.router.navigate(['/auth/signin']);
@@ -314,6 +317,9 @@ export class AuthService {
       this.errorMessage = null;
       this.loading = false;
       this.router.navigate(['']);
+
+      await this.checkProfile();
+
     } catch (error) {
       await AuthApi.signout();
 
@@ -356,6 +362,9 @@ export class AuthService {
       this.errorMessage = null;
       this.loading = false;
       this.router.navigate(['']);
+
+      await this.checkProfile();
+
     } catch (error) {
       await AuthApi.signout();
 
@@ -405,6 +414,9 @@ export class AuthService {
         this.currentUser = null;
         this.currentTenant = null;
       }
+
+      await this.checkProfile();
+
     } catch (error) {
       AuthApi.signout();
       this.errorService.handle(error);
@@ -460,5 +472,12 @@ export class AuthService {
     await this.doRefreshCurrentUser();
     SettingsApi.applyThemeFromTenant();
     this.router.navigate(['']);
+  }
+
+  // se não tiver perfil faz navigate para cadastrar
+  async checkProfile() {
+    if (this.currentUser.hasProfile == false) {
+      this.router.navigate(['/auth/profile']);
+    }
   }
 }
