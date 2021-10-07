@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -22,10 +23,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
   url: string ='';
 
+  input: any;
+
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private authService: AuthService,
+    private router: Router,
   ) {
     
     
@@ -55,6 +59,15 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.snav.toggle();
     }   
     
+  }
+
+  search() {
+    /* const input = <HTMLInputElement>document.getElementById('input-search') */
+    if (this.input === undefined){
+      this.router.navigate([`/produto`]);
+    } else {
+      window.location.href = `/produto?filter%5Bnome%5D=${this.input}`;
+    }
   }
 
   ngOnDestroy(): void {

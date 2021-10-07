@@ -4,6 +4,7 @@ import produtoExporterFields from 'src/app/produto/list/produto-exporter-fields'
 import { Exporter } from 'src/app/shared/exporter/exporter';
 import { ErrorService } from 'src/app/shared/error/error.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { AuthService } from 'src/app/auth/auth.service';
 
 const INITIAL_PAGE_SIZE = 10;
 
@@ -11,6 +12,7 @@ const INITIAL_PAGE_SIZE = 10;
   providedIn: 'root',
 })
 export class ProdutoListService {
+  role: any;
   rows = [];
   count = 0;
   loading = false;
@@ -23,6 +25,7 @@ export class ProdutoListService {
 
   constructor(
     private errorService: ErrorService,
+    private authService: AuthService,
   ) { }
 
   get hasRows() {
@@ -162,6 +165,22 @@ export class ProdutoListService {
 
   async doFetch(filter?, keepPagination = false) {
     try {
+      this.role = this.authService.currentUser.tenants[0].roles[0];
+      let filterRouter: any = window.location.search;
+
+      if (this.role == 'pessoa') {
+        filterRouter = filterRouter.split('%5B')
+        filterRouter = filterRouter[1].split('%5D')
+        
+        if (filterRouter[0] == 'nome') {
+          filterRouter = filterRouter[1].split('=')
+          filter.nome = filterRouter[1]
+        } else if (filterRouter[0] == 'categoria') {
+          filterRouter = filterRouter[1].split('=')
+          filter.categoria = filterRouter[1]
+        }
+      }
+
       this.loading = true;
       this.rows = [];
       this.count = 0;
@@ -180,6 +199,7 @@ export class ProdutoListService {
 
       this.rows = response.rows;
       this.count = response.count;
+
       this.loading = false;
     } catch (error) {
       this.errorService.handle(error);
