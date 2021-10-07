@@ -10,47 +10,17 @@ import { i18n } from 'src/i18n';
 })
 export class DashboardComponent implements OnInit {
 
-  produto: any;
+  produto: any = [];
 
   constructor(private authService: AuthService,
-  ) {
-    /* this.images = [
-      { name: 'http://lorempixel.com/640/480/animals/' },
-      { name: 'https://www.jasminealimentos.com/wp-content/uploads/2017/09/tipos-de-frutas-1-860x485.jpg' },
-      { name: 'http://lorempixel.com/640/480/business/' },
-      { name: 'http://lorempixel.com/640/480/cats/' },
-      { name: 'http://lorempixel.com/640/480/city/' },
-      { name: 'http://lorempixel.com/640/480/food/' },
-      { name: 'http://lorempixel.com/640/480/nightlife/' },
-      { name: 'http://lorempixel.com/640/480/fashion/' },
-      { name: 'http://lorempixel.com/640/480/people/' },
-      { name: 'http://lorempixel.com/640/480/nature/' },
-      { name: 'http://lorempixel.com/640/480/sports/' },
-      { name: 'http://lorempixel.com/640/480/transport/' },
-    ] */
-    this.images2 = [
-      /* { name: 'http://lorempixel.com/640/480/animals/' },
-      { name: 'http://lorempixel.com/640/480/abstract/' },
-      { name: 'http://lorempixel.com/640/480/business/' },
-      { name: 'http://lorempixel.com/640/480/cats/' },
-      { name: 'http://lorempixel.com/640/480/city/' },
-      { name: 'http://lorempixel.com/640/480/food/' },
-      { name: 'http://lorempixel.com/640/480/nightlife/' },
-      { name: 'http://lorempixel.com/640/480/fashion/' },
-      { name: 'http://lorempixel.com/640/480/people/' },
-      { name: 'http://lorempixel.com/640/480/nature/' },
-      { name: 'http://lorempixel.com/640/480/sports/' },
-      { name: 'http://lorempixel.com/640/480/transport/' }, */
-    ]
-  }
+  ) {}
 
   async ngOnInit() {
-    this.produto = await DashboardComponent.list()
+    this.produto = await DashboardComponent.listProduto()
+    await DashboardComponent.listCategoria()
   }
-  images: Array<any> = []
-  images2: Array<any> = []
 
-  static async list() {
+  static async listProduto() {
 
     const tenantId = AuthCurrentTenant.get();
 
@@ -58,7 +28,21 @@ export class DashboardComponent implements OnInit {
       `/tenant/${tenantId}/produto?limit=15`,
     );
     
+    return response.data.rows;
+  }
+
+  static async listCategoria() {
+
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/categoria`,
+    );
+
     console.log(response.data.rows);
+
+    // /produto?filter%5Bcategoria%5D=25970959-129d-4b83-8a2a-6f050f27da0e
+    
     
     return response.data.rows;
   }
@@ -81,4 +65,5 @@ export class DashboardComponent implements OnInit {
       }))
     }
   }
+
 }

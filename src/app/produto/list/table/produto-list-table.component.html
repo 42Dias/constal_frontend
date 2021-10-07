@@ -175,8 +175,8 @@
     <div style="display: flex;">
       <app-produto-list-filter></app-produto-list-filter>
       <mat-paginator [disabled]="service.loading" [pageIndex]="service.paginationPageIndex"
-      [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
-      (page)="service.doChangePagination($event)" showFirstLastButtons></mat-paginator>
+        [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
+        (page)="service.doChangePagination($event)" showFirstLastButtons></mat-paginator>
     </div>
   </div>
 
@@ -184,9 +184,7 @@
     <div *ngFor="let product of service.rows"
       style="background-color: #FFFFFF; width: 318px; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%); justify-content: space-between;">
       <div style="height: 250px;">
-        <img
-          src="{{ verifyImage(product.fotos) }}"
-          style="width: 100%; height: 100%; object-fit: cover;">
+        <img src="{{ verifyImage(product.fotos) }}" style="width: 100%; height: 100%; object-fit: cover;">
       </div>
       <div style="display: flex; margin-left: 0.5vw; flex-direction: column">
         <h4 style="margin-bottom: 2px">{{ product.nome }}</h4>
@@ -211,10 +209,167 @@
             <p style="font-size: 22px; text-align: center;">{{ product.preco }}</p>
           </div>
           <div style="text-align: center; display: flex; flex-direction: column;">
-            <button
-              style="color: #4F75CC; border: none; background-color: transparent; font-size: 15px;" [routerLink]="['/produto', product.id, 'edit']">Alterar</button>
-            <button
-              style="color: #4F75CC; border: none; background-color: transparent; font-size: 15px;" (click)="doDestroy(product.id)">Remover</button>
+            <button style="color: #4F75CC; border: none; background-color: transparent; font-size: 15px;"
+              [routerLink]="['/produto', product.id, 'edit']">Alterar</button>
+            <button style="color: #4F75CC; border: none; background-color: transparent; font-size: 15px;"
+              (click)="doDestroy(product.id)">Remover</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="role == 'pessoa'">
+  <app-produto-list-filter></app-produto-list-filter>
+
+  <div style="height: 100%;">
+    <!-- Carrossel  -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1" style="background-color: #58A4B0;"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"
+          style="background-color: #58A4B0;"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"
+          style="background-color: #58A4B0;"></button>
+      </div>
+      <div class="carousel-inner" style="height: 500px;">
+        <div class="carousel-item active">
+          <img src="http://lorempixel.com/640/480/cats?auto=yes" class="d-block w-100" alt="..."
+            style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+        </div>
+        <div class="carousel-item">
+          <img src="http://lorempixel.com/640/480/food?auto=yes" class="d-block w-100" alt="..."
+            style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+        </div>
+        <div class="carousel-item">
+          <img src="http://lorempixel.com/640/480/animals?auto=yes" class="d-block w-100" alt="..."
+            style="object-fit: scale-down; background-color: #fff; width: 100%; height: 500px;">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #58A4B0;"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next" id="teste1">
+        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #58A4B0;"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div style="margin: 42px 0; display: flex; justify-content: center;">
+      <div class="menu-filter">
+        <div
+          style="width: 100%; background-color: #fff; height: 50px; display: flex; align-items: center; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 0 14px; justify-content: space-between;">
+          <span style="font-size: 18px;">Categoria</span>
+          <button data-bs-toggle="collapse" data-bs-target="#categoria" aria-expanded="false" aria-controls="categoria"
+            style="background: none; border: none;" (click)="tradeView('categoria')">
+            <img src="assets/images/arrow-up.png" alt="" *ngIf="categoriaOn == false">
+            <img src="assets/images/arrow-down.png" alt="" *ngIf="categoriaOn == true">
+          </button>
+        </div>
+
+        <div class="collapse" id="categoria">
+          <div
+            style="width: 100%; background-color: #fff; height: 250px; display: flex; align-items: center; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 14px; margin-top: 10px; flex-direction: column;">
+            <div style="display: flex;">
+              <input type="text" placeholder="Pesquise por..."
+                style="width: 100%; height: 3vh; background-color: #fff; align-self: center; outline: none; color: #000; font-size: 18px; border: solid 0.1px #000;">
+              <div style="align-self: center;">
+                <button
+                  style="height: 3vh; border: none; background-color: #fff; width: 2.5vw; border: solid 0.1px #000;"><img
+                    src="../../../assets/images/lupa-preta.png"></button>
+              </div>
+            </div>
+            <div style="overflow: auto; width: 100%; margin-top: 1rem;">
+              <div *ngFor="let cat of categorias">
+                <p style="color: #3C62B9; cursor: pointer;">{{cat.nome}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="width: 100%; background-color: #fff; height: 50px; display: flex; align-items: center; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 0 14px; margin: 10px 0; justify-content: space-between;">
+          <span style="font-size: 18px;">Cor</span>
+          <button data-bs-toggle="collapse" data-bs-target="#cor" aria-expanded="false" aria-controls="cor"
+            style="background: none; border: none;" (click)="tradeView('cor')">
+            <img src="assets/images/arrow-up.png" alt="" *ngIf="corOn == false">
+            <img src="assets/images/arrow-down.png" alt="" *ngIf="corOn == true">
+          </button>
+        </div>
+
+        <div class="collapse" id="cor">
+          <div
+            style="width: 100%; background-color: #fff; height: 250px; display: flex; align-items: center; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 14px; margin: 10px 0; flex-direction: column;">
+            <div style="display: flex;">
+              <input type="text" placeholder="Pesquise por..."
+                style="width: 100%; height: 3vh; background-color: #fff; align-self: center; outline: none; color: #000; font-size: 18px; border: solid 0.1px #000;">
+              <div style="align-self: center;">
+                <button
+                  style="height: 3vh; border: none; background-color: #fff; width: 2.5vw; border: solid 0.1px #000;"><img
+                    src="../../../assets/images/lupa-preta.png"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="width: 100%; background-color: #fff; height: 50px; display: flex; align-items: center; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 0 14px; justify-content: space-between;">
+          <span style="font-size: 18px;">Marca</span>
+          <button data-bs-toggle="collapse" data-bs-target="#marca" aria-expanded="false" aria-controls="marca"
+            style="background: none; border: none;" (click)="tradeView('marca')">
+            <img src="assets/images/arrow-up.png" alt="" *ngIf="marcaOn == false">
+            <img src="assets/images/arrow-down.png" alt="" *ngIf="marcaOn == true">
+          </button>
+        </div>
+
+        <div class="collapse" id="marca">
+          <div
+            style="width: 100%; background-color: #fff; height: 250px; display: flex; align-items: center; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 14px; margin-top: 10px; flex-direction: column;">
+            <div style="display: flex;">
+              <input type="text" placeholder="Pesquise por..."
+                style="width: 100%; height: 3vh; background-color: #fff; align-self: center; outline: none; color: #000; font-size: 18px; border: solid 0.1px #000;">
+              <div style="align-self: center;">
+                <button
+                  style="height: 3vh; border: none; background-color: #fff; width: 2.5vw; border: solid 0.1px #000;"><img
+                    src="../../../assets/images/lupa-preta.png"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-list">
+        <div style="width: 100%; background-color: #fff; height: 50px; display: flex; align-items: center; 
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); padding: 0 14px; justify-content: space-between;">
+          <span style="font-size: 18px;">Recomendados</span>
+          <mat-paginator [disabled]="service.loading" [pageIndex]="service.paginationPageIndex"
+            [pageSize]="service.paginationPageSize" [pageSizeOptions]="[10, 20, 30, 40]" [length]="service.count"
+            (page)="service.doChangePagination($event)" showFirstLastButtons style="max-height: 50px;"></mat-paginator>
+        </div>
+
+        <div style="margin: 10px 0; width: 100%; display: flex; flex-wrap: wrap;">
+          <div style="padding: 0 4px 8px;" *ngFor="let product of service.rows">
+            <div
+              style="height: 330px; width: 241px; background-color: #fff; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column;">
+              <img src="{{verifyImage(product.fotos)}}" alt=""
+                style="width: 222px; height: 144px; object-fit: cover; margin-top: 10px; align-self: center; cursor: pointer;"
+                [routerLink]="['/produto', product.id]">
+              <div
+                style="margin: 10px 10px; height: 156px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; flex-direction: column;">
+                  <span style="font-size: 18px; cursor: pointer;"
+                    [routerLink]="['/produto', product.id]">{{product.nome}}</span>
+                  <span style="font-size: 12px; ">{{product.descricao}}</span>
+                </div>
+                <span style="font-size: 24px; cursor: pointer;" [routerLink]="['/produto', product.id]">R$
+                  {{product.preco}} <span style="font-size: 16px;">UN</span></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

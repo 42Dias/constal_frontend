@@ -1,0 +1,43 @@
+.content-list {
+  min-width: 1494px;
+  max-width: 1494px;
+  margin: 0 12px;
+}
+
+.menu-filter {
+  min-width: 300px;
+  max-width: 300px;
+  margin: 0 12px;
+} 
+
+@media (max-width: 1870px) {
+  .content-list {
+    min-width: 1245px;
+    max-width: 1245px;
+    margin: 0 12px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .content-list {
+    min-width: 996px;
+    max-width: 996px;
+    margin: 0 12px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .content-list {
+    min-width: 747px;
+    max-width: 747px;
+    margin: 0 12px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .content-list {
+    min-width: 498px;
+    max-width: 498px;
+    margin: 0 12px;
+  }
+}

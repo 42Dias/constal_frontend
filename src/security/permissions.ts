@@ -392,12 +392,12 @@ export class Permissions {
       },
       categoriaRead: {
         id: 'categoriaRead',
-        allowedRoles: [roles.admin, roles.empresa],
+        allowedRoles: [roles.admin, roles.empresa, roles.pessoa],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
       categoriaAutocomplete: {
         id: 'categoriaAutocomplete',
-        allowedRoles: [roles.admin, roles.empresa],
+        allowedRoles: [roles.admin, roles.empresa, roles.pessoa],
         allowedPlans: [plans.free, plans.growth, plans.enterprise],
       },
     };

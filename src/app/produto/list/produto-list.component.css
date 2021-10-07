@@ -7,6 +7,13 @@
   box-shadow: none;
 }
 
+.to-person {
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
 @media (min-width: 1440px) {
   .to-company {
     max-width: 1398px;

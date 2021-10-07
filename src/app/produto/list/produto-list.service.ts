@@ -23,7 +23,7 @@ export class ProdutoListService {
 
   constructor(
     private errorService: ErrorService,
-  ) {}
+  ) { }
 
   get hasRows() {
     return this.count > 0;
@@ -153,9 +153,9 @@ export class ProdutoListService {
   doChangeSort(event?) {
     this.sorter = event
       ? {
-          columnKey: event.active,
-          order: event.direction,
-        }
+        columnKey: event.active,
+        order: event.direction,
+      }
       : {};
     this.doFetch(this.filter, true);
   }

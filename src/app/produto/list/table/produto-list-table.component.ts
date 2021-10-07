@@ -6,13 +6,20 @@ import { ConfirmService } from 'src/app/shared/confirm/confirm.service';
 import { ProdutoDestroyService } from 'src/app/produto/destroy/produto-destroy.service';
 import { i18n } from 'src/i18n';
 import { AuthService } from 'src/app/auth/auth.service';
+import AuthCurrentTenant from 'src/app/auth/auth-current-tenant';
+import authAxios from 'src/app/shared/axios/auth-axios';
 
 @Component({
   selector: 'app-produto-list-table',
   templateUrl: './produto-list-table.component.html',
+  styleUrls: ['./produto-list-table.component.css']
 })
 export class ProdutoListTableComponent {
   role: any;
+  categoriaOn: boolean = false;
+  corOn: boolean = false;
+  marcaOn: boolean = false;
+  categorias: any;
 
   constructor(
     public service: ProdutoListService,
@@ -22,8 +29,9 @@ export class ProdutoListTableComponent {
     private authService: AuthService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.role = this.authService.currentUser.tenants[0].roles[0];
+    this.categorias = await ProdutoListTableComponent.listCategoria();
   }
 
   presenter(row, fieldName) {
@@ -36,6 +44,41 @@ export class ProdutoListTableComponent {
     } else {
       return 'assets/images/noImage.png'
     }
+  }
+
+  tradeView(param) {
+    if (param == 'categoria') {
+      if (this.categoriaOn == false) {
+        this.categoriaOn = true
+      } else {
+        this.categoriaOn = false
+      }
+    } else if ( param == 'cor') {
+      if (this.corOn == false) {
+        this.corOn = true
+      } else {
+        this.corOn = false
+      }
+    } else if (param == 'marca') {
+      if (this.marcaOn == false) {
+        this.marcaOn = true
+      } else {
+        this.marcaOn = false
+      }
+    }
+  }
+
+  static async listCategoria() {
+
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/categoria`,
+    );
+
+    // /produto?filter%5Bcategoria%5D=25970959-129d-4b83-8a2a-6f050f27da0e
+    
+    return response.data.rows;
   }
 
   i18n(key) {

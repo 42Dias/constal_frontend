@@ -1,6 +1,6 @@
 <!-- <app-breadcrumb [items]="breadcrumb"></app-breadcrumb> -->
 
-<div class="app-content-page" [ngClass]="{'to-admin': role == 'admin', 'to-company': role == 'empresa'}">
+<div class="app-content-page" [ngClass]="{'to-admin': role == 'admin', 'to-company': role == 'empresa', 'to-person': role == 'pessoa'}">
   <h1 class="app-content-title" *ngIf="role == 'admin'">
     <app-i18n key="entities.produto.list.title"></app-i18n>
   </h1>
