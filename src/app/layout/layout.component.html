@@ -40,10 +40,10 @@
         style="background-color: transparent; border: none; height: 3vh; align-self: center;">
         <option value="Categorias" selected>Categorias</option>
       </select>
-      <input type="text" placeholder="Pesquise por..."
+      <input type="text" placeholder="Pesquise por..." [(ngModel)]="input"
         style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
       <div style="align-self: center; margin-right: 3vw">
-        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;"><img
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;" (click)="search()"><img
             src="../../../assets/images/lupabranca.svg"></button>
       </div>
       <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
@@ -118,10 +118,10 @@
         style="background-color: transparent; border: none; height: 3vh; align-self: center;">
         <option value="Categorias" selected>Categorias</option>
       </select>
-      <input type="text" placeholder="Pesquise por..."
+      <input type="text" placeholder="Pesquise por..." id="input-search"
         style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
       <div style="align-self: center; margin-right: 3vw">
-        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;"><img
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;" (click)="search()"><img
             src="../../../assets/images/lupabranca.svg"></button>
       </div>
       <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
