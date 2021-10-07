@@ -2,7 +2,7 @@
     <div style="display:flex; padding-top: 1vh; padding-bottom: 2vh;">
         <div style="margin-left: 4vw">
             <a type="button" style="color: black" (click)="pendente()">
-                <h4 style="font-weight: 600;">Pendentes (x)</h4>
+                <h4 [ngClass]="{'statusTitle' : negrito=='pendentes'}">Pendentes (x)</h4>
             </a>
         </div>
         <div style="padding: 0.3%; margin: 0 1vw;">
@@ -10,7 +10,7 @@
         </div>
         <div>
             <a type="button" style="color: black; text-decoration:none" (click)="confirmado()">
-                <h4 style="font-weight: 400;">Confirmadas (x)</h4>
+                <h4 [ngClass]="{'statusTitle' : negrito=='confirmadas'}">Confirmadas (x)</h4>
             </a>
         </div>
         <div style="padding: 0.3%; margin: 0 1vw;">
@@ -18,7 +18,7 @@
         </div>
         <div>
             <a type="button" style="color: black; text-decoration:none" (click)="devolvida()">
-                <h4 style="font-weight: 400;">Devolvidos (x)</h4>
+                <h4 [ngClass]="{'statusTitle' : negrito=='devolvidas'}">Devolvidos (x)</h4>
             </a>
         </div>
     </div>
@@ -38,11 +38,11 @@
                 </div>
                 <div style="display:flex;">
                     <p style="margin-right: 1vw">Endereço para envio:</p>
-                    <p>Rua, N, Bairro</p>
+                    <p>{{option.compradorUser.pessoaFisica[0].logradouro}}, {{option.compradorUser.pessoaFisica[0].numero}} - {{option.compradorUser.pessoaFisica[0].bairro}}</p>
                 </div>
                 <div style="display:flex;">
                     <p style="margin-right: 1vw">Cidade/Estado:</p>
-                    <p>Cidade - XX</p>
+                    <p>{{option.compradorUser.pessoaFisica[0].cidade}} - {{option.compradorUser.pessoaFisica[0].estado}}</p>
                 </div>
             </div>
             <div style="display:flex; flex-direction: column;">

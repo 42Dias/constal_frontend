@@ -15,12 +15,12 @@ export class VendasComponent implements OnInit {
   status = "pendente";
   currentProfile:any;
 
+  negrito = "pendentes"
+
   constructor(private authService: AuthService) { }
 
   async ngOnInit(){
     await this.getVendas()
-    this.currentProfile = this.vendas[0].compradorUser.id;
-    console.log(this.currentProfile)
   }
 
   async getVendas() {
@@ -43,18 +43,21 @@ export class VendasComponent implements OnInit {
   async confirmado(){
     this.status = "confirmado";
     await this.getVendas()
+    this.negrito = "confirmadas"
     console.log(this.vendas)
   }
 
   async devolvida(){
     this.status = "devolvido";
     await this.getVendas()
+    this.negrito = "devolvidas"
     console.log(this.vendas)
   }
 
   async pendente(){
     this.status = "pendente";
     await this.getVendas()
+    this.negrito = "pendentes"
     console.log(this.vendas)
   }
 }
