@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProdutoModel } from 'src/app/produto/produto-model';
 import { ProdutoViewService } from 'src/app/produto/view/produto-view.service';
 import { i18n } from 'src/i18n';
 import { AuthService } from 'src/app/auth/auth.service';
+import AuthCurrentTenant from 'src/app/auth/auth-current-tenant';
+import authAxios from 'src/app/shared/axios/auth-axios';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-produto-view',
@@ -21,17 +24,25 @@ export class ProdutoViewComponent implements OnInit {
   fotos: any;
   noImage: any;
   multi: any = 0;
+  produto: any;
 
   constructor(
     private service: ProdutoViewService,
     private route: ActivatedRoute,
     private authService: AuthService,
+    private router: Router,
+    private location: Location,
   ) {}
+
+  
 
   async ngOnInit() {
     await this.service.doFind(
       this.route.snapshot.paramMap.get('id'),
     );
+    this.produto = await ProdutoViewComponent.list()
+    console.log(this.produto);
+    
     this.presente = this.presenter(this.record, 'preco');
     this.preco = this.presenter(this.record, 'preco');
     this.marca = this.presenter(this.record, 'marca');
@@ -39,10 +50,21 @@ export class ProdutoViewComponent implements OnInit {
     this.caract = this.presenter(this.record, 'caracteristicas');
     this.quantity = 1;
     this.fotos = this.presenter(this.record, 'fotos'); 
-    this.verifyImage(this.fotos);
-    console.log(this.record);
-    console.log(this.fotos);
+    this.verifyImage(this.fotos);    
     
+  }
+
+  static async list() {
+
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/produto?limit=4`,
+    );
+    
+    console.log(response.data.rows);
+    
+    return response.data.rows;
   }
 
   changePictures(index) {
@@ -73,6 +95,10 @@ export class ProdutoViewComponent implements OnInit {
     } else {
       this.noImage = true;
     }
+  }
+
+  sameUrl(param) {
+    window.location.href = `/produto/${param}`
   }
 
   /* verifyImage(image) {

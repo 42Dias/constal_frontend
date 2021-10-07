@@ -54,20 +54,21 @@ const routes: Routes = [
           permission: Permissions.values.produtoRead,
         },
       },
+      {
+        path: ':id',
+        component: ProdutoViewComponent,
+        canActivate: [AuthGuard, PermissionGuard],
+        data: {
+          permission: Permissions.values.produtoRead,
+        },
+      },
     ],
   },
-  {
-    path: ':id',
-    component: ProdutoViewComponent,
-    canActivate: [AuthGuard, PermissionGuard],
-    data: {
-      permission: Permissions.values.produtoRead,
-    },
-  },
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),], 
   exports: [RouterModule],
   providers: [],
 })
