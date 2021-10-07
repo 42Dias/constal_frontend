@@ -96,8 +96,8 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    console.log(this.form)
     this.role = this.authService.currentUser.tenants[0].roles[0];
+    console.log(this.role)
     this.currentProfile = this.authService.currentProfile;
     console.log(this.currentProfile)
     
@@ -212,17 +212,32 @@ export class EditProfileComponent implements OnInit {
   }
 
   setData() {
-    this.email = this.fields.email.name;
-    this.logradouro = this.fields.logradouro.name;
-    this.numero = this.fields.numero.name;
-    this.bairro = this.fields.bairro.name;
-    this.cidade = this.fields.cidade.name;
-    this.complemento = this.fields.complemento.name;
-    this.estado = this.fields.estado.name;
-    this.cpf = this.fields.cpf.name;
-    this.nome = this.fields.nome.name;
-    this.telefone = this.fields.telefone.name;
-    this.cep = this.fields.cep.name;
+    if(this.role != 'empresa'){
+      this.email = this.fields.email.name;
+      this.logradouro = this.fields.logradouro.name;
+      this.numero = this.fields.numero.name;
+      this.bairro = this.fields.bairro.name;
+      this.cidade = this.fields.cidade.name;
+      this.complemento = this.fields.complemento.name;
+      this.estado = this.fields.estado.name;
+      this.cpf = this.fields.cpf.name;
+      this.nome = this.fields.nome.name;
+      this.telefone = this.fields.telefone.name;
+      this.cep = this.fields.cep.name;
+    } else {
+
+      this.email = this.empresaFields.email.name;
+      this.logradouro = this.empresaFields.logradouro.name;
+      this.numero = this.empresaFields.numero.name;
+      this.bairro = this.empresaFields.bairro.name;
+      this.cidade = this.empresaFields.cidade.name;
+      this.complemento = this.empresaFields.complemento.name;
+      this.estado = this.empresaFields.estado.name;
+      this.cpf = this.empresaFields.cnpj.name;
+      this.nome = this.empresaFields.razaoSocial.name;
+      this.telefone = this.empresaFields.telefone.name;
+      this.cep = this.empresaFields.cep.name;
+    }
   }
 
   buildForm() {
@@ -244,19 +259,21 @@ export class EditProfileComponent implements OnInit {
       this.estadoModel = this.currentProfile.estado 
       this.complementoModel = this.currentProfile.complemento
 
-    } else {
+    } 
+    
+    if(this.role == 'empresa') {
       this.senhaModel = this.form.value.senha 
-      this.razaoSocialModel = this.form.value.razaoSocial 
-      this.cnpjModel = this.form.value.cnpj 
-      this.telefoneModel = this.form.value.telefone 
-      this.emailModel = this.form.value.email 
-      this.logradouroModel = this.form.value.logradouro 
-      this.cepModel = this.form.value.cep 
-      this.numeroModel = this.form.value.numero 
-      this.bairroModel = this.form.value.bairro 
-      this.cidadeModel = this.form.value.cidade 
-      this.estadoModel = this.form.value.estado 
-      this.complementoModel = this.form.value.complemento 
+      this.razaoSocialModel = this.currentProfile.razaoSocial 
+      this.cnpjModel = this.currentProfile.cnpj 
+      this.telefoneModel = this.currentProfile.telefone 
+      this.emailModel = this.currentProfile.email 
+      this.logradouroModel = this.currentProfile.logradouro 
+      this.cepModel = this.currentProfile.cep 
+      this.numeroModel = this.currentProfile.numero 
+      this.bairroModel = this.currentProfile.bairro 
+      this.cidadeModel = this.currentProfile.cidade 
+      this.estadoModel = this.currentProfile.estado 
+      this.complementoModel = this.currentProfile.complemento 
     }
   }
 

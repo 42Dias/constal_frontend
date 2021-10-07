@@ -68,27 +68,26 @@
     </div>
 
     <h6 style="margin-left: 25vw; margin-top: 5vh; margin-bottom: 3vh;">Dados pessoais</h6>
-    <div *ngIf ="role != 'empresa'">
+    <div *ngIf="role != 'empresa'">
       <div style="display: flex; flex-direction: column; align-items: center;">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Nome</mat-label>
-          <input matInput [formControlName]="fields.nome.name"
-          [(ngModel)]="nomeModel" [ngModelOptions]="{standalone: true}">
+          <input matInput [formControlName]="fields.nome.name" [(ngModel)]="nomeModel"
+            [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>CPF</mat-label>
-          <input matInput type="number" [formControlName]="fields.cpf.name"
-          [(ngModel)]="cpfModel" [ngModelOptions]="{standalone: true}">
+          <input matInput type="number" [formControlName]="fields.cpf.name" [(ngModel)]="cpfModel"
+            [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Telefone</mat-label>
-          <input matInput type="number" [formControlName]="fields.telefone.name"
-          [(ngModel)]="telefoneModel" [ngModelOptions]="{standalone: true}">
+          <input matInput type="number" [formControlName]="fields.telefone.name" [(ngModel)]="telefoneModel"
+            [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email para contato</mat-label>
-          <input matInput type="email"
-          [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">          
+          <input matInput type="email" [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
       <div>
@@ -100,29 +99,50 @@
           <div style="display:flex; justify-content: center">
             <div
               style="display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px; margin-bottom: 2vh;">
-              <div>
+              <div style="width:100%">
                 <div style="display:flex">
                   <p>Logradouro: </p>
-                  <p style="margin-left:10px"> Av. XXXXXX</p>
+                  <p style="margin-left:10px"
+                    *ngIf="logradouroModel != null || numeroModel != null || bairroModel != null">
+                    {{logradouroModel}}, {{numeroModel}} - {{bairroModel}}
+                  </p>
+                  <p style="margin-left:10px"
+                    *ngIf="logradouroModel == null || numeroModel == null || bairroModel == null">
+                    ...
+                  </p>
                 </div>
                 <div style="display:flex">
-                  <p>Referência: </p>
-                  <p style="margin-left:10px">XXXXXXXXXXXX</p>
+                  <p>Complemento: </p>
+                  <p style="margin-left:10px" *ngIf="complementoModel != null">
+                    {{complementoModel}}
+                  </p>
+                  <p style="margin-left:10px" *ngIf="complementoModel == null">
+                    ...
+                  </p>
                 </div>
                 <div style="display:flex">
                   <p>CEP:</p>
-                  <p style="margin-left:10px">XXXXXXXXX</p>
+                  <p style="margin-left:10px" *ngIf="cepModel != null">
+                    {{cepModel}}
+                  </p>
+                  <p style="margin-left:10px" *ngIf="cepModel == null">
+                    ...
+                  </p>
                 </div>
                 <div style="display:flex">
                   <p>Cidade: </p>
-                  <p style="margin-left:10px">XXXXXXXX - XX</p>
+                  <p style="margin-left:10px" *ngIf="cidadeModel != null || estadoModel != null">
+                    {{cidadeModel}} - {{estadoModel}}
+                  </p>
+                  <p style="margin-left:10px" *ngIf="cidadeModel == null || estadoModel == null">
+                    ...
+                  </p>
                 </div>
-
               </div>
-              <div style="display:flex;justify-content:flex-end; width:69%">
+              <!-- <div style="display:flex;justify-content:flex-end; width:19%; margin-right: 0;">
                 <img src="https://static.thenounproject.com/png/856781-200.png"
                   style="margin-top: 10px; width:20px;height:20px;">
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -131,9 +151,18 @@
             <div *ngIf="camposEnd == false"
               style="display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px; margin-bottom: 2vh;"
               (click)="habilitarEnd()">
-              <div>
-                <p style="color: #4578C5; margin: 1vh 0;">Adicionar novo endereço</p>
+              <div *ngIf="cepModel != null || estadoModel != null 
+              || cidadeModel  != null || logradouroModel != null 
+              || numeroModel != null || complementoModel != null">
+                <p style="color: #4578C5; margin: 1vh 0;">Editar endereço</p>
               </div>
+
+              <div *ngIf="cepModel == null && estadoModel == null 
+              && cidadeModel  == null && logradouroModel == null 
+              && numeroModel == null && complementoModel == null">
+                <p style="color: #4578C5; margin: 1vh 0;">Adicionar endereço</p>
+              </div>
+
               <div style="display:flex;justify-content:flex-end; width:69%; align-items: center;">
                 <img src="assets/images/arrow-right-blue.png" alt="" style="width: 10px; height: 15px;">
               </div>
@@ -143,38 +172,38 @@
                 <div style="display: flex; flex-direction: column;">
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Logradouro</mat-label>
-                    <input matInput [formControlName]="fields.logradouro.name"
-                    [(ngModel)]="logradouroModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput [formControlName]="fields.logradouro.name" [(ngModel)]="logradouroModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>CEP</mat-label>
-                    <input matInput type="number" [formControlName]="fields.cep.name"
-                    [(ngModel)]="cepModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput type="number" [formControlName]="fields.cep.name" [(ngModel)]="cepModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Número</mat-label>
-                    <input matInput type="number" [formControlName]="fields.numero.name"
-                    [(ngModel)]="numeroModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput type="number" [formControlName]="fields.numero.name" [(ngModel)]="numeroModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field appearance="fill" style="width: auto;">
                     <mat-label>Bairro</mat-label>
-                    <input matInput [formControlName]="fields.bairro.name"
-                    [(ngModel)]="bairroModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput [formControlName]="fields.bairro.name" [(ngModel)]="bairroModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Cidade</mat-label>
-                    <input matInput [formControlName]="fields.cidade.name"
-                    [(ngModel)]="cidadeModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput [formControlName]="fields.cidade.name" [(ngModel)]="cidadeModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Estado</mat-label>
-                    <input matInput [formControlName]="fields.estado.name"
-                    [(ngModel)]="estadoModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput [formControlName]="fields.estado.name" [(ngModel)]="estadoModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Complemento</mat-label>
-                    <input matInput [formControlName]="fields.complemento.name"
-                    [(ngModel)]="complementoModel" [ngModelOptions]="{standalone: true}">
+                    <input matInput [formControlName]="fields.complemento.name" [(ngModel)]="complementoModel"
+                      [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
                 <!-- <div class="col-12" style="display: flex;">
@@ -228,37 +257,32 @@
                 </div>
               </div>
             </div> -->
-              <div style="width: 100%; display: flex; justify-content: center;">
-                <button *ngIf="camposEnd == true"
-                  style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
-                  (click)="doSave()">Salvar</button>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div *ngIf ="role == 'empresa'">
+    <div *ngIf="role == 'empresa'">
       <div style="display: flex; flex-direction: column; align-items: center;">
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Razão Social</mat-label>
-          <input matInput [formControlName]="empresaFields.razaoSocial.name"
-          [(ngModel)]="razaoSocialModel" [ngModelOptions]="{standalone: true}">
+          <input matInput [formControlName]="empresaFields.razaoSocial.name" [(ngModel)]="razaoSocialModel"
+            [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>CNPJ</mat-label>
-          <input matInput type="number" [formControlName]="empresaFields.cnpj.name"
-          [(ngModel)]="cnpjModel" [ngModelOptions]="{standalone: true}">
+          <input matInput type="number" [formControlName]="empresaFields.cnpj.name" [(ngModel)]="cnpjModel"
+            [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Telefone</mat-label>
-          <input matInput type="number" [formControlName]="empresaFields.telefone.name"
-          [(ngModel)]="telefoneModel" [ngModelOptions]="{standalone: true}">
+          <input matInput type="number" [formControlName]="empresaFields.telefone.name" [(ngModel)]="telefoneModel"
+            [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email para contato</mat-label>
-          <input matInput type="email" 
-          [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">
+          <input matInput type="email" [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
       </div>
       <div>
@@ -270,29 +294,50 @@
           <div style="display:flex; justify-content: center">
             <div
               style="display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px; margin-bottom: 2vh;">
-              <div>
+              <div style="width:100%">
                 <div style="display:flex">
                   <p>Logradouro: </p>
-                  <p style="margin-left:10px"> Av. XXXXXX</p>
+                  <p style="margin-left:10px"
+                    *ngIf="logradouroModel != null || numeroModel != null || bairroModel != null">
+                    {{logradouroModel}}, {{numeroModel}} - {{bairroModel}}
+                  </p>
+                  <p style="margin-left:10px"
+                    *ngIf="logradouroModel == null || numeroModel == null || bairroModel == null">
+                    ...
+                  </p>
                 </div>
                 <div style="display:flex">
-                  <p>Referência: </p>
-                  <p style="margin-left:10px">XXXXXXXXXXXX</p>
+                  <p>Complemento: </p>
+                  <p style="margin-left:10px" *ngIf="complementoModel != null">
+                    {{complementoModel}}
+                  </p>
+                  <p style="margin-left:10px" *ngIf="complementoModel == null">
+                    ...
+                  </p>
                 </div>
                 <div style="display:flex">
                   <p>CEP:</p>
-                  <p style="margin-left:10px">XXXXXXXXX</p>
+                  <p style="margin-left:10px" *ngIf="cepModel != null">
+                    {{cepModel}}
+                  </p>
+                  <p style="margin-left:10px" *ngIf="cepModel == null">
+                    ...
+                  </p>
                 </div>
                 <div style="display:flex">
                   <p>Cidade: </p>
-                  <p style="margin-left:10px">XXXXXXXX - XX</p>
+                  <p style="margin-left:10px" *ngIf="cidadeModel != null || estadoModel != null">
+                    {{cidadeModel}} - {{estadoModel}}
+                  </p>
+                  <p style="margin-left:10px" *ngIf="cidadeModel == null || estadoModel == null">
+                    ...
+                  </p>
                 </div>
-
               </div>
-              <div style="display:flex;justify-content:flex-end; width:69%">
+              <!-- <div style="display:flex;justify-content:flex-end; width:69%">
                 <img src="https://static.thenounproject.com/png/856781-200.png"
                   style="margin-top: 10px; width:20px;height:20px;">
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -301,9 +346,18 @@
             <div *ngIf="camposEnd == false"
               style="display:flex; background-color: white;padding-left: 20px; padding-top: 10px; padding-bottom: 10px; width: 40%; border-radius: 5px; margin-bottom: 2vh;"
               (click)="habilitarEnd()">
-              <div>
-                <p style="color: #4578C5; margin: 1vh 0;">Adicionar novo endereço</p>
+              <div *ngIf="cepModel != null || estadoModel != null 
+              || cidadeModel  != null || logradouroModel != null 
+              || numeroModel != null || complementoModel != null">
+                <p style="color: #4578C5; margin: 1vh 0;">Editar endereço</p>
               </div>
+
+              <div *ngIf="cepModel == null && estadoModel == null 
+              && cidadeModel  == null && logradouroModel == null 
+              && numeroModel == null && complementoModel == null">
+                <p style="color: #4578C5; margin: 1vh 0;">Adicionar endereço</p>
+              </div>
+
               <div style="display:flex;justify-content:flex-end; width:69%; align-items: center;">
                 <img src="assets/images/arrow-right-blue.png" alt="" style="width: 10px; height: 15px;">
               </div>
@@ -313,31 +367,38 @@
                 <div style="display: flex; flex-direction: column;">
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Logradouro</mat-label>
-                    <input matInput [formControlName]="empresaFields.logradouro.name">
+                    <input matInput [formControlName]="empresaFields.logradouro.name" 
+                    [(ngModel)]="logradouroModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>CEP</mat-label>
-                    <input matInput type="number" [formControlName]="empresaFields.cep.name">
+                    <input matInput type="number" [formControlName]="empresaFields.cep.name"
+                    [(ngModel)]="cepModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Número</mat-label>
-                    <input matInput type="number" [formControlName]="empresaFields.numero.name">
+                    <input matInput type="number" [formControlName]="empresaFields.numero.name"
+                    [(ngModel)]="numeroModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field appearance="fill" style="width: auto;">
                     <mat-label>Bairro</mat-label>
-                    <input matInput [formControlName]="empresaFields.bairro.name">
+                    <input matInput [formControlName]="empresaFields.bairro.name"
+                    [(ngModel)]="bairroModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Cidade</mat-label>
-                    <input matInput [formControlName]="empresaFields.cidade.name">
+                    <input matInput [formControlName]="empresaFields.cidade.name"
+                    [(ngModel)]="cidadeModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Estado</mat-label>
-                    <input matInput [formControlName]="empresaFields.estado.name">
+                    <input matInput [formControlName]="empresaFields.estado.name"
+                    [(ngModel)]="estadoModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="example-full-width" appearance="fill" style="width: auto;">
                     <mat-label>Complemento</mat-label>
-                    <input matInput [formControlName]="empresaFields.cnpj.name">
+                    <input matInput [formControlName]="empresaFields.complemento.name"
+                    [(ngModel)]="complementoModel" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
                 <!-- <div class="col-12" style="display: flex;">
@@ -391,7 +452,7 @@
                 </div>
               </div>
             </div> -->
-              
+
             </div>
           </div>
         </div>
@@ -485,8 +546,7 @@
   </div> -->
 
   <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 20px;">
-    <button
-      style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
+    <button style="background-color: #58A4B0; border: none; color: #FFF; width: 170px; height: 40px;"
       (click)="doSave()">Salvar</button>
   </div>
 </div>
