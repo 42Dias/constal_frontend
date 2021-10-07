@@ -20,17 +20,19 @@ export class ProdutoListTableComponent {
   corOn: boolean = false;
   marcaOn: boolean = false;
   categorias: any;
+  produto: any;
 
   constructor(
     public service: ProdutoListService,
     public destroyService: ProdutoDestroyService,
     public produtoService: ProdutoService,
     private confirmService: ConfirmService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   async ngOnInit() {
     this.role = this.authService.currentUser.tenants[0].roles[0];
+    this.produto = await ProdutoListTableComponent.listProduto()
     this.categorias = await ProdutoListTableComponent.listCategoria();
   }
 
@@ -77,6 +79,19 @@ export class ProdutoListTableComponent {
     );
 
     // /produto?filter%5Bcategoria%5D=25970959-129d-4b83-8a2a-6f050f27da0e
+    
+    return response.data.rows;
+  }
+
+  static async listProduto() {
+    let filter = window.location.search;
+    console.log(filter);
+    
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/produto${filter}`,
+    );
     
     return response.data.rows;
   }
