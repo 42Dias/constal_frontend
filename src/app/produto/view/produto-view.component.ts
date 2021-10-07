@@ -41,7 +41,6 @@ export class ProdutoViewComponent implements OnInit {
       this.route.snapshot.paramMap.get('id'),
     );
     this.produto = await ProdutoViewComponent.list()
-    console.log(this.produto);
     
     this.presente = this.presenter(this.record, 'preco');
     this.preco = this.presenter(this.record, 'preco');
@@ -60,15 +59,11 @@ export class ProdutoViewComponent implements OnInit {
 
     const response = await authAxios.get(
       `/tenant/${tenantId}/produto?limit=4`,
-    );
-    
-    console.log(response.data.rows);
-    
+    );    
     return response.data.rows;
   }
 
   changePictures(index) {
-    console.log(index);
     
     this.multi = index;
   }

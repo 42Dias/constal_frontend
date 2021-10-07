@@ -51,7 +51,6 @@ export class CarrinhoViewComponent implements OnInit {
   }
 
   upQuantity(preco) {
-    console.log(this.quantity);
     this.quantity+= 1;
     this.presente = preco;
     this.presente *= this.quantity;

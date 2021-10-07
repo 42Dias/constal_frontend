@@ -33,11 +33,6 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  teste() {
-    console.log(this.form);
-    
-  }
-
   get backgroundImageUrl() {
     return (
       this.authService.backgroundImageUrl ||

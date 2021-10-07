@@ -85,7 +85,6 @@ export class ProdutoListTableComponent {
 
   static async listProduto() {
     let filter = window.location.search;
-    console.log(filter);
     
     const tenantId = AuthCurrentTenant.get();
 

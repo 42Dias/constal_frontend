@@ -44,20 +44,17 @@ export class VendasComponent implements OnInit {
     this.status = "confirmado";
     await this.getVendas()
     this.negrito = "confirmadas"
-    console.log(this.vendas)
   }
 
   async devolvida(){
     this.status = "devolvido";
     await this.getVendas()
     this.negrito = "devolvidas"
-    console.log(this.vendas)
   }
 
   async pendente(){
     this.status = "pendente";
     await this.getVendas()
     this.negrito = "pendentes"
-    console.log(this.vendas)
   }
 }

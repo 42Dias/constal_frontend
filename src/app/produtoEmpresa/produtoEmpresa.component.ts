@@ -28,8 +28,6 @@ export class ProdutoEmpresaComponent implements OnInit {
   ngOnInit() {
     this.buildSchema();
     this.buildForm();
-
-    console.log(this.record);
   }
 
   get fields() {
@@ -43,8 +41,6 @@ export class ProdutoEmpresaComponent implements OnInit {
     
     const id = this.record && this.record.id;
     const values = this.schema.cast(this.form.value);
-    console.log(id + " " + values);
-
     this.save.emit({ id, values });
   }
 

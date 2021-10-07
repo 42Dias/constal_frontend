@@ -97,9 +97,8 @@ export class EditProfileComponent implements OnInit {
 
   async ngOnInit() {
     this.role = this.authService.currentUser.tenants[0].roles[0];
-    console.log(this.role)
     this.currentProfile = this.authService.currentProfile;
-    console.log(this.currentProfile)
+    
     
 
     this.buildSchema();
@@ -108,7 +107,7 @@ export class EditProfileComponent implements OnInit {
     this.camposEnd = false;
 
     this.setData();
-    // console.log(this.form)
+    
 
   }
 
@@ -207,7 +206,6 @@ export class EditProfileComponent implements OnInit {
     } else {
       this.camposEnd = false
     }
-    console.log(this.camposEnd);
 
   }
 

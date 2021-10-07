@@ -42,7 +42,6 @@ export class ProdutoFormComponent implements OnInit {
 
     const id = this.record && this.record.id;
     const values = this.schema.cast(this.form.value);
-    console.log(id + " " + values);
     this.save.emit({ id, values });
   }
 
