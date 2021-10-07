@@ -184,16 +184,15 @@
             <div
               style="background-color: #fff; width: 210px; height: 300px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
               <img src="{{ verifyImage(item.fotos) }}"
-                style="width: 210px; height: 158px; object-fit: cover; cursor: pointer;"
-                [routerLink]="['/produto', item.id]">
+                style="width: 210px; height: 158px; object-fit: cover; cursor: pointer;" (click)="sameUrl(item.id) ">
               <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
               <div
                 style="padding: 0 4px; display: flex; flex-direction: column; justify-content: space-between; height: 120px;">
                 <div>
-                  <p [routerLink]="['/produto', item.id]"
+                  <p (click)="sameUrl(item.id)"
                     style="font-size: 20px; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; display: block; display: -webkit-box; margin: 0; cursor: pointer;">
                     {{ item.nome }}</p>
-                  <p style="font-size: 24px; margin: 0; cursor: pointer;" [routerLink]="['/produto', item.id]">{{
+                  <p style="font-size: 24px; margin: 0; cursor: pointer;" (click)="sameUrl(item.id)">{{
                     transformValue(item.preco) }}</p>
                 </div>
                 <p style="font-size: 16px; margin: 0;">Consulte o frete</p>
@@ -226,16 +225,15 @@
             <div
               style="background-color: #fff; width: 210px; height: 300px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); margin-bottom: 6px;">
               <img src="{{ verifyImage(item.fotos) }}"
-                style="width: 210px; height: 158px; object-fit: cover; cursor: pointer;"
-                [routerLink]="['/produto', item.id]">
+                style="width: 210px; height: 158px; object-fit: cover; cursor: pointer;" (click)="sameUrl(item.id)">
               <div style="width: 90%; height: 1px; background-color: #DADADA; margin: 10px auto;"></div>
               <div
                 style="padding: 0 4px; display: flex; flex-direction: column; justify-content: space-between; height: 120px;">
                 <div>
-                  <p [routerLink]="['/produto', item.id]"
+                  <p (click)="sameUrl(item.id)"
                     style="font-size: 20px; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; display: block; display: -webkit-box; margin: 0; cursor: pointer;">
                     {{ item.nome }}</p>
-                  <p style="font-size: 24px; margin: 0; cursor: pointer;" [routerLink]="['/produto', item.id]">{{
+                  <p style="font-size: 24px; margin: 0; cursor: pointer;" (click)="sameUrl(item.id)">{{
                     transformValue(item.preco) }}</p>
                 </div>
                 <p style="font-size: 16px; margin: 0;">Consulte o frete</p>

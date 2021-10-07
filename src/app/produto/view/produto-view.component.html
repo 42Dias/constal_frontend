@@ -255,7 +255,8 @@
           <div *ngFor="let others of produto"
             style="background-color: #FFFFFF; width: 29%; height: auto; box-shadow: 2px 2px 4px rgb(0 0 0 / 25%); margin: 2vh 5vw; flex-wrap: wrap;">
             <div *ngIf="others.fotos.length > 0 ">
-              <img [src]="others.fotos[0]" style="width: 100%; height: 60%; object-fit: cover;">
+              <img (click)="sameUrl(others.id)" [src]="others.fotos[0]"
+                style="width: 100%; height: 60%; object-fit: cover;">
             </div>
             <div *ngIf="others.fotos.length == 0">
               <img (click)="sameUrl(others.id)" src="../../../assets/images/noImage.png"

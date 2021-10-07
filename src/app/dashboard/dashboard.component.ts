@@ -55,6 +55,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  sameUrl(param) {
+    window.location.href = `/produto/${param}`
+  }
+
   transformValue(value) {
     if (value != undefined) {
       value = (value * 100) / 100
