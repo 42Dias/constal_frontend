@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import AuthCurrentTenant from 'src/app/auth/auth-current-tenant';
 import { AuthService } from 'src/app/auth/auth.service';
 import authAxios from 'src/app/shared/axios/auth-axios';
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   produto: any = [];
 
   constructor(private authService: AuthService,
-  ) {}
+    private router: Router,) {}
 
   async ngOnInit() {
     this.produto = await DashboardComponent.listProduto()
@@ -39,14 +40,16 @@ export class DashboardComponent implements OnInit {
       `/tenant/${tenantId}/categoria`,
     );
 
-    console.log(response.data.rows);
-
     // /produto?filter%5Bcategoria%5D=25970959-129d-4b83-8a2a-6f050f27da0e
     
     
     return response.data.rows;
   }
   
+  sendToCatalog(param) {
+    this.router.navigateByUrl(`/produto?filter%5Bcategoria%5D=${param}`);
+  }
+
   verifyImage(image) {
     if (image.length > 0) {
       return image[0].downloadUrl
