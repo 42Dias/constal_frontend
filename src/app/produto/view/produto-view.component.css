@@ -5,3 +5,8 @@
 .app-link {
   color: black !important;
 }
+
+.mini-img {
+  width: 100%;
+  height: 100%;
+}

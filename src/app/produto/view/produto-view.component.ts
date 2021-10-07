@@ -18,6 +18,9 @@ export class ProdutoViewComponent implements OnInit {
   marca: any;
   modelo: any;
   caract: any;
+  fotos: any;
+  noImage: any;
+  multi: any = 0;
 
   constructor(
     private service: ProdutoViewService,
@@ -34,7 +37,18 @@ export class ProdutoViewComponent implements OnInit {
     this.marca = this.presenter(this.record, 'marca');
     this.modelo = this.presenter(this.record, 'modelo');
     this.caract = this.presenter(this.record, 'caracteristicas');
-    this.quantity = 1;   
+    this.quantity = 1;
+    this.fotos = this.presenter(this.record, 'fotos'); 
+    this.verifyImage(this.fotos);
+    console.log(this.record);
+    console.log(this.fotos);
+    
+  }
+
+  changePictures(index) {
+    console.log(index);
+    
+    this.multi = index;
   }
 
   upQuantity() {
@@ -51,7 +65,23 @@ export class ProdutoViewComponent implements OnInit {
     this.presente = this.preco;
     this.presente*=this.quantity;
     this.presente = this.presente.toFixed(2);
-  }  
+  }
+  
+  verifyImage(image) {
+    if (image.length > 0) {
+      this.noImage = false;      
+    } else {
+      this.noImage = true;
+    }
+  }
+
+  /* verifyImage(image) {
+    if (image.length > 0) {
+      return image[0].downloadUrl
+    } else {
+      return 'assets/images/noImage.png'
+    }
+  } */
 
   presenter(row, fieldName) {
     return ProdutoModel.presenter(row, fieldName);
