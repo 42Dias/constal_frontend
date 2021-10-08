@@ -211,30 +211,30 @@ export class EditProfileComponent implements OnInit {
 
   setData() {
     if(this.role != 'empresa'){
-      this.email = this.fields.email.name;
-      this.logradouro = this.fields.logradouro.name;
-      this.numero = this.fields.numero.name;
-      this.bairro = this.fields.bairro.name;
-      this.cidade = this.fields.cidade.name;
-      this.complemento = this.fields.complemento.name;
-      this.estado = this.fields.estado.name;
-      this.cpf = this.fields.cpf.name;
-      this.nome = this.fields.nome.name;
-      this.telefone = this.fields.telefone.name;
-      this.cep = this.fields.cep.name;
+      this.email = this.fields.email.name || null || '';
+      this.logradouro = this.fields.logradouro.name || null || '';
+      this.numero = this.fields.numero.name || null || '';
+      this.bairro = this.fields.bairro.name || null || '';
+      this.cidade = this.fields.cidade.name || null || '';
+      this.complemento = this.fields.complemento.name || null || '';
+      this.estado = this.fields.estado.name || null || '';
+      this.cpf = this.fields.cpf.name || null || '';
+      this.nome = this.fields.nome.name || null || '';
+      this.telefone = this.fields.telefone.name || null || '';
+      this.cep = this.fields.cep.name || null || '';
     } else {
 
-      this.email = this.empresaFields.email.name;
-      this.logradouro = this.empresaFields.logradouro.name;
-      this.numero = this.empresaFields.numero.name;
-      this.bairro = this.empresaFields.bairro.name;
-      this.cidade = this.empresaFields.cidade.name;
-      this.complemento = this.empresaFields.complemento.name;
-      this.estado = this.empresaFields.estado.name;
-      this.cpf = this.empresaFields.cnpj.name;
-      this.nome = this.empresaFields.razaoSocial.name;
-      this.telefone = this.empresaFields.telefone.name;
-      this.cep = this.empresaFields.cep.name;
+      this.email = this.empresaFields.email.name || null || '';
+      this.logradouro = this.empresaFields.logradouro.name || null || '';
+      this.numero = this.empresaFields.numero.name || null || '';
+      this.bairro = this.empresaFields.bairro.name || null || '';
+      this.cidade = this.empresaFields.cidade.name || null || '';
+      this.complemento = this.empresaFields.complemento.name || null || '';
+      this.estado = this.empresaFields.estado.name || null || '';
+      this.cpf = this.empresaFields.cnpj.name || null || '';
+      this.nome = this.empresaFields.razaoSocial.name || null || '';
+      this.telefone = this.empresaFields.telefone.name || null || '';
+      this.cep = this.empresaFields.cep.name || null || '';
     }
   }
 
@@ -244,34 +244,34 @@ export class EditProfileComponent implements OnInit {
     );
 
     if (this.role != 'empresa') {
-      this.senhaModel = this.form.value.senha 
-      this.nomeModel = this.currentProfile.nome
-      this.cpfModel = this.currentProfile.cpf
-      this.telefoneModel = this.currentProfile.telefone
-      this.emailModel = this.currentProfile.email
-      this.logradouroModel = this.currentProfile.logradouro
-      this.cepModel = this.currentProfile.cep
-      this.numeroModel = this.currentProfile.numero
-      this.bairroModel = this.currentProfile.bairro
-      this.cidadeModel = this.currentProfile.cidade 
-      this.estadoModel = this.currentProfile.estado 
-      this.complementoModel = this.currentProfile.complemento
+      this.senhaModel = this.form.value.senha|| null || ''
+      this.nomeModel = this.currentProfile.nome|| null || ''
+      this.cpfModel = this.currentProfile.cpf|| null || ''
+      this.telefoneModel = this.currentProfile.telefone|| null || ''
+      this.emailModel = this.currentProfile.email|| null || ''
+      this.logradouroModel = this.currentProfile.logradouro|| null || ''
+      this.cepModel = this.currentProfile.cep|| null || ''
+      this.numeroModel = this.currentProfile.numero|| null || ''
+      this.bairroModel = this.currentProfile.bairro|| null || ''
+      this.cidadeModel = this.currentProfile.cidade|| null || ''
+      this.estadoModel = this.currentProfile.estado|| null || ''
+      this.complementoModel = this.currentProfile.complemento|| null || ''
 
     } 
     
     if(this.role == 'empresa') {
-      this.senhaModel = this.form.value.senha 
-      this.razaoSocialModel = this.currentProfile.razaoSocial 
-      this.cnpjModel = this.currentProfile.cnpj 
-      this.telefoneModel = this.currentProfile.telefone 
-      this.emailModel = this.currentProfile.email 
-      this.logradouroModel = this.currentProfile.logradouro 
-      this.cepModel = this.currentProfile.cep 
-      this.numeroModel = this.currentProfile.numero 
-      this.bairroModel = this.currentProfile.bairro 
-      this.cidadeModel = this.currentProfile.cidade 
-      this.estadoModel = this.currentProfile.estado 
-      this.complementoModel = this.currentProfile.complemento 
+      this.senhaModel = this.form.value.senha || null || ''
+      this.razaoSocialModel = this.currentProfile.razaoSocial || null || ''
+      this.cnpjModel = this.currentProfile.cnpj || null || ''
+      this.telefoneModel = this.currentProfile.telefone || null || ''
+      this.emailModel = this.currentProfile.email || null || ''
+      this.logradouroModel = this.currentProfile.logradouro || null || ''
+      this.cepModel = this.currentProfile.cep || null || ''
+      this.numeroModel = this.currentProfile.numero || null || ''
+      this.bairroModel = this.currentProfile.bairro || null || ''
+      this.cidadeModel = this.currentProfile.cidade || null || ''
+      this.estadoModel = this.currentProfile.estado || null || ''
+      this.complementoModel = this.currentProfile.complemento || null || ''
     }
   }
 
