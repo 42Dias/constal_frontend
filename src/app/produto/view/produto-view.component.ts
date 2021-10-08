@@ -25,6 +25,7 @@ export class ProdutoViewComponent implements OnInit {
   noImage: any;
   multi: any = 0;
   produto: any;
+  carrinhoItem:any;
 
   constructor(
     private service: ProdutoViewService,
@@ -41,6 +42,7 @@ export class ProdutoViewComponent implements OnInit {
       this.route.snapshot.paramMap.get('id'),
     );
     this.produto = await ProdutoViewComponent.list()
+    console.log(this.record)
     
     this.presente = this.presenter(this.record, 'preco');
     this.preco = this.presenter(this.record, 'preco');
@@ -62,6 +64,36 @@ export class ProdutoViewComponent implements OnInit {
     );    
     return response.data.rows;
   }
+
+  async carrinho(){
+    this.carrinhoItem = this.quantity;
+    console.log(this.record)
+
+    await this.addCarrinho()
+  }
+
+  async addCarrinho() {
+    
+    const data =  {
+      produto: this.record.id,
+      quantidade: this.quantity
+    }
+    
+    
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.post(
+      `/tenant/${tenantId}/carrinho`,
+      {
+        data
+      }
+    );  
+    
+    console.log(response)
+    return response.data.rows;
+  }
+
+
 
   changePictures(index) {
     
