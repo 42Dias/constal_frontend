@@ -1,11 +1,45 @@
-<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+<!-- <app-breadcrumb [items]="breadcrumb"></app-breadcrumb> -->
 
 <div class="app-content-page">
   <h1 class="app-content-title">
     <app-i18n key="entities.carrinho.list.title"></app-i18n>
   </h1>
 
-  <app-carrinho-list-toolbar></app-carrinho-list-toolbar>
-  <app-carrinho-list-filter></app-carrinho-list-filter>
-  <app-carrinho-list-table></app-carrinho-list-table>
+  <div>
+    <div *ngIf="produtos.length > 0">
+      <div class="row" style="background-color: #58A4B060; padding: 12px; border-radius: 4px; 
+      border: thin groove #58A4B0; margin-bottom: 10px;" *ngFor="let option of produtos">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h4 style="margin-top: -10px;">{{ option.produto.nome }}</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+            <button mat-raised-button color="accent" (click)="excluirPedidoCarrinho(option.id)">Remover</button>
+            <button mat-raised-button color="primary" (click)="editarPedido(option.produto.id)">Editar</button>
+          </div>
+        </div>
+        <div style="margin-top: -10px;">
+          <p>Quantidade: {{ option.quantidade }}</p>
+          <p style="margin-top: -10px;">Preço: R$ {{ (option.produto.preco * option.quantidade).toFixed(2) }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="produtos.length == 0">
+      <div>
+        <p><b>Não há produtos neste carrinho</b></p>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: row-reverse; margin-top: 12px;">
+     <h3>
+      Total: R$ {{ total.toFixed(2) }}
+     </h3>
+    </div>
+
+    <div style="display: flex; flex-direction: row-reverse; margin-top: 12px;">
+      <button mat-raised-button color="primary" [routerLink]="['/gateway']">Finalizar compra</button>
+    </div>
+  </div>
+  <!-- <app-carrinho-list-toolbar></app-carrinho-list-toolbar> -->
+  <!-- <app-carrinho-list-filter></app-carrinho-list-filter> -->
+  <!-- <app-carrinho-list-table></app-carrinho-list-table> -->
 </div>

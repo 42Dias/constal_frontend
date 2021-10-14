@@ -21,4 +21,8 @@ export class GatewayComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getValues(value){
+    console.log(value)
+  }
+
 }
