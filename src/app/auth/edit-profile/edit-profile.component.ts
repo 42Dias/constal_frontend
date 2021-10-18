@@ -28,7 +28,7 @@ export class EditProfileComponent implements OnInit {
   schema: FormSchema;
   campos: any;
   role: any;
-  camposEnd: any;
+  camposEnd: any = false;
   email: any;
   logradouro: any;
   numero: any;
@@ -148,7 +148,7 @@ export class EditProfileComponent implements OnInit {
       this.form.value.complemento = this.complementoModel
 
 
-      if(this.currentProfile != null || this.currentProfile != undefined){
+      if(this.currentProfile != null){
         this.currentProfile.nome = this.nomeModel;
         this.currentProfile.cpf = this.cpfModel;
         this.currentProfile.telefone = this.telefoneModel;
@@ -178,7 +178,7 @@ export class EditProfileComponent implements OnInit {
       this.form.value.complemento = this.complementoModel
 
 
-      if (this.currentProfile != null || this.currentProfile != undefined) {
+      if (this.currentProfile != null) {
         this.currentProfile.razaoSocial = this.razaoSocialModel;
         this.currentProfile.cnpj = this.cnpjModel;
         this.currentProfile.telefone = this.telefoneModel;
@@ -232,7 +232,8 @@ export class EditProfileComponent implements OnInit {
         this.nome = this.fields.nome.name
         this.telefone = this.fields.telefone.name
         this.cep = this.fields.cep.name
-      } else {
+      } 
+      if (this.role == 'empresa') {
   
         this.email = this.empresaFields.email.name
         this.logradouro = this.empresaFields.logradouro.name
