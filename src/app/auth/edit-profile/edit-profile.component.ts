@@ -101,6 +101,7 @@ export class EditProfileComponent implements OnInit {
     this.role = this.authService.currentUser.tenants[0].roles[0];
     this.currentProfile = this.authService.currentProfile;
     console.log(this.currentProfile)
+    console.log(this.role)
     console.log(this.authService)
     
     
@@ -132,7 +133,7 @@ export class EditProfileComponent implements OnInit {
       return;
     }
 
-    if (this.role != 'empresa') {
+    if (this.role == 'pessoa') {
       this.form.value.senha = this.senhaModel
       this.form.value.nome = this.nomeModel
       this.form.value.cpf = this.cpfModel
@@ -147,17 +148,19 @@ export class EditProfileComponent implements OnInit {
       this.form.value.complemento = this.complementoModel
 
 
-      this.currentProfile.nome = this.nomeModel;
-      this.currentProfile.cpf = this.cpfModel;
-      this.currentProfile.telefone = this.telefoneModel;
-      this.currentProfile.email = this.emailModel;
-      this.currentProfile.logradouro = this.logradouroModel;
-      this.currentProfile.cep = this.cepModel;
-      this.currentProfile.numero = this.numeroModel;
-      this.currentProfile.bairro = this.bairroModel;
-      this.currentProfile.cidade = this.cidadeModel;
-      this.currentProfile.estado = this.estadoModel;
-      this.currentProfile.complemento = this.complementoModel;
+      if(this.currentProfile != null || this.currentProfile != undefined){
+        this.currentProfile.nome = this.nomeModel;
+        this.currentProfile.cpf = this.cpfModel;
+        this.currentProfile.telefone = this.telefoneModel;
+        this.currentProfile.email = this.emailModel;
+        this.currentProfile.logradouro = this.logradouroModel;
+        this.currentProfile.cep = this.cepModel;
+        this.currentProfile.numero = this.numeroModel;
+        this.currentProfile.bairro = this.bairroModel;
+        this.currentProfile.cidade = this.cidadeModel;
+        this.currentProfile.estado = this.estadoModel;
+        this.currentProfile.complemento = this.complementoModel;
+      }
     }
 
     if (this.role == 'empresa') {
@@ -175,17 +178,19 @@ export class EditProfileComponent implements OnInit {
       this.form.value.complemento = this.complementoModel
 
 
-      this.currentProfile.razaoSocial = this.razaoSocialModel;
-      this.currentProfile.cnpj = this.cnpjModel;
-      this.currentProfile.telefone = this.telefoneModel;
-      this.currentProfile.email = this.emailModel;
-      this.currentProfile.logradouro = this.logradouroModel;
-      this.currentProfile.cep = this.cepModel;
-      this.currentProfile.numero = this.numeroModel;
-      this.currentProfile.bairro = this.bairroModel;
-      this.currentProfile.cidade = this.cidadeModel;
-      this.currentProfile.estado = this.estadoModel;
-      this.currentProfile.complemento = this.complementoModel;
+      if (this.currentProfile != null || this.currentProfile != undefined) {
+        this.currentProfile.razaoSocial = this.razaoSocialModel;
+        this.currentProfile.cnpj = this.cnpjModel;
+        this.currentProfile.telefone = this.telefoneModel;
+        this.currentProfile.email = this.emailModel;
+        this.currentProfile.logradouro = this.logradouroModel;
+        this.currentProfile.cep = this.cepModel;
+        this.currentProfile.numero = this.numeroModel;
+        this.currentProfile.bairro = this.bairroModel;
+        this.currentProfile.cidade = this.cidadeModel;
+        this.currentProfile.estado = this.estadoModel;
+        this.currentProfile.complemento = this.complementoModel;
+      }
     }
 
     const values = this.schema.cast(this.form.value);
@@ -215,7 +220,7 @@ export class EditProfileComponent implements OnInit {
 
   setData() {
     // if (this.currentProfile != null) {
-      if(this.role != 'empresa'){
+      if(this.role == 'pessoa'){
         this.email = this.fields.email.name
         this.logradouro = this.fields.logradouro.name
         this.numero = this.fields.numero.name
@@ -250,7 +255,7 @@ export class EditProfileComponent implements OnInit {
     );
 
     // if (this.currentProfile != null) {
-      if (this.role != 'empresa') {
+      if (this.role == 'pessoa') {
         this.senhaModel = this.form.value.senha
         this.nomeModel = this.currentProfile.nome
         this.cpfModel = this.currentProfile.cpf
@@ -312,7 +317,8 @@ export class EditProfileComponent implements OnInit {
         this.formBuilder,
       );
     }
-    else {
+    
+    if(this.role == 'pessoa'){
       this.schema = new FormSchema(
         [
           this.fields.email,
