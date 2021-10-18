@@ -10,7 +10,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path: '',
+        path: ':id',
         component: DetalhesComponent,
         canActivate: [AuthGuard],
       },

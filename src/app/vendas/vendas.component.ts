@@ -6,21 +6,20 @@ import authAxios from 'src/app/shared/axios/auth-axios';
 @Component({
   selector: 'app-vendas',
   templateUrl: './vendas.component.html',
-  styleUrls: ['./vendas.component.css']
+  styleUrls: ['./vendas.component.css'],
 })
 export class VendasComponent implements OnInit {
-
   role = this.authService.currentUser.tenants[0].roles[0];
-  vendas:any;
-  status = "pendente";
-  currentProfile:any;
+  vendas: any;
+  status = 'pendente';
+  currentProfile: any;
 
-  negrito = "pendentes"
+  negrito = 'pendentes';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
-  async ngOnInit(){
-    await this.getVendas()
+  async ngOnInit() {
+    await this.getVendas();
   }
 
   async getVendas() {
@@ -34,27 +33,27 @@ export class VendasComponent implements OnInit {
       );
 
       this.vendas = response.data.rows;
-        
+      console.log(this.vendas);
     } catch (error) {
       this.vendas = null;
     }
   }
 
-  async confirmado(){
-    this.status = "confirmado";
-    await this.getVendas()
-    this.negrito = "confirmadas"
+  async confirmado() {
+    this.status = 'confirmado';
+    await this.getVendas();
+    this.negrito = 'confirmadas';
   }
 
-  async devolvida(){
-    this.status = "devolvido";
-    await this.getVendas()
-    this.negrito = "devolvidas"
+  async devolvida() {
+    this.status = 'devolvido';
+    await this.getVendas();
+    this.negrito = 'devolvidas';
   }
 
-  async pendente(){
-    this.status = "pendente";
-    await this.getVendas()
-    this.negrito = "pendentes"
+  async pendente() {
+    this.status = 'pendente';
+    await this.getVendas();
+    this.negrito = 'pendentes';
   }
 }

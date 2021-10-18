@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import AuthCurrentTenant from 'src/app/auth/auth-current-tenant';
 import { AuthService } from 'src/app/auth/auth.service';
+import authAxios from 'src/app/shared/axios/auth-axios';
 import { i18n } from 'src/i18n';
 
 @Component({
@@ -7,19 +10,51 @@ import { i18n } from 'src/i18n';
   templateUrl: './detalhes.component.html',
 })
 export class DetalhesComponent implements OnInit {
-  constructor(private authService: AuthService,
+  detalhes: any;
+  constructor(
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute,
   ) {
     this.produtos = [
-      { name: 'Material', imagem: 'assets/images/material.jpg', preco: '132,00', desc: 'Muitos materiais de contrução.' },
-      { name: 'Ferramentas', imagem: 'assets/images/tools.png', preco: '75,30', desc: 'Ferramentas para todos os gostos e para todas as necessidades!' },
-    ]
+      {
+        name: 'Material',
+        imagem: 'assets/images/material.jpg',
+        preco: '132,00',
+        desc: 'Muitos materiais de contrução.',
+      },
+      {
+        name: 'Ferramentas',
+        imagem: 'assets/images/tools.png',
+        preco: '75,30',
+        desc: 'Ferramentas para todos os gostos e para todas as necessidades!',
+      },
+    ];
   }
 
-  ngOnInit() {
-    /* document.getElementById('teste1').click(); */
+  async ngOnInit() {
+    let urlId = this.activatedRoute.snapshot.params.id;
+
+    await this.getDetalhes(urlId);
   }
 
-  produtos: Array<any> = []
+  async getDetalhes(id) {
+    try {
+      this.detalhes = null;
+
+      const tenantId = AuthCurrentTenant.get();
+
+      const response = await authAxios.get(
+        `/tenant/${tenantId}/pedido/${id}`,
+      );
+
+      this.detalhes = response.data;
+      console.log(this.detalhes);
+    } catch (error) {
+      this.detalhes = null;
+    }
+  }
+
+  produtos: Array<any> = [];
   categoriaOn: boolean = false;
   corOn: boolean = false;
   marcaOn: boolean = false;
@@ -27,21 +62,21 @@ export class DetalhesComponent implements OnInit {
   tradeView(param) {
     if (param == 'categoria') {
       if (this.categoriaOn == false) {
-        this.categoriaOn = true
+        this.categoriaOn = true;
       } else {
-        this.categoriaOn = false
+        this.categoriaOn = false;
       }
-    } else if ( param == 'cor') {
+    } else if (param == 'cor') {
       if (this.corOn == false) {
-        this.corOn = true
+        this.corOn = true;
       } else {
-        this.corOn = false
+        this.corOn = false;
       }
     } else if (param == 'marca') {
       if (this.marcaOn == false) {
-        this.marcaOn = true
+        this.marcaOn = true;
       } else {
-        this.marcaOn = false
+        this.marcaOn = false;
       }
     }
   }

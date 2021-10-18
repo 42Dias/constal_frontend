@@ -2,10 +2,10 @@
   <div style="margin: 40px 90px">
     <div style="background-color: #fff; width: 100%; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); padding: 20px;">
       <div style="margin: 16px;">
-        <p style="font-size: 20px;">Cliente: <span style="font-size: 16px; color: #626262;">Nome do cliente</span></p>
-        <p style="font-size: 20px;">CPF: <span style="font-size: 16px; color: #626262;">XXX.XXX.XXX-XX</span></p>
+        <p style="font-size: 20px;">Cliente: <span style="font-size: 16px; color: #626262;">{{detalhes.nome}}</span></p>
+        <p style="font-size: 20px;">CPF: <span style="font-size: 16px; color: #626262;">{{detalhes.cpf}}</span></p>
         <p style="font-size: 20px;">Método de pagamento: <span
-            style="font-size: 16px; color: #626262;">XXXXXXXXXXXX</span></p>
+            style="font-size: 16px; color: #626262;">{{detalhes.formaPagamento}}</span></p>
         <p style="font-size: 20px;">Parcelamento: <span style="font-size: 16px; color: #626262;">xx</span></p>
       </div>
 
@@ -20,7 +20,7 @@
             <th style="border: 1px solid #ABABAB; text-align: center;">Valor Total</th>
           </tr>
           <tr style="border: 1px solid #ABABAB;">
-            <td style="border: 1px solid #ABABAB; text-align: center;">2</td>
+            <td style="border: 1px solid #ABABAB; text-align: center;">{{detalhes.quantidadeProdutos}}</td>
             <td style="border: 1px solid #ABABAB; text-align: center;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
             <td style="border: 1px solid #ABABAB; text-align: center;">XXXXXXX</td>
             <td style="border: 1px solid #ABABAB; text-align: center;">R$ 999,00</td><!--  -->
@@ -39,14 +39,14 @@
       <p style="text-align: end; margin: 16px;">Valor final da venda: <span>R$ 1.998,00</span></p>
 
       <div style="margin: 16px;">
-        <p style="font-size: 20px;">Endereço de destino: <span style="font-size: 16px; color: #626262;">Rua, Número,
-            Bairro</span></p>
-        <p style="font-size: 20px;">Complemento: <span style="font-size: 16px; color: #626262;">XXXXXXXXXXXX</span></p>
-        <p style="font-size: 20px;">Cidade: <span style="font-size: 16px; color: #626262;">XXXXXXXXXXXXXX</span></p>
+        <p style="font-size: 20px;">Endereço de destino: <span style="font-size: 16px; color: #626262;">{{detalhes.logradouro}}, nº {{detalhes.numero}},
+            {{detalhes.bairro}}</span></p>
+        <p style="font-size: 20px;">Complemento: <span style="font-size: 16px; color: #626262;">{{detalhes.complemento}}</span></p>
+        <p style="font-size: 20px;">Cidade: <span style="font-size: 16px; color: #626262;">{{detalhes.cidade}}</span></p>
         <p style="font-size: 20px;">Ponto de referência: <span
-            style="font-size: 16px; color: #626262;">XXXXXXXXXXXXXX</span></p>
-        <p style="font-size: 20px;">Estado: <span style="font-size: 16px; color: #626262;">XX</span></p>
-        <p style="font-size: 20px;">CEP: <span style="font-size: 16px; color: #626262;">XXXXX-XX</span></p>
+            style="font-size: 16px; color: #626262;">{{detalhes.pontoReferencia}}</span></p>
+        <p style="font-size: 20px;">Estado: <span style="font-size: 16px; color: #626262;">{{detalhes.estado}}</span></p>
+        <p style="font-size: 20px;">CEP: <span style="font-size: 16px; color: #626262;">{{detalhes.cep}}</span></p>
       </div>
 
       <div style="display: flex; justify-content: end; margin-top: 120px;">
