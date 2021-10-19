@@ -31,7 +31,7 @@
 </button>
 
 <mat-menu #menu="matMenu">
-  <button [routerLink]="['/auth/profile']" mat-menu-item>
+  <button (click)="redirecionar()" mat-menu-item>
     <mat-icon>person</mat-icon>
     <app-i18n key="auth.profile.title"></app-i18n>
   </button>

@@ -37,4 +37,8 @@ export class MenuUserComponent implements OnInit {
   doSignout() {
     return this.authService.doSignout();
   }
+
+  redirecionar(){
+    window.location.href = '/auth/profile'
+  }
 }

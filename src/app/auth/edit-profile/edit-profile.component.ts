@@ -42,6 +42,8 @@ export class EditProfileComponent implements OnInit {
   cep: any;
   currentProfile: any;
 
+  load = 0;
+
   //ngModels
   loginModel: any;
   senhaModel:any;
@@ -98,8 +100,11 @@ export class EditProfileComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    
     this.role = this.authService.currentUser.tenants[0].roles[0];
     this.currentProfile = this.authService.currentProfile;
+    
+    
     console.log(this.currentProfile)
     console.log(this.role)
     console.log(this.authService)
@@ -111,8 +116,10 @@ export class EditProfileComponent implements OnInit {
     this.camposEnd = false;
 
     
-
-    this.setData();
+    setTimeout(() => {
+      console.log(this.authService.currentProfile)
+    }, 1000);
+    // this.setData();
     
   }
 
@@ -255,13 +262,25 @@ export class EditProfileComponent implements OnInit {
       this.authService.currentUser,
     );
 
+    this.load = 0;
+
+      
     // if (this.currentProfile != null) {
       if (this.role == 'pessoa') {
+        // alert("AAAAAAAAA")
         this.senhaModel = this.form.value.senha
+
         this.nomeModel = this.currentProfile.nome
         this.cpfModel = this.currentProfile.cpf
+
         this.telefoneModel = this.currentProfile.telefone
+        // this.form.setValue(this.telefoneModel);
+
         this.emailModel = this.currentProfile.email
+        // this.form.value.email = this.emailModel;
+
+        console.log(this.emailModel)
+
         this.logradouroModel = this.currentProfile.logradouro
         this.cepModel = this.currentProfile.cep
         this.numeroModel = this.currentProfile.numero
@@ -286,6 +305,14 @@ export class EditProfileComponent implements OnInit {
         this.estadoModel = this.currentProfile.estado 
         this.complementoModel = this.currentProfile.complemento 
       }
+
+      setTimeout(() => {
+        // console.log(this.form.value)
+        console.log(this.emailModel)
+        this.load = 1;
+      }, 300);
+
+      
     // }
   }
 
