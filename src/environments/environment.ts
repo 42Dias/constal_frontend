@@ -8,7 +8,7 @@ const apiDocumentationUrl = `http://localhost:8080/documentation`;
  * Frontend Url.
  */
 const frontendUrl = {
-  host: 'localhost:4200',
+  host: 'localhost:4200/',
   protocol: 'http',
 };
 
