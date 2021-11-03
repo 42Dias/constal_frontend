@@ -19,12 +19,12 @@
             <th style="border: 1px solid #ABABAB; text-align: center;">Valor unitário</th>
             <th style="border: 1px solid #ABABAB; text-align: center;">Valor Total</th>
           </tr>
-          <tr style="border: 1px solid #ABABAB;">
-            <td style="border: 1px solid #ABABAB; text-align: center;">{{detalhes.quantidadeProdutos}}</td>
-            <td style="border: 1px solid #ABABAB; text-align: center;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</td>
+          <tr *ngFor="let produto of detalhes.produtos" style="border: 1px solid #ABABAB;">
+            <td style="border: 1px solid #ABABAB; text-align: center;">{{produto.quantidade}}</td>
+            <td style="border: 1px solid #ABABAB; text-align: center;">{{produto.nome}}</td>
             <td style="border: 1px solid #ABABAB; text-align: center;">XXXXXXX</td>
-            <td style="border: 1px solid #ABABAB; text-align: center;">R$ 999,00</td><!--  -->
-            <td style="border: 1px solid #ABABAB; text-align: center;">R$ 1.998,00</td>
+            <td style="border: 1px solid #ABABAB; text-align: center;">{{produto.precoUnitario}}</td><!--  -->
+            <td style="border: 1px solid #ABABAB; text-align: center;">{{produto.precoTotal}}</td>
           </tr>
           <tr style="border: 1px solid #ABABAB; text-align: center;">
             <td style="border: 1px solid #ABABAB; text-align: center;"><br></td>
@@ -36,7 +36,7 @@
         </table>
       </div>
 
-      <p style="text-align: end; margin: 16px;">Valor final da venda: <span>R$ 1.998,00</span></p>
+      <p style="text-align: end; margin: 16px;">Valor final da venda: <span>{{detalhes.valorTotal}}</span></p>
 
       <div style="margin: 16px;">
         <p style="font-size: 20px;">Endereço de destino: <span style="font-size: 16px; color: #626262;">{{detalhes.logradouro}}, nº {{detalhes.numero}},
