@@ -26,6 +26,7 @@ export class ProdutoViewComponent implements OnInit {
   multi: any = 0;
   produto: any;
   carrinhoItem:any;
+  produtos: any;
 
   constructor(
     private service: ProdutoViewService,
@@ -53,6 +54,8 @@ export class ProdutoViewComponent implements OnInit {
     this.fotos = this.presenter(this.record, 'fotos'); 
     this.verifyImage(this.fotos);    
     
+
+    await this.listCarrinho()
   }
 
   static async list() {
@@ -65,23 +68,58 @@ export class ProdutoViewComponent implements OnInit {
     return response.data.rows;
   }
 
-  async carrinho(){
-    this.carrinhoItem = this.quantity;
-    console.log(this.record)
+  async excluirPedidoCarrinho(id) {
+    
+    const tenantId = AuthCurrentTenant.get();
 
+    const response = await authAxios.delete(
+      `/tenant/${tenantId}/carrinho?ids%5B%5D=${id}`, 
+    );  
+    // this.produtos = response.data.rows;
+
+    console.log(response.data)
+    // return response.data.rows;
+  }
+
+  async listCarrinho() {
+    
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/carrinho`
+    );  
+    
+    this.produtos = response.data.rows;
+
+    console.log(response.data)
+    return response.data.rows;
+  }
+
+  async carrinho(){
+    console.log(this.record.id)
+    for (const produto of this.produtos) {
+      if (produto.produto.id == this.record.id) {
+        await this.excluirPedidoCarrinho(produto.id)
+        break;
+      } else {
+        continue;
+      }
+    }
+    // 
     await this.addCarrinho()
   }
 
   async addCarrinho() {
-    
-    const data =  {
+    let data = null;
+
+    data =  {
       produto: this.record.id,
       quantidade: this.quantity
     }
     
-    
     const tenantId = AuthCurrentTenant.get();
 
+   
     const response = await authAxios.post(
       `/tenant/${tenantId}/carrinho`,
       {
@@ -91,8 +129,8 @@ export class ProdutoViewComponent implements OnInit {
     
     console.log(response)
     return response.data.rows;
-  }
 
+  }
 
 
   changePictures(index) {
@@ -101,7 +139,7 @@ export class ProdutoViewComponent implements OnInit {
   }
 
   upQuantity() {
-    this.quantity+= 1;
+    this.quantity++;
     this.presente = this.preco;
     this.presente*=this.quantity;
     this.presente = this.presente.toFixed(2);
@@ -109,7 +147,7 @@ export class ProdutoViewComponent implements OnInit {
 
   downQuantity() {
     if (this.quantity > 1){
-      this.quantity-= 1;
+      this.quantity--;
     }
     this.presente = this.preco;
     this.presente*=this.quantity;

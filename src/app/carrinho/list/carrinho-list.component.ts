@@ -14,6 +14,7 @@ export class CarrinhoListComponent implements OnInit {
   constructor(private authService: AuthService, private location: Location, private route: Router) {}
 
   produtos: any;
+  produtosListas:any;
   total = 0;
 
   async ngOnInit() {
@@ -72,7 +73,10 @@ export class CarrinhoListComponent implements OnInit {
     // return response.data.rows;
   }
   
-  editarPedido(id){
+  async editarPedido(id){
+    // console.log(id)
     this.route.navigate(['/produto', `${id}`]);
+    // await this.excluirPedidoCarrinho(id)
+    
   }
 }
