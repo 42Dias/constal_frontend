@@ -49,12 +49,14 @@
         <p style="font-size: 20px;">CEP: <span style="font-size: 16px; color: #626262;">{{detalhes.cep}}</span></p>
       </div>
 
-      <div style="display: flex; justify-content: end; margin-top: 120px;">
-        <button
-          style="background-color: #AA4848; width: 200px; height: 56px; border: none; color: #fff; font-size: 20px; margin-right: 16px;">Cancelar
+      <div style="display: flex; justify-content: end; margin-top: 120px;" *ngIf="detalhes.status == 'pendente'">
+        <button (click)="reprovar()"
+          style="background-color: #AA4848; width: 200px; height: 56px; border: none; color: #fff; 
+          font-size: 20px; margin-right: 16px;">Cancelar
           venda</button>
-        <button
-          style="background-color: #58A4B0; width: 200px; height: 56px; border: none; color: #fff; font-size: 20px;">Confirmar
+        <button (click)="aprovar()"
+          style="background-color: #58A4B0; width: 200px; height: 56px; border: none; color: #fff; 
+          font-size: 20px;">Confirmar
           venda</button>
       </div>
     </div>

@@ -54,10 +54,63 @@ export class DetalhesComponent implements OnInit {
     }
   }
 
+  async aprovar(){
+    try {
+      let id = this.activatedRoute.snapshot.params.id;
+      let data = null;
+
+      data =  {
+        status: 'entregue'
+      }
+
+      const tenantId = AuthCurrentTenant.get();
+
+      const response = await authAxios.put(
+        `/tenant/${tenantId}/pedido/${id}`,
+        {
+          data
+        }
+      );
+      
+      window.location.href = '/vendas'
+      return response.data
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async reprovar(){
+    try {
+      let id = this.activatedRoute.snapshot.params.id;
+      let data = null;
+
+      data =  {
+        status: "cancelado"
+      }
+
+      const tenantId = AuthCurrentTenant.get();
+
+      const response = await authAxios.put(
+        `/tenant/${tenantId}/pedido/${id}`,
+        {
+          data
+        }
+      );
+
+      window.location.href = '/vendas'
+      return response.data
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   produtos: Array<any> = [];
   categoriaOn: boolean = false;
   corOn: boolean = false;
   marcaOn: boolean = false;
+
+
 
   tradeView(param) {
     if (param == 'categoria') {
