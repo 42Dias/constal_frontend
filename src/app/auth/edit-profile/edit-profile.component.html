@@ -1,10 +1,8 @@
 <!-- <app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
-
 <div class="app-content-page">
   <h1 class="app-content-title">
     <app-i18n key="auth.profile.title"></app-i18n>
   </h1>
-
   <form class="form" (ngSubmit)="doSave()" [formGroup]="form" #ngForm="ngForm">
     <mat-form-field floatLabel="always" appearance="outline">
       <mat-label>{{ fields.firstName.label }}</mat-label>
@@ -13,7 +11,6 @@
         <app-validations [control]="form.get(fields.firstName.name)" [label]="fields.firstName.label"></app-validations>
       </mat-error>
     </mat-form-field>
-
     <mat-form-field floatLabel="always" appearance="outline">
       <mat-label>{{ fields.lastName.label }}</mat-label>
       <input matInput [formControlName]="fields.lastName.name" [required]="fields.lastName.required" />
@@ -21,7 +18,6 @@
         <app-validations [control]="form.get(fields.lastName.name)" [label]="fields.lastName.label"></app-validations>
       </mat-error>
     </mat-form-field>
-
     <mat-form-field floatLabel="always" appearance="outline">
       <mat-label>{{ fields.phoneNumber.label }}</mat-label>
       <input matInput [formControlName]="fields.phoneNumber.name" [required]="fields.phoneNumber.required" />
@@ -30,11 +26,9 @@
         </app-validations>
       </mat-error>
     </mat-form-field>
-
     <app-image-form-field [formControl]="form.get(fields.avatars.name)" [label]="fields.avatars.label"
       [storage]="fields.avatars.storage" [required]="fields.avatars.required" [max]="fields.avatars.max"
       [submitted]="ngForm.submitted"></app-image-form-field>
-
     <div class="form-buttons">
       <button mat-raised-button [disabled]="saveLoading" color="primary" type="submit">
         <mat-icon inline fontSet="far" fontIcon="fa-save"></mat-icon>&#160;
@@ -466,9 +460,7 @@
       </div>
     </div>
   </div>
-
   <br>
-
   <div *ngIf="campos === true" class="row" style="margin-bottom: 2vh;">
     <div>
       <div class="col-12" style="display: flex;">
