@@ -10,7 +10,7 @@ const apiDocumentationUrl = `http://dev.42dias.com.br:8157/documentation`;
  * Frontend URL.
  */
 const frontendUrl = {
-  host: 'domain.com/',
+  host: 'domain.com',
   protocol: 'https',
 };
 

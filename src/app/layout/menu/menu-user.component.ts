@@ -39,6 +39,6 @@ export class MenuUserComponent implements OnInit {
   }
 
   redirecionar(){
-    window.location.href = '/auth/profile'
+    window.location.href = '/constal/auth/profile'
   }
 }

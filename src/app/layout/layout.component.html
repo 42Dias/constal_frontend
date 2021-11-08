@@ -10,9 +10,9 @@
           <app-i18n *ngIf="!logoUrl" key="app.title"></app-i18n>
         </a>
       </div>
-      <div class="app-toolbar-spacer"></div> -->
-<!-- <app-i18n-select></app-i18n-select> -->
-<!-- <app-menu-user></app-menu-user>
+      <div class="app-toolbar-spacer"></div>
+ <app-i18n-select></app-i18n-select> 
+ <app-menu-user></app-menu-user>
     </mat-toolbar>
   </div>
 
@@ -51,6 +51,19 @@
             src="../../../assets/images/lupabranca.svg"
           />
         </button>
+  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
+    <img src="assets/images/constal-home1.png" style="cursor: pointer; margin: 0.5% 0 0 3%;"
+      [routerLink]="['/']">
+    <div style="display: flex;">
+      <select name="Categorias" id=""
+        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
+        <option value="Categorias" selected>Categorias</option>
+      </select>
+      <input type="text" placeholder="Pesquise por..." [(ngModel)]="input"
+        style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
+      <div style="align-self: center; margin-right: 3vw">
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;" (click)="search()"><img
+            src="assets/images/lupabranca.svg"></button>
       </div>
     </div>
     <div class="icons-content" >
@@ -61,6 +74,10 @@
           class="icons-box"
         >
           <span class="material-icons"> person </span>
+          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw; margin-top: -10px;">
+          <span class="material-icons">
+            person
+          </span>
           <app-menu-user></app-menu-user>
         </div>
         <div
@@ -150,6 +167,14 @@
                 src="https://i.imgur.com/RwV9RlQ.png"
                 style="width: 25px; height: 25px"
             /></a>
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw; margin-top: -30px;">
+            <span class="material-icons">
+              person
+            </span>
+            <app-menu-user></app-menu-user>
+          </div>
+          <div style="display:flex; flex-direction: column; align-items: center; margin-top: -10px;">
+            <a><img src="https://i.imgur.com/RwV9RlQ.png" style="width: 25px; height: 25px; "></a>
             <a>
               <p
                 style="
@@ -179,6 +204,10 @@
                 src="https://i.imgur.com/ZkTU66i.png"
                 style="width: 25px; height: 25px"
             /></a>
+
+          <div style="display:flex; flex-direction: column; align-items: center; margin-left: 2vw; margin-top: -10px;">
+            <a><img src="https://i.imgur.com/ZkTU66i.png" style="width: 25px; height: 25px;"></a>
+
             <a>
               <p
                 style="
@@ -227,6 +256,13 @@
         <option value="Categorias" selected>
           Categorias
         </option>
+
+  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
+    <img src="assets/images/constal-home1.png" style="cursor: pointer; margin: 0.5% 0 0 3%;" [routerLink]="['/']">
+    <div style="display: flex;">
+      <select name="Categorias" id=""
+        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
+        <option value="Categorias" selected>Categorias</option>
       </select>
       <input
         type="text"
@@ -257,6 +293,9 @@
             src="../../../assets/images/lupabranca.svg"
           />
         </button>
+
+        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;" (click)="search()"><img
+            src="assets/images/lupabranca.svg"></button>
       </div>
       <div
         style="
