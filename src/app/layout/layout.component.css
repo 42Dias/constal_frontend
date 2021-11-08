@@ -1,0 +1,52 @@
+.header-menu {
+  background-color: #fafafa;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.header-menu img {
+  cursor: pointer; 
+  margin: 0.5% 0 0 3%;
+}
+
+.input-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-center input[type=text] {
+  padding: 0 12px;
+  width: 300px;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px 0px 0px 5px;
+  align-self: center;
+  outline: none;
+  background: rgba(16, 16, 16, 0, 22);
+  font-size: 16px;
+  border: 0;
+}
+
+.input-center button {
+  height: 50px;
+  border: none;
+  background-color: #101010;
+  width: 50px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.icons-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}

@@ -15,14 +15,12 @@
 <!-- <app-menu-user></app-menu-user>
     </mat-toolbar>
   </div>
-
   <mat-sidenav-container class="app-sidenav-container">
     <mat-sidenav class="app-sidenav" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches">
       <div class="app-sidenav-toolbar-spacer"></div>
       <app-menu></app-menu>
     </mat-sidenav>
-
     <mat-sidenav-content>
       <div class="app-content">
         <router-outlet></router-outlet>
@@ -32,76 +30,163 @@
 </div> -->
 
 <div *ngIf="role == 'pessoa'">
-  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
-    <img src="assets/images/constal-home1.png" style="cursor: pointer; margin: 0.5% 0 0 3%;"
-      [routerLink]="['/']">
-    <div style="display: flex;">
-      <select name="Categorias" id=""
-        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
-        <option value="Categorias" selected>Categorias</option>
-      </select>
-      <input type="text" placeholder="Pesquise por..." [(ngModel)]="input"
-        style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
-      <div style="align-self: center; margin-right: 3vw">
-        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;" (click)="search()"><img
-            src="assets/images/lupabranca.svg"></button>
+  <header class="header-menu">
+    <img
+      src="../../../assets/images/constal-home1.png"
+      [routerLink]="['/']"
+    />
+    <div class="input-center">
+      <input
+        type="text"
+        placeholder="Pesquise um produto"
+        [(ngModel)]="input"
+      />
+      <div style="align-self: center">
+        <button
+          (click)="search()"
+        >
+          <img
+            src="../../../assets/images/lupabranca.svg"
+          />
+        </button>
       </div>
-      <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+    </div>
+    <div class="icons-content" >
+      <div
+        class="icons-box"
+      >
         <div
-          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw; margin-top: -10px;">
-          <span class="material-icons">
-            person
-          </span>
+          class="icons-box"
+        >
+          <span class="material-icons"> person </span>
           <app-menu-user></app-menu-user>
         </div>
         <div
-          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
+          class="icons-box"
+        >
           <span class="material-icons">
             favorite_border
           </span>
-          <p style="margin-top: 0.5vh;">Favoritos</p>
         </div>
-        <div [routerLink]="['/carrinho']" 
-          style="display: flex; flex-direction: column; align-items: center; 
-          justify-content: center; margin-right: 1.5vw; cursor: pointer;">
+        <div
+          [routerLink]="['/carrinho']"
+          class="icons-box"
+        >
           <span class="material-icons">
             shopping_cart
           </span>
-          <p style="margin-top: 0.5vh;">Carrinho</p>
         </div>
       </div>
     </div>
-  </div>
+  </header>
 </div>
-<div *ngIf="role == 'empresa'" style="background-color: #58A4B0; width:100%; height: 80px">
-  <div style="width: 100%; display:flex; justify-content: center;">
-    <div style="width:90%; display:flex; justify-content: space-between; margin-top: 10px;">
+<div
+  *ngIf="role == 'empresa'"
+  style="
+    background-color: #58a4b0;
+    width: 100%;
+    height: 80px;
+  "
+>
+  <div
+    style="
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    "
+  >
+    <div
+      style="
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      "
+    >
       <div>
-        <a><img src="https://i.imgur.com/kakxirE.png" style="width:200px;"></a>
+        <a
+          ><img
+            src="https://i.imgur.com/kakxirE.png"
+            style="width: 200px"
+        /></a>
       </div>
-      <div style="display:flex; align-items: baseline; margin-top:1vh">
-        <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+      <div
+        style="
+          display: flex;
+          align-items: baseline;
+          margin-top: 1vh;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            padding-top: 20px;
+            margin-right: 2vw;
+          "
+        >
           <div
-            style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw; margin-top: -30px;">
-            <span class="material-icons">
-              person
-            </span>
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              margin-right: 1.5vw;
+            "
+          >
+            <span class="material-icons"> person </span>
             <app-menu-user></app-menu-user>
           </div>
-          <div style="display:flex; flex-direction: column; align-items: center; margin-top: -10px;">
-            <a><img src="https://i.imgur.com/RwV9RlQ.png" style="width: 25px; height: 25px; "></a>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            "
+          >
+            <a
+              ><img
+                src="https://i.imgur.com/RwV9RlQ.png"
+                style="width: 25px; height: 25px"
+            /></a>
             <a>
-              <p style="border: none; background-color: transparent; font-size: 15px; color: #373F51; font-weight: 600; cursor: pointer;"
-                routerLink="/vendas">
+              <p
+                style="
+                  border: none;
+                  background-color: transparent;
+                  font-size: 15px;
+                  color: #373f51;
+                  font-weight: 600;
+                  cursor: pointer;
+                "
+                routerLink="/vendas"
+              >
                 Vendas
               </p>
             </a>
           </div>
-          <div style="display:flex; flex-direction: column; align-items: center; margin-left: 2vw; margin-top: -10px;">
-            <a><img src="https://i.imgur.com/ZkTU66i.png" style="width: 25px; height: 25px;"></a>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin-left: 2vw;
+            "
+          >
+            <a
+              ><img
+                src="https://i.imgur.com/ZkTU66i.png"
+                style="width: 25px; height: 25px"
+            /></a>
             <a>
               <p
-                style="border: none; background-color: transparent; font-size: 15px; color: #373F51; font-weight: 600;">
+                style="
+                  border: none;
+                  background-color: transparent;
+                  font-size: 15px;
+                  color: #373f51;
+                  font-weight: 600;
+                "
+              >
                 Meus produtos
               </p>
             </a>
@@ -112,25 +197,82 @@
   </div>
 </div>
 <div *ngIf="role == 'admin'">
-  <div style="background-color: #58A4B0; height: 10vh; width: 100%; display:flex; justify-content: space-between;">
-    <img src="assets/images/constal-home1.png" style="cursor: pointer; margin: 0.5% 0 0 3%;" [routerLink]="['/']">
-    <div style="display: flex;">
-      <select name="Categorias" id=""
-        style="background-color: transparent; border: none; height: 3vh; align-self: center;">
-        <option value="Categorias" selected>Categorias</option>
+  <div
+    style="
+      background-color: #58a4b0;
+      height: 10vh;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    "
+  >
+    <img
+      src="../../assets/images/constal-home1.png"
+      style="cursor: pointer; margin: 0.5% 0 0 3%"
+      [routerLink]="['/']"
+    />
+    <div style="display: flex">
+      <select
+        name="Categorias"
+        id=""
+        style="
+          background-color: transparent;
+          border: none;
+          height: 3vh;
+          align-self: center;
+        "
+      >
+        <option value="Categorias" selected>
+          Categorias
+        </option>
       </select>
-      <input type="text" placeholder="Pesquise por..." id="input-search"
-        style="width: 300px; height: 5vh; background-color: #C4C4C4; border-radius: 5px 0px 0px 5px; align-self: center; outline: none; color: #4E4E4E; font-size: 20px;">
+      <input
+        type="text"
+        placeholder="Pesquise por..."
+        id="input-search"
+        style="
+          width: 300px;
+          height: 5vh;
+          background-color: #c4c4c4;
+          border-radius: 5px 0px 0px 5px;
+          align-self: center;
+          outline: none;
+          color: #4e4e4e;
+          font-size: 20px;
+        "
+      />
       <div style="align-self: center; margin-right: 3vw">
-        <button style="height: 5vh; border: none; background-color: #373F51; width: 2.5vw;" (click)="search()"><img
-            src="assets/images/lupabranca.svg"></button>
+        <button
+          style="
+            height: 5vh;
+            border: none;
+            background-color: #373f51;
+            width: 2.5vw;
+          "
+          (click)="search()"
+        >
+          <img
+            src="../../../assets/images/lupabranca.svg"
+          />
+        </button>
       </div>
-      <div style="display: flex; padding-top: 20px; margin-right: 2vw;">
+      <div
+        style="
+          display: flex;
+          padding-top: 20px;
+          margin-right: 2vw;
+        "
+      >
         <div
-          style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-right: 1.5vw">
-          <span class="material-icons">
-            person
-          </span>
+          style="
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5vw;
+          "
+        >
+          <span class="material-icons"> person </span>
           <app-menu-user></app-menu-user>
         </div>
       </div>
