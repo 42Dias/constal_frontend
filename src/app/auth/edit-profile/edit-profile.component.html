@@ -62,32 +62,34 @@
         <input matInput [(ngModel)]="loginModel" [ngModelOptions]="{standalone: true}">
       </mat-form-field> -->
       <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Senha</mat-label>
-        <input matInput type="password" [(ngModel)]="senhaModel" [ngModelOptions]="{standalone: true}">
+        <label style="color: black;">Senha</label>
+        <input matInput type="password" [(ngModel)]="senhaModel" [ngModelOptions]="{standalone: true}" />
       </mat-form-field>
+
     </div>
 
     <h6 style="margin-left: 25vw; margin-top: 5vh; margin-bottom: 3vh;">Dados pessoais</h6>
     <div *ngIf="role != 'empresa'">
       <div style="display: flex; flex-direction: column; align-items: center;">
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Nome</mat-label>
-          <input *ngIf="load == 1" matInput [formControlName]="fields.nome.name" [(ngModel)]="nomeModel"
-            [ngModelOptions]="{standalone: true}">
+          <label style="color: black;">Nome</label>
+          <!-- *ngIf="load == 1" -->
+          <input  matInput [formControlName]="fields.nome.name" [(ngModel)]="nomeModel"
+            [ngModelOptions]="{standalone: true}" />
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>CPF</mat-label>
+          <label style="color: black;">CPF</label>
           <input matInput  [formControlName]="fields.cpf.name" [(ngModel)]="cpfModel"
-            [ngModelOptions]="{standalone: true}">
-        </mat-form-field>
+            [ngModelOptions]="{standalone: true}" />
+        </mat-form-field> 
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Telefone</mat-label>
+          <label style="color: black;">Telefone</label>
           <input matInput  [formControlName]="fields.telefone.name" [(ngModel)]="telefoneModel"
-            [ngModelOptions]="{standalone: true}">
+            [ngModelOptions]="{standalone: true}" />
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Email para contato</mat-label>
-          <input matInput type="email" [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}">
+          <label style="color: black;">Email para contato</label>
+          <input matInput type="email" [(ngModel)]="emailModel" [ngModelOptions]="{standalone: true}" />
         </mat-form-field>
       </div>
       <div>
